@@ -43,6 +43,8 @@ Ce dictionnaire décrit, pour chaque entité de l'application (Utilisateur, Cat�
 | id_utilisateur | Entier | - | Clé étrangère → UTILISATEUR, non nul | Auteur de la recette |
 | id_validateur | Entier | - | Clé étrangère → UTILISATEUR, nul | Administrateur ayant validé ou refusé la recette |
 
+Règle de gestion : lorsqu'un membre modifie une recette déjà publiée ou refusée, statut repasse à « en attente » et motif_refus, date_validation, id_validateur sont remis à NULL.
+
 ## ETAPE
 
 | Champ | Type | Taille | Contraintes | Description |
@@ -67,7 +69,7 @@ Contrainte d'unicité : le couple (id_recette, numero_ordre) doit être unique (
 |---|---|---|---|---|
 | id_recette | Entier | - | Clé primaire composée, clé étrangère → RECETTE, non nul | Recette concernée |
 | id_ingredient | Entier | - | Clé primaire composée, clé étrangère → INGREDIENT, non nul | Ingrédient concerné |
-| quantite | Décimal | DECIMAL(10,2) | Nul | Quantité de l'ingrédient (facultative, ex. « sel à votre convenance ») |
+| quantite | Décimal | DECIMAL(10,2) | Nul, > 0 si renseignée | Quantité de l'ingrédient (facultative, ex. « sel à votre convenance ») |
 | unite | Texte | 20 | Nul | Unité de mesure (g, ml, pièce...), facultative pour les mêmes cas |
 
 ## AVIS

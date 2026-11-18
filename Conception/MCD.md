@@ -37,7 +37,8 @@ La cardinalité notée à côté d'une entité indique, pour une occurrence de c
 - temps_preparation et temps_cuisson doivent être positifs ou nuls (≥ 0).
 - numero_ordre (ETAPE) doit être strictement positif (> 0), et le couple (RECETTE, ETAPE) via COMPORTE doit avoir un numero_ordre unique par recette.
 - L'association VALIDE n'est possible qu'avec un UTILISATEUR ayant le rôle administrateur.
-- Toutes les associations obligatoires (cardinalité minimale 1) doivent donner lieu, au MLD, à une clé étrangère non nulle ; seule VALIDE, de cardinalité minimale 0, donne lieu à une clé étrangère facultative.
+- Lorsqu'un membre modifie une recette déjà publiée ou refusée, celle-ci repasse au statut « en attente » et les propriétés motif_refus, date_validation (et le lien VALIDE) sont réinitialisés.
+- Toutes les associations obligatoires (cardinalité minimale 1) doivent donner lieu, au MLD, à une clé étrangère non nulle ; seule VALIDE, de cardinalité minimale 0, donne lieu à une clé étrangère facultative. Une clé étrangère non nulle garantit uniquement qu'une occurrence (une ETAPE, un ingrédient associé) est bien liée à une RECETTE : elle ne garantit pas l'inverse, c'est-à-dire qu'une RECETTE possède au moins une ETAPE (association COMPORTE) ou au moins un INGREDIENT (association COMPOSE). Ces deux cardinalités minimales de 1 côté RECETTE devront être vérifiées au niveau de l'application (formulaire de création d'une recette), pas par la seule structure de la base de données.
 
 ## Schéma des associations (représentation textuelle)
 
