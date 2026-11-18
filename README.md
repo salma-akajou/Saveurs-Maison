@@ -214,13 +214,13 @@ Le projet est développé en suivant les phases ci-dessous, dans l'ordre. Chaque
 | 1. Analyse des besoins | Tableau des besoins priorisés (méthode MoSCoW) | `Analyse/` | Fait |
 | 2. Conception des données | Dictionnaire de données, MCD, MLD (notation Merise) | `Conception/` | Fait |
 | 3. Maquettage | Wireframes/maquettes des pages principales | `Conception/maquettes/` | À venir |
-| 4. Création de la base de données | Script SQL de création des tables (à partir du MLD) | `Base_de_donnees/` | À venir |
-| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `Developpement/` | À venir |
+| 4. Création de la base de données | Scripts SQL de création des tables et d'insertion des données de test (à partir du MLD) | `app/base_de_donnees/` | À venir |
+| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | À venir |
 | 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | À venir |
 | 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | À venir |
 | 8. Documentation et soutenance | Support de présentation finale | `Documentation/` | À venir |
 
-Chaque phase s'appuie sur la précédente : le MLD (phase 2) sert directement de base au script SQL (phase 4) ; le dictionnaire de données (phase 2) encadre la validation des formulaires (phase 5) ; les règles de gestion définies en phase 1 et 2 sont ce qui est vérifié en phase 6.
+Chaque phase s'appuie sur la précédente : le MLD (phase 2) sert directement de base aux scripts SQL (phase 4) ; le dictionnaire de données (phase 2) encadre la validation des formulaires (phase 5) ; les règles de gestion définies en phase 1 et 2 sont ce qui est vérifié en phase 6.
 
 ## Structure du projet
 
@@ -235,10 +235,10 @@ Saveurs-Maison/
 │   ├── MLD.md                           Modèle Logique de Données
 │   └── maquettes/                       Wireframes/maquettes des pages (à venir)
 │
-├── Base_de_donnees/
-│   └── script_creation.sql              Script de création des tables, à partir du MLD (à venir)
-│
-├── Developpement/
+├── app/
+│   ├── base_de_donnees/
+│   │   ├── script_creation.sql          Script de création des tables, à partir du MLD (à venir)
+│   │   └── script_insertion.sql         Jeu de données de test (à venir)
 │   ├── config/                          Connexion PDO, constantes de configuration
 │   ├── controleurs/                     Classes PHP de traitement des actions (une par entité)
 │   ├── modeles/                         Classes PHP d'accès aux données (une par entité)
@@ -262,7 +262,7 @@ Saveurs-Maison/
 └── README.md                            Présentation générale du projet
 ```
 
-Cette structure reste la même pour les sept projets de la promotion 2027 : seuls le contenu de `Conception/` et de `Developpement/` changent d'un projet à l'autre, les dossiers de premier niveau et leur rôle restent identiques.
+Cette structure reste la même pour les sept projets de la promotion 2027 : seuls le contenu de `Conception/` et de `app/` changent d'un projet à l'autre, les dossiers de premier niveau et leur rôle restent identiques.
 
 ## État du projet
 
