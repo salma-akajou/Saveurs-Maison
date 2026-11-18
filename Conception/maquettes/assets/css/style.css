@@ -1,0 +1,449 @@
+/* Saveurs Maison - maquette statique (HTML + CSS + Bootstrap uniquement) */
+
+:root {
+  --cream: #faf3ec;
+  --cream-soft: #fbf6ef;
+  --green-dark: #1f3d2b;
+  --green-darker: #16301f;
+  --sage: #e4e9d2;
+  --sage-soft: #eef1e2;
+  --terracotta: #c1502e;
+  --star: #e2963c;
+  --text-dark: #2b2b28;
+  --text-muted: #726f66;
+  --border-light: #e7ddd0;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3, h4,
+.font-serif {
+  font-family: "Playfair Display", serif;
+}
+
+a {
+  color: var(--terracotta);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--green-dark);
+}
+
+.text-green {
+  color: var(--green-dark) !important;
+}
+.text-terracotta {
+  color: var(--terracotta) !important;
+}
+.bg-cream {
+  background-color: var(--cream) !important;
+}
+.bg-sage {
+  background-color: var(--sage) !important;
+}
+
+.btn-green {
+  background-color: var(--green-dark);
+  border-color: var(--green-dark);
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.65rem 1.6rem;
+  font-weight: 600;
+}
+.btn-green:hover {
+  background-color: var(--green-darker);
+  border-color: var(--green-darker);
+  color: #fff;
+}
+.btn-green-outline {
+  border: 1px solid var(--green-dark);
+  color: var(--green-dark);
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  background: transparent;
+}
+
+/* ===== Header / navigation ===== */
+.site-header {
+  background-color: var(--cream);
+  padding: 1.2rem 0;
+}
+.site-logo {
+  height: 42px;
+  width: auto;
+}
+.main-nav a {
+  color: var(--text-dark);
+  font-weight: 500;
+  margin: 0 1rem;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+}
+.main-nav a.active {
+  color: var(--text-dark);
+  border-bottom-color: var(--terracotta);
+}
+.nav-link-login {
+  color: var(--text-dark);
+  font-weight: 500;
+  margin-right: 1.2rem;
+}
+
+/* ===== Hero ===== */
+.hero-eyebrow {
+  color: var(--terracotta);
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.hero-title {
+  font-weight: 700;
+  color: var(--green-dark);
+  font-size: 2.6rem;
+  line-height: 1.15;
+}
+.hero-title em {
+  color: var(--terracotta);
+}
+.hero-text {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+.hero-search {
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  background: #fff;
+}
+.hero-search input {
+  border: none;
+  background: transparent;
+  padding: 0.9rem 1.3rem;
+}
+.hero-search input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.hero-search button {
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  margin: 5px;
+}
+.pill {
+  display: inline-block;
+  background-color: var(--sage);
+  color: var(--green-dark);
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0.2rem 0.3rem 0.2rem 0;
+}
+.hero-photo-wrap {
+  position: relative;
+}
+.hero-photo-wrap img {
+  border-radius: 24px;
+  width: 100%;
+  object-fit: cover;
+}
+.hero-sticker {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: #fff;
+  border-radius: 14px;
+  padding: 0.7rem 1.1rem;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: rotate(4deg);
+}
+
+/* ===== Catégories ===== */
+.category-card {
+  background-color: var(--cream-soft);
+  border-radius: 18px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.category-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.category-card span {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--green-dark);
+  font-size: 1.1rem;
+}
+
+/* ===== À propos ===== */
+.about-img {
+  border-radius: 24px;
+  width: 100%;
+  object-fit: cover;
+}
+.about-title {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+/* ===== Comment ça marche ===== */
+.step-number {
+  color: var(--terracotta);
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.step-icon {
+  color: var(--green-dark);
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+.step-title {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+.step-divider {
+  border-left: 1px solid var(--border-light);
+}
+
+/* ===== Cartes recettes ===== */
+.recipe-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  height: 100%;
+}
+.recipe-img-wrap {
+  position: relative;
+}
+.recipe-img-wrap img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+.recipe-fav {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  background: #fff;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.recipe-body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+.recipe-tag {
+  display: inline-block;
+  border-radius: 50px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.recipe-tag.entree {
+  background-color: var(--sage);
+  color: var(--green-dark);
+}
+.recipe-tag.plat {
+  background-color: #f6d8c8;
+  color: var(--terracotta);
+}
+.recipe-tag.dessert {
+  background-color: var(--sage);
+  color: var(--green-dark);
+}
+.recipe-tag.boisson {
+  background-color: #f6d8c8;
+  color: var(--terracotta);
+}
+.recipe-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--green-dark);
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+.recipe-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.recipe-meta .stars {
+  color: var(--star);
+  margin-left: auto;
+}
+
+/* ===== Bandeau CTA ===== */
+.cta-banner {
+  background-color: var(--sage);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+.cta-banner .cta-text {
+  padding: 3rem 2.5rem;
+}
+.cta-banner h2 {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+.cta-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  padding-top: 3rem;
+}
+.site-footer h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin: 0;
+}
+.footer-tagline {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: var(--text-muted);
+}
+.footer-col-title {
+  color: var(--green-dark);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.footer-bottom {
+  border-top: 1px solid var(--border-light);
+  padding: 1.2rem 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ===== Pages Inscription / Connexion ===== */
+.auth-page {
+  background-color: var(--cream);
+  min-height: 100vh;
+  padding: 2.5rem 1rem;
+}
+.auth-logo {
+  height: 46px;
+  width: auto;
+}
+.auth-card {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+.auth-visual {
+  position: relative;
+  min-height: 100%;
+}
+.auth-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  object-fit: cover;
+}
+.auth-visual-caption {
+  position: absolute;
+  left: 1.8rem;
+  bottom: 2rem;
+  right: 1.8rem;
+  color: #fff;
+}
+.auth-visual-caption p {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+.auth-visual-caption .accent-line {
+  width: 46px;
+  height: 3px;
+  background-color: var(--terracotta);
+  margin-top: 0.8rem;
+}
+.auth-form-wrap {
+  padding: 3rem 2.8rem;
+}
+.auth-eyebrow {
+  color: var(--terracotta);
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.auth-title {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+.auth-subtext {
+  color: var(--text-muted);
+}
+.auth-form label {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.92rem;
+}
+.auth-form .form-control {
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  padding: 0.65rem 0.9rem;
+}
+.auth-form .form-control:focus {
+  border-color: var(--green-dark);
+  box-shadow: none;
+}
+.input-with-icon {
+  position: relative;
+}
+.input-with-icon .toggle-eye {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+.auth-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.auth-footer-links {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+}
