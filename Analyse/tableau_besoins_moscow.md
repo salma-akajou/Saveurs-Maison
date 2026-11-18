@@ -26,14 +26,16 @@ Ce tableau recense, pour chaque acteur (Visiteur, Membre connecté, Administrate
 | Consulter ses propres recettes | Must have |
 | Modifier ses propres recettes | Must have |
 | Supprimer ses propres recettes | Should have |
-| Suivre le statut de ses publications (en attente / publiée / refusée) | Should have |
-| Consulter le motif de refus d'une recette | Should have |
+| Suivre le statut de ses publications (en attente / publiée / refusée) | Must have |
+| Consulter le motif de refus d'une recette | Must have |
 | Ajouter une recette à ses favoris | Must have |
 | Retirer une recette de ses favoris | Must have |
+| Consulter ses favoris | Must have |
 | Attribuer une note (1 à 5 étoiles) et laisser un commentaire | Must have |
 | Modifier son propre avis | Should have |
 | Supprimer son propre avis | Should have |
 | Modifier son profil et son mot de passe | Could have |
+| Se déconnecter | Must have |
 
 ## Administrateur
 
@@ -50,6 +52,7 @@ Ce tableau recense, pour chaque acteur (Visiteur, Membre connecté, Administrate
 | Activer ou désactiver un compte membre | Must have |
 | Consulter les commentaires | Should have |
 | Supprimer un commentaire inapproprié | Should have |
+| Se déconnecter | Must have |
 
 ## Hors périmètre (Won't have)
 

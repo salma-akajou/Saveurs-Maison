@@ -8,7 +8,7 @@ Ce document décrit les entités de l'application, leurs propriétés, ainsi que
 |---|---|---|
 | UTILISATEUR | id_utilisateur | nom, prenom, email, mot_de_passe, role, statut_compte, date_inscription |
 | CATEGORIE | id_categorie | nom |
-| RECETTE | id_recette | titre, description, photo, nb_personnes, temps_preparation, temps_cuisson, difficulte, statut, motif_refus, date_publication |
+| RECETTE | id_recette | titre, description, photo, nb_personnes, temps_preparation, temps_cuisson, difficulte, statut, motif_refus, date_creation, date_modification |
 | ETAPE | id_etape | numero_ordre, description |
 | INGREDIENT | id_ingredient | nom |
 | AVIS | id_avis | note, commentaire, date_avis |
@@ -26,12 +26,18 @@ La cardinalité notée à côté d'une entité indique, pour une occurrence de c
 | ECRIT | UTILISATEUR (0,n) | AVIS (1,1) | - | Un utilisateur écrit 0 à n avis ; un avis est écrit par exactement 1 utilisateur. |
 | CONCERNE | RECETTE (0,n) | AVIS (1,1) | - | Une recette reçoit 0 à n avis ; un avis concerne exactement 1 recette. |
 | AJOUTE | UTILISATEUR (0,n) | RECETTE (0,n) | date_ajout | Un utilisateur ajoute 0 à n recettes en favori ; une recette peut être ajoutée en favori par 0 à n utilisateurs. |
+| VALIDE | UTILISATEUR (0,n) | RECETTE (0,1) | date_validation | Un administrateur valide 0 à n recettes ; une recette est validée ou refusée par 0 ou 1 administrateur. Côté UTILISATEUR, seul le rôle administrateur peut participer à cette association. |
 
 ## Contraintes d'intégrité
 
-- Un couple (UTILISATEUR, RECETTE) ne peut apparaître qu'une seule fois dans l'association ECRIT/CONCERNE (un seul avis par membre et par recette) — contrainte CIF à gérer au niveau du MLD par une clé unique.
+- Contrainte d'unicité du couple utilisateur-recette : un couple (UTILISATEUR, RECETTE) ne peut apparaître qu'une seule fois dans l'association ECRIT/CONCERNE (un seul avis par membre et par recette).
 - Une recette ne peut être ajoutée qu'une seule fois en favori par le même utilisateur (l'association AJOUTE porte une clé primaire composée, ce qui empêche naturellement les doublons).
 - Une catégorie utilisée par au moins une recette ne peut pas être supprimée.
+- nb_personnes doit être strictement positif (> 0).
+- temps_preparation et temps_cuisson doivent être positifs ou nuls (≥ 0).
+- numero_ordre (ETAPE) doit être strictement positif (> 0), et le couple (RECETTE, ETAPE) via COMPORTE doit avoir un numero_ordre unique par recette.
+- L'association VALIDE n'est possible qu'avec un UTILISATEUR ayant le rôle administrateur.
+- Toutes les associations obligatoires (cardinalité minimale 1) doivent donner lieu, au MLD, à une clé étrangère non nulle ; seule VALIDE, de cardinalité minimale 0, donne lieu à une clé étrangère facultative.
 
 ## Schéma des associations (représentation textuelle)
 
@@ -39,6 +45,7 @@ La cardinalité notée à côté d'une entité indique, pour une occurrence de c
 UTILISATEUR (0,n) ──PUBLIE── (1,1) RECETTE
 UTILISATEUR (0,n) ──ECRIT──── (1,1) AVIS ────(1,1)──CONCERNE── (0,n) RECETTE
 UTILISATEUR (0,n) ──────────────── AJOUTE [date_ajout] ──────────────── (0,n) RECETTE
+UTILISATEUR (0,n) ──VALIDE [date_validation]── (0,1) RECETTE   (administrateur uniquement)
 CATEGORIE   (0,n) ──CLASSE─── (1,1) RECETTE
 RECETTE     (1,n) ──COMPORTE── (1,1) ETAPE
 RECETTE     (1,n) ──COMPOSE [quantite, unite]── (0,n) INGREDIENT
