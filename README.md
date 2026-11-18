@@ -205,6 +205,65 @@ Une seule page de connexion est prévue. Après authentification, chaque utilisa
 6. L’administrateur vérifie et valide la proposition.
 7. La recette devient accessible dans le catalogue public.
 
+## Méthodologie de travail
+
+Le projet est développé en suivant les phases ci-dessous, dans l'ordre. Chaque phase produit un ou plusieurs livrables, rangés dans le dossier correspondant.
+
+| Phase | Livrable | Dossier | Statut |
+|---|---|---|---|
+| 1. Analyse des besoins | Tableau des besoins priorisés (méthode MoSCoW) | `Analyse/` | Fait |
+| 2. Conception des données | Dictionnaire de données, MCD, MLD (notation Merise) | `Conception/` | Fait |
+| 3. Maquettage | Wireframes/maquettes des pages principales | `Conception/maquettes/` | À venir |
+| 4. Création de la base de données | Script SQL de création des tables (à partir du MLD) | `Base_de_donnees/` | À venir |
+| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `Developpement/` | À venir |
+| 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | À venir |
+| 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | À venir |
+| 8. Documentation et soutenance | Support de présentation finale | `Documentation/` | À venir |
+
+Chaque phase s'appuie sur la précédente : le MLD (phase 2) sert directement de base au script SQL (phase 4) ; le dictionnaire de données (phase 2) encadre la validation des formulaires (phase 5) ; les règles de gestion définies en phase 1 et 2 sont ce qui est vérifié en phase 6.
+
+## Structure du projet
+
+```
+Saveurs-Maison/
+├── Analyse/
+│   └── tableau_besoins_moscow.md        Besoins fonctionnels priorisés (MoSCoW)
+│
+├── Conception/
+│   ├── dictionnaire_donnees.md          Description de tous les champs des données
+│   ├── MCD.md                           Modèle Conceptuel de Données (notation Merise)
+│   ├── MLD.md                           Modèle Logique de Données
+│   └── maquettes/                       Wireframes/maquettes des pages (à venir)
+│
+├── Base_de_donnees/
+│   └── script_creation.sql              Script de création des tables, à partir du MLD (à venir)
+│
+├── Developpement/
+│   ├── config/                          Connexion PDO, constantes de configuration
+│   ├── controleurs/                     Classes PHP de traitement des actions (une par entité)
+│   ├── modeles/                         Classes PHP d'accès aux données (une par entité)
+│   ├── vues/
+│   │   ├── public/                      Pages accessibles aux visiteurs
+│   │   ├── membre/                      Pages de l'espace membre connecté
+│   │   └── admin/                       Pages de l'espace administrateur
+│   ├── public/                          Point d'entrée du site, fichiers CSS/JS/images
+│   └── index.php                        Point d'entrée unique de l'application
+│
+├── Tests/
+│   └── scenarios_de_test.md             Jeux de test manuels par fonctionnalité (à venir)
+│
+├── Deploiement/
+│   ├── procedure_deploiement.md         Étapes de mise en ligne (à venir)
+│   └── plan_rollback.md                 Plan de retour arrière en cas de problème (à venir)
+│
+├── Documentation/
+│   └── presentation_soutenance.pptx     Support de présentation pour la soutenance (à venir)
+│
+└── README.md                            Présentation générale du projet
+```
+
+Cette structure reste la même pour les sept projets de la promotion 2027 : seuls le contenu de `Conception/` et de `Developpement/` changent d'un projet à l'autre, les dossiers de premier niveau et leur rôle restent identiques.
+
 ## État du projet
 
 Les fonctionnalités présentées dans ce document constituent le périmètre prévu de l’application.
