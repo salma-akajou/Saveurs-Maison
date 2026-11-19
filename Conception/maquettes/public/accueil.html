@@ -3,304 +3,627 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saveurs Maison - Accueil</title>
+
+  <title>Saveurs Maison — Accueil</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- Feuille dédiée à l'accueil pour conserver le style des autres pages -->
+<link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
 
-  <!-- ===== Header ===== -->
+  <!-- NAVIGATION -->
   <header class="site-header">
-    <div class="container d-flex align-items-center justify-content-between">
-      <a href="accueil.html">
-        <img src="../assets/images/logo.png" alt="Saveurs Maison" class="site-logo">
+    <div class="container header-inner">
+
+      <a href="accueil.html" class="brand" aria-label="Saveurs Maison — Accueil">
+        <img
+          src="../assets/images/logo.png"
+          alt="Saveurs Maison"
+          class="site-logo"
+        >
       </a>
 
-      <nav class="main-nav d-none d-lg-flex">
-        <a href="accueil.html" class="active">Accueil</a>
-        <a href="#">À propos</a>
-        <a href="#">Les recettes</a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="accueil.html" class="active" aria-current="page">Accueil</a>
+        <a href="#recettes">Les recettes</a>
+        <a href="#a-propos">À propos</a>
       </nav>
 
-      <div class="d-flex align-items-center">
-        <a href="connexion.html" class="nav-link-login">Connexion</a>
-        <a href="inscription.html" class="btn btn-green">Créer un compte</a>
+      <div class="header-actions">
+        <a href="connexion.html" class="login-link">Connexion</a>
+        <a href="inscription.html" class="btn-green">Créer un compte</a>
       </div>
+
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="container py-4 py-lg-5">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-6">
-        <p class="hero-eyebrow mb-2">Le plaisir de cuisiner ensemble</p>
-        <h1 class="hero-title font-serif">De belles recettes,<br>à partager <em>simplement</em>.</h1>
-        <p class="hero-text mt-3 mb-4">Découvrez des idées gourmandes et partagez vos recettes maison.</p>
+  <main>
 
-        <div class="hero-search d-flex align-items-center mb-3">
-          <input type="text" class="form-control" placeholder="Quelle recette vous fait envie ?">
-          <button type="button" class="btn btn-green"><i class="bi bi-search"></i></button>
-        </div>
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="container">
 
-        <div>
-          <span class="pill">Rapide</span>
-          <span class="pill">Facile</span>
-          <span class="pill">Gourmand</span>
-        </div>
-      </div>
+        <div class="row align-items-center g-4 g-lg-5">
 
-      <div class="col-lg-6">
-        <div class="hero-photo-wrap">
-          <img src="../assets/images/hero.jpg" alt="Buddha bowl de légumes rôtis fait maison">
-          <div class="hero-sticker">Fait maison,<br>avec passion</div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="col-lg-6">
+            <p class="eyebrow">Le plaisir de cuisiner ensemble</p>
 
-  <!-- ===== Catégories ===== -->
-  <section class="container pb-5">
-    <div class="row g-3">
-      <div class="col-6 col-lg-3">
-        <div class="category-card">
-          <img src="../assets/images/hero.jpg" alt="Entrées">
-          <span>Entrées</span>
-        </div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <div class="category-card">
-          <img src="../assets/images/poulet-roti-herbes.jpg" alt="Plats">
-          <span>Plats</span>
-        </div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <div class="category-card">
-          <img src="../assets/images/gateau-coco.jpg" alt="Desserts">
-          <span>Desserts</span>
-        </div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <div class="category-card">
-          <img src="../assets/images/smoothie-mangue-passion.jpg" alt="Boissons">
-          <span>Boissons</span>
-        </div>
-      </div>
-    </div>
-  </section>
+            <h1 class="hero-title">
+              De belles recettes,<br>
+              à partager <em>simplement.</em>
+            </h1>
 
-  <!-- ===== À propos ===== -->
-  <section class="container pb-5">
-    <div class="row about-row g-4">
-      <div class="col-lg-6">
-        <img src="../assets/images/a-propos-cuisine.jpg" alt="Préparation d'une recette maison" class="about-img">
-      </div>
-      <div class="col-lg-6">
-        <h2 class="about-title font-serif mb-3">À propos de Saveurs Maison</h2>
-        <p class="hero-text mb-3">Une cuisine généreuse, des recettes accessibles et le plaisir de partager. Saveurs Maison réunit les passionnés autour des saveurs du quotidien.</p>
-        <p class="hero-text mb-3">Chaque recette est partagée par un membre de la communauté, puis vérifiée avant sa publication, pour garantir un contenu clair et fiable à chaque visite.</p>
-        <a href="#">En savoir plus &rarr;</a>
-      </div>
-    </div>
-  </section>
+            <p class="hero-description">
+              Découvrez des idées gourmandes et partagez vos recettes maison.
+            </p>
 
-  <!-- ===== Comment ça marche ===== -->
-  <section class="container pb-5">
-    <h2 class="font-serif text-green fw-bold mb-4 h1">Comment ça marche ?</h2>
-    <div class="row text-center g-4">
-      <div class="col-md-4">
-        <i class="bi bi-search step-icon"></i>
-        <div><span class="step-number">01</span> <span class="step-title">Découvrez</span></div>
-        <p class="hero-text step-text mt-2">Trouvez une recette selon vos envies.</p>
-      </div>
-      <div class="col-md-4 step-divider">
-        <span class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 3c-2.8 0-5 2.1-5.2 4.8C5.2 8.3 4 9.7 4 11.4 4 13.4 5.6 15 7.6 15H9v3.2c0 .4.4.8.8.8h4.4c.4 0 .8-.4.8-.8V15h1.4c2 0 3.6-1.6 3.6-3.6 0-1.7-1.2-3.1-2.8-3.5C17 5.1 14.8 3 12 3z"/><path d="M9 15v-2.2M12 15v-2.2M15 15v-2.2"/></svg>
-        </span>
-        <div><span class="step-number">02</span> <span class="step-title">Cuisinez</span></div>
-        <p class="hero-text step-text mt-2">Suivez les ingrédients et les étapes.</p>
-      </div>
-      <div class="col-md-4 step-divider">
-        <i class="bi bi-people step-icon"></i>
-        <div><span class="step-number">03</span> <span class="step-title">Partagez</span></div>
-        <p class="hero-text step-text mt-2">Publiez vos recettes et donnez votre avis.</p>
-      </div>
-    </div>
-  </section>
+            <!-- Le traitement de la recherche sera ajouté ensuite -->
+            <form class="hero-search" action="recettes.html" method="get">
+              <label for="recherche" class="visually-hidden">
+                Rechercher une recette
+              </label>
 
-  <!-- ===== Dernières recettes ===== -->
-  <section class="container pb-5">
-    <div class="d-flex align-items-center justify-content-between mb-4">
-      <h2 class="font-serif text-green fw-bold mb-0">Les dernières recettes</h2>
-      <a href="#">Toutes les recettes &rarr;</a>
-    </div>
+              <input
+                type="search"
+                id="recherche"
+                name="recherche"
+                placeholder="Quelle recette vous fait envie ?"
+              >
 
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <div class="recipe-img-wrap">
-            <img src="../assets/images/salade-mediterraneenne.jpg" alt="Salade méditerranéenne">
-            <span class="recipe-fav"><i class="bi bi-heart"></i></span>
-          </div>
-          <div class="recipe-body">
-            <span class="recipe-tag pill-green">Entrée</span>
-            <h3 class="recipe-title">Salade méditerranéenne</h3>
-            <div class="recipe-meta">
-              <span><i class="bi bi-clock"></i> 15 min</span>
-              <span><i class="bi bi-egg-fried"></i> Facile</span>
-              <span class="stars">★★★★☆</span>
+              <button type="submit" aria-label="Rechercher">
+                <i class="bi bi-search" aria-hidden="true"></i>
+              </button>
+            </form>
+
+            <div class="hero-pills" aria-label="Inspirations culinaires">
+              <span>Rapide</span>
+              <span>Facile</span>
+              <span>Gourmand</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <div class="recipe-img-wrap">
-            <img src="../assets/images/poulet-roti-herbes.jpg" alt="Poulet rôti aux herbes">
-            <span class="recipe-fav"><i class="bi bi-heart"></i></span>
-          </div>
-          <div class="recipe-body">
-            <span class="recipe-tag pill-peach">Plat</span>
-            <h3 class="recipe-title">Poulet rôti aux herbes</h3>
-            <div class="recipe-meta">
-              <span><i class="bi bi-clock"></i> 1 h 15</span>
-              <span><i class="bi bi-egg-fried"></i> Facile</span>
-              <span class="stars">★★★★★</span>
+          <div class="col-lg-6">
+            <div class="hero-visual">
+
+              <img
+                src="../assets/images/hero.jpg"
+                alt="Couscous aux légumes rôtis, pois chiches et herbes fraîches"
+                class="hero-image"
+                fetchpriority="high"
+              >
+
+              <div class="hero-sticker">
+                Fait maison,<br>
+                avec passion
+              </div>
+
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <div class="recipe-img-wrap">
-            <img src="../assets/images/gateau-coco.jpg" alt="Gâteau au coco">
-            <span class="recipe-fav"><i class="bi bi-heart"></i></span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CATÉGORIES -->
+    <section class="categories-section" aria-label="Catégories de recettes">
+      <div class="container">
+
+        <div class="row g-3">
+
+          <div class="col-6 col-lg-3">
+            <a href="recettes.html?categorie=entrees" class="category-card">
+              <img
+                src="../assets/images/salade-mediterraneenne.jpg"
+                alt=""
+                loading="lazy"
+              >
+              <span>Entrées</span>
+            </a>
           </div>
-          <div class="recipe-body">
-            <span class="recipe-tag pill-green">Dessert</span>
-            <h3 class="recipe-title">Gâteau au coco</h3>
-            <div class="recipe-meta">
-              <span><i class="bi bi-clock"></i> 45 min</span>
-              <span><i class="bi bi-egg-fried"></i> Facile</span>
-              <span class="stars">★★★★☆</span>
+
+          <div class="col-6 col-lg-3">
+            <a href="recettes.html?categorie=plats" class="category-card">
+              <img
+                src="../assets/images/poulet-roti-herbes.jpg"
+                alt=""
+                loading="lazy"
+              >
+              <span>Plats</span>
+            </a>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <a href="recettes.html?categorie=desserts" class="category-card">
+              <img
+                src="../assets/images/gateau-coco.jpg"
+                alt=""
+                loading="lazy"
+              >
+              <span>Desserts</span>
+            </a>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <a href="recettes.html?categorie=boissons" class="category-card">
+              <img
+                src="../assets/images/smoothie-mangue-passion.jpg"
+                alt=""
+                loading="lazy"
+              >
+              <span>Boissons</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="a-propos" class="about-section section-space">
+      <div class="container">
+
+        <div class="row align-items-center g-4 g-lg-5">
+
+          <div class="col-lg-6">
+            <img
+              src="../assets/images/a-propos-cuisine.jpg"
+              alt="Préparation de légumes frais dans une cuisine"
+              class="about-image"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="col-lg-6 about-content">
+
+            <h2 class="section-title">À propos de Saveurs Maison</h2>
+
+            <p>
+              Une cuisine généreuse, des recettes accessibles et le plaisir
+              de partager. Saveurs Maison réunit les passionnés autour
+              des saveurs du quotidien.
+            </p>
+
+            <a href="a-propos.html" class="text-link">
+              En savoir plus <span aria-hidden="true">→</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMMENT ÇA MARCHE -->
+    <section class="how-section section-space">
+      <div class="container">
+
+        <h2 class="section-title">Comment ça marche ?</h2>
+
+        <div class="row g-4 steps-row">
+
+          <div class="col-md-4">
+            <div class="step">
+
+              <div class="step-icon">
+                <i class="bi bi-search" aria-hidden="true"></i>
+              </div>
+
+              <h3 class="step-heading">
+                <span>01</span> Découvrez
+              </h3>
+
+              <p>Trouvez une recette selon vos envies.</p>
+
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <div class="recipe-img-wrap">
-            <img src="../assets/images/samoussas-legumes.jpg" alt="Samoussas aux légumes">
-            <span class="recipe-fav"><i class="bi bi-heart"></i></span>
-          </div>
-          <div class="recipe-body">
-            <span class="recipe-tag pill-green">Entrée</span>
-            <h3 class="recipe-title">Samoussas aux légumes</h3>
-            <div class="recipe-meta">
-              <span><i class="bi bi-clock"></i> 30 min</span>
-              <span><i class="bi bi-egg-fried"></i> Facile</span>
-              <span class="stars">★★★★★</span>
+          <div class="col-md-4">
+            <div class="step step-bordered">
+
+              <div class="step-icon">
+                <svg
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M19 38c-7 0-12-5-12-11s5-11 11-11c2-7 8-11 14-11s12 4 14 11c6 0 11 5 11 11s-5 11-12 11v17H19V38Z"/>
+                  <path d="M19 46h26M26 36v8M38 36v8"/>
+                </svg>
+              </div>
+
+              <h3 class="step-heading">
+                <span>02</span> Cuisinez
+              </h3>
+
+              <p>Suivez les ingrédients et les étapes.</p>
+
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <div class="recipe-img-wrap">
-            <img src="../assets/images/tarte-pommes.jpg" alt="Tarte aux pommes">
-            <span class="recipe-fav"><i class="bi bi-heart"></i></span>
-          </div>
-          <div class="recipe-body">
-            <span class="recipe-tag pill-peach">Dessert</span>
-            <h3 class="recipe-title">Tarte aux pommes</h3>
-            <div class="recipe-meta">
-              <span><i class="bi bi-clock"></i> 55 min</span>
-              <span><i class="bi bi-egg-fried"></i> Moyen</span>
-              <span class="stars">★★★★☆</span>
+          <div class="col-md-4">
+            <div class="step step-bordered">
+
+              <div class="step-icon">
+                <i class="bi bi-people" aria-hidden="true"></i>
+              </div>
+
+              <h3 class="step-heading">
+                <span>03</span> Partagez
+              </h3>
+
+              <p>Publiez vos recettes et donnez votre avis.</p>
+
             </div>
           </div>
+
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <div class="recipe-img-wrap">
-            <img src="../assets/images/smoothie-mangue-passion.jpg" alt="Smoothie mangue passion">
-            <span class="recipe-fav"><i class="bi bi-heart"></i></span>
-          </div>
-          <div class="recipe-body">
-            <span class="recipe-tag pill-green">Boisson</span>
-            <h3 class="recipe-title">Smoothie mangue passion</h3>
-            <div class="recipe-meta">
-              <span><i class="bi bi-clock"></i> 10 min</span>
-              <span><i class="bi bi-egg-fried"></i> Facile</span>
-              <span class="stars">★★★★★</span>
-            </div>
-          </div>
+      </div>
+    </section>
+
+    <!-- DERNIÈRES RECETTES -->
+    <section id="recettes" class="recipes-section section-space">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2 class="section-title">Les dernières recettes</h2>
+
+          <a href="recettes.html" class="text-link">
+            Toutes les recettes <span aria-hidden="true">→</span>
+          </a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="container pb-5">
-    <div class="cta-banner row g-0 align-items-center">
-      <div class="col-lg-7 cta-text">
-        <h2 class="font-serif">Votre recette mérite d'être partagée.</h2>
-        <p class="hero-text mb-4">Rejoignez notre communauté et inspirez les cuisiniers du quotidien.</p>
-        <a href="inscription.html" class="btn btn-green">Partager une recette</a>
-      </div>
-      <div class="col-lg-5 d-none d-lg-block cta-img-wrap">
-        <img src="../assets/images/banniere-partage.jpg" alt="">
-      </div>
-    </div>
-  </section>
+        <div class="row g-4">
 
-  <!-- ===== Footer ===== -->
+          <!-- Salade -->
+          <div class="col-md-6 col-lg-4">
+            <article class="recipe-card">
+
+              <div class="recipe-image-wrap">
+                <img
+                  src="../assets/images/salade-mediterraneenne.jpg"
+                  alt="Salade méditerranéenne"
+                  loading="lazy"
+                >
+
+                <a
+                  href="connexion.html"
+                  class="favorite-button"
+                  aria-label="Se connecter pour enregistrer la salade en favori"
+                >
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <div class="recipe-content">
+                <span class="recipe-tag tag-sage">Entrée</span>
+
+                <h3 class="recipe-title">Salade méditerranéenne</h3>
+
+                <div class="recipe-meta">
+                  <span>
+                    <i class="bi bi-clock" aria-hidden="true"></i> 15 min
+                  </span>
+
+                  <span class="difficulty">
+                    <i class="bi bi-egg-fried" aria-hidden="true"></i> Facile
+                  </span>
+
+                  <span class="stars" aria-label="Note : 4 sur 5">★★★★☆</span>
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- Poulet -->
+          <div class="col-md-6 col-lg-4">
+            <article class="recipe-card">
+
+              <div class="recipe-image-wrap">
+                <img
+                  src="../assets/images/poulet-roti-herbes.jpg"
+                  alt="Poulet rôti aux herbes"
+                  loading="lazy"
+                >
+
+                <a
+                  href="connexion.html"
+                  class="favorite-button"
+                  aria-label="Se connecter pour enregistrer le poulet en favori"
+                >
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <div class="recipe-content">
+                <span class="recipe-tag tag-peach">Plat</span>
+
+                <h3 class="recipe-title">Poulet rôti aux herbes</h3>
+
+                <div class="recipe-meta">
+                  <span>
+                    <i class="bi bi-clock" aria-hidden="true"></i> 1 h 15
+                  </span>
+
+                  <span class="difficulty">
+                    <i class="bi bi-egg-fried" aria-hidden="true"></i> Facile
+                  </span>
+
+                  <span class="stars" aria-label="Note : 5 sur 5">★★★★★</span>
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- Gâteau -->
+          <div class="col-md-6 col-lg-4">
+            <article class="recipe-card">
+
+              <div class="recipe-image-wrap">
+                <img
+                  src="../assets/images/gateau-coco.jpg"
+                  alt="Gâteau au coco"
+                  loading="lazy"
+                >
+
+                <a
+                  href="connexion.html"
+                  class="favorite-button"
+                  aria-label="Se connecter pour enregistrer le gâteau en favori"
+                >
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <div class="recipe-content">
+                <span class="recipe-tag tag-sage">Dessert</span>
+
+                <h3 class="recipe-title">Gâteau au coco</h3>
+
+                <div class="recipe-meta">
+                  <span>
+                    <i class="bi bi-clock" aria-hidden="true"></i> 45 min
+                  </span>
+
+                  <span class="difficulty">
+                    <i class="bi bi-egg-fried" aria-hidden="true"></i> Facile
+                  </span>
+
+                  <span class="stars" aria-label="Note : 4 sur 5">★★★★☆</span>
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- Samoussas -->
+          <div class="col-md-6 col-lg-4">
+            <article class="recipe-card">
+
+              <div class="recipe-image-wrap">
+                <img
+                  src="../assets/images/samoussas-legumes.jpg"
+                  alt="Samoussas aux légumes"
+                  loading="lazy"
+                >
+
+                <a
+                  href="connexion.html"
+                  class="favorite-button"
+                  aria-label="Se connecter pour enregistrer les samoussas en favori"
+                >
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <div class="recipe-content">
+                <span class="recipe-tag tag-sage">Entrée</span>
+
+                <h3 class="recipe-title">Samoussas aux légumes</h3>
+
+                <div class="recipe-meta">
+                  <span>
+                    <i class="bi bi-clock" aria-hidden="true"></i> 30 min
+                  </span>
+
+                  <span class="difficulty">
+                    <i class="bi bi-egg-fried" aria-hidden="true"></i> Facile
+                  </span>
+
+                  <span class="stars" aria-label="Note : 5 sur 5">★★★★★</span>
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- Tarte -->
+          <div class="col-md-6 col-lg-4">
+            <article class="recipe-card">
+
+              <div class="recipe-image-wrap">
+                <img
+                  src="../assets/images/tarte-pommes.jpg"
+                  alt="Tarte aux pommes"
+                  loading="lazy"
+                >
+
+                <a
+                  href="connexion.html"
+                  class="favorite-button"
+                  aria-label="Se connecter pour enregistrer la tarte en favori"
+                >
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <div class="recipe-content">
+                <span class="recipe-tag tag-peach">Dessert</span>
+
+                <h3 class="recipe-title">Tarte aux pommes</h3>
+
+                <div class="recipe-meta">
+                  <span>
+                    <i class="bi bi-clock" aria-hidden="true"></i> 55 min
+                  </span>
+
+                  <span class="difficulty">
+                    <i class="bi bi-egg-fried" aria-hidden="true"></i> Moyen
+                  </span>
+
+                  <span class="stars" aria-label="Note : 4 sur 5">★★★★☆</span>
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- Smoothie -->
+          <div class="col-md-6 col-lg-4">
+            <article class="recipe-card">
+
+              <div class="recipe-image-wrap">
+                <img
+                  src="../assets/images/smoothie-mangue-passion.jpg"
+                  alt="Smoothie mangue passion"
+                  loading="lazy"
+                >
+
+                <a
+                  href="connexion.html"
+                  class="favorite-button"
+                  aria-label="Se connecter pour enregistrer le smoothie en favori"
+                >
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <div class="recipe-content">
+                <span class="recipe-tag tag-sage">Boisson</span>
+
+                <h3 class="recipe-title">Smoothie mangue passion</h3>
+
+                <div class="recipe-meta">
+                  <span>
+                    <i class="bi bi-clock" aria-hidden="true"></i> 10 min
+                  </span>
+
+                  <span class="difficulty">
+                    <i class="bi bi-egg-fried" aria-hidden="true"></i> Facile
+                  </span>
+
+                  <span class="stars" aria-label="Note : 5 sur 5">★★★★★</span>
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PARTAGER UNE RECETTE -->
+    <section class="share-section section-space">
+      <div class="container">
+
+        <div class="share-banner">
+
+          <!-- Image décorative indépendante du contenu -->
+          <div class="share-visual" aria-hidden="true"></div>
+
+          <div class="share-content">
+            <h2>Votre recette mérite d’être partagée.</h2>
+
+            <p>
+              Rejoignez notre communauté et inspirez les cuisiniers du quotidien.
+            </p>
+
+            <a href="inscription.html" class="btn-green">
+              Partager une recette
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <img src="../assets/images/logo.png" alt="Saveurs Maison" class="site-logo">
-          </div>
-          <p class="footer-tagline">La cuisine se savoure,<br>les recettes se partagent.</p>
+
+      <div class="row g-4 footer-main">
+
+        <div class="col-md-6 col-lg-4 footer-brand">
+          <a href="accueil.html">
+            <img
+              src="../assets/images/logo.png"
+              alt="Saveurs Maison"
+              class="footer-logo"
+              loading="lazy"
+            >
+          </a>
+
+          <p class="footer-tagline">
+            La cuisine se savoure,<br>
+            les recettes se partagent.
+          </p>
         </div>
-        <div class="col-6 col-lg-2 footer-col">
-          <p class="footer-col-title">Explorer</p>
-          <a href="#">Toutes les recettes</a>
-          <a href="#">Entrées</a>
-          <a href="#">Plats</a>
-          <a href="#">Desserts</a>
-          <a href="#">Boissons</a>
+
+        <div class="col-6 col-md-3 col-lg-2 footer-column">
+          <h3>Explorer</h3>
+
+          <a href="recettes.html">Toutes les recettes</a>
+          <a href="recettes.html?categorie=entrees">Entrées</a>
+          <a href="recettes.html?categorie=plats">Plats</a>
+          <a href="recettes.html?categorie=desserts">Desserts</a>
+          <a href="recettes.html?categorie=boissons">Boissons</a>
         </div>
-        <div class="col-6 col-lg-3 footer-col">
-          <p class="footer-col-title">Participer</p>
+
+        <div class="col-6 col-md-3 col-lg-3 footer-column">
+          <h3>Participer</h3>
+
           <a href="inscription.html">Créer un compte</a>
           <a href="connexion.html">Connexion</a>
-          <a href="#">Partager une recette</a>
+          <a href="inscription.html">Partager une recette</a>
         </div>
-        <div class="col-6 col-lg-3 footer-col">
-          <p class="footer-col-title">Informations</p>
-          <a href="#">À propos</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+
+        <div class="col-6 col-md-6 col-lg-3 footer-column">
+          <h3>Informations</h3>
+
+          <a href="a-propos.html">À propos</a>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
         </div>
+
       </div>
-    </div>
-    <div class="footer-bottom mt-4">
-      <div class="container d-flex justify-content-between flex-wrap">
+
+      <div class="footer-bottom">
         <span>© Saveurs Maison</span>
-        <span class="fst-italic font-serif">La cuisine se savoure, les recettes se partagent.</span>
+
+        <span class="footer-bottom-tagline">
+          La cuisine se savoure, les recettes se partagent.
+        </span>
       </div>
+
     </div>
   </footer>
 

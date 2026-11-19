@@ -3,75 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saveurs Maison - Connexion</title>
+
+  <title>Saveurs Maison — Connexion</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
+  <main class="auth-page auth-login">
+    <div class="auth-layout">
 
-  <div class="auth-page">
-    <div class="container">
+      <a href="accueil.html" class="auth-brand">
+        <img
+          src="../assets/images/logo.png"
+          alt="Saveurs Maison — Retour à l’accueil"
+          class="auth-logo"
+        >
+      </a>
 
-      <div class="text-center mb-4">
-        <a href="accueil.html">
-          <img src="../assets/images/logo.png" alt="Saveurs Maison" class="auth-logo">
-        </a>
-      </div>
+      <div class="auth-card row g-0">
 
-      <div class="row justify-content-center">
-        <div class="col-lg-9">
-          <div class="auth-card row g-0">
+        <!-- PHOTO -->
+        <div class="col-md-5 auth-visual d-none d-md-block">
+          <img
+            src="../assets/images/salade-mediterraneenne.jpg"
+            alt="Salade méditerranéenne maison"
+          >
 
-            <div class="col-md-5 auth-visual d-none d-md-block">
-              <img src="../assets/images/salade-mediterraneenne.jpg" alt="Salade composée maison">
-              <div class="auth-visual-caption">
-                <p>Le plaisir du fait maison vous attend.</p>
-                <div class="accent-line"></div>
+          <div class="auth-visual-caption">
+            <p>Le plaisir du fait maison vous attend.</p>
+            <div class="accent-line"></div>
+          </div>
+        </div>
+
+        <!-- FORMULAIRE -->
+        <div class="col-md-7">
+          <div class="auth-form-wrap">
+
+            <p class="auth-eyebrow">Heureux de vous revoir</p>
+
+            <h1 class="auth-title">Se connecter</h1>
+
+            <p class="auth-subtext">
+              Retrouvez vos favoris et partagez vos inspirations.
+            </p>
+
+            <!-- Maquette : le traitement PHP sera ajouté ensuite -->
+            <form class="auth-form" onsubmit="event.preventDefault()">
+
+              <div class="auth-field">
+                <label class="form-label" for="email">
+                  Adresse e-mail
+                </label>
+
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="vous@exemple.fr"
+                  autocomplete="username"
+                  maxlength="100"
+                  required
+                >
               </div>
-            </div>
 
-            <div class="col-md-7">
-              <div class="auth-form-wrap">
-                <p class="auth-eyebrow mb-2">Heureux de vous revoir</p>
-                <h1 class="auth-title font-serif h2">Se connecter</h1>
-                <p class="auth-subtext mb-4">Retrouvez vos favoris et partagez vos inspirations.</p>
+              <div class="auth-field">
+                <label class="form-label" for="motdepasse">
+                  Mot de passe
+                </label>
 
-                <form class="auth-form">
-                  <div class="mb-3">
-                    <label class="form-label" for="email">Adresse e-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="vous@exemple.fr">
-                  </div>
+                <div class="input-with-icon">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="motdepasse"
+                    name="mot_de_passe"
+                    autocomplete="current-password"
+                    required
+                  >
 
-                  <div class="mb-4">
-                    <label class="form-label" for="motdepasse">Mot de passe</label>
-                    <div class="input-with-icon">
-                      <input type="password" class="form-control" id="motdepasse">
-                      <i class="bi bi-eye toggle-eye"></i>
-                    </div>
-                  </div>
-
-                  <button type="button" class="btn btn-green w-100">Se connecter</button>
-
-                  <p class="auth-footer-links">Pas encore de compte ? <a href="inscription.html">Créer un compte</a></p>
-                </form>
+                  <button
+                    type="button"
+                    class="toggle-eye"
+                    id="afficher-motdepasse"
+                    aria-label="Afficher le mot de passe"
+                    aria-pressed="false"
+                  >
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+                  </button>
+                </div>
               </div>
-            </div>
+
+              <button type="submit" class="btn btn-green w-100">
+                Se connecter
+              </button>
+
+              <p class="auth-switch">
+                Pas encore de compte ?
+                <a href="inscription.html">Créer un compte</a>
+              </p>
+
+            </form>
 
           </div>
         </div>
+
       </div>
 
-      <p class="auth-footer-links mt-4">
-        <a href="#">Mentions légales</a> &nbsp;&middot;&nbsp; <a href="#">Confidentialité</a>
+      <p class="auth-footer-links">
+        <a href="mentions-legales.html">Mentions légales</a>
+        &nbsp;·&nbsp;
+        <a href="confidentialite.html">Confidentialité</a>
       </p>
 
     </div>
-  </div>
+  </main>
 
+  <script>
+    const bouton = document.getElementById("afficher-motdepasse");
+    const champ = document.getElementById("motdepasse");
+
+    bouton.addEventListener("click", () => {
+      const afficher = champ.type === "password";
+
+      champ.type = afficher ? "text" : "password";
+
+      bouton.setAttribute("aria-pressed", String(afficher));
+      bouton.setAttribute(
+        "aria-label",
+        afficher
+          ? "Masquer le mot de passe"
+          : "Afficher le mot de passe"
+      );
+
+      bouton.querySelector("i").className =
+        afficher ? "bi bi-eye-slash" : "bi bi-eye";
+    });
+  </script>
 </body>
 </html>
