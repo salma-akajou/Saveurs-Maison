@@ -3069,3 +3069,126 @@ button:focus-visible {
     transition: none !important;
   }
 }
+/* =========================================
+   CATALOGUE — PRÉSENTATION PLUS ÉQUILIBRÉE
+   ========================================= */
+
+.catalog-page .catalog-intro {
+  padding-top: 36px;
+  padding-bottom: 42px;
+}
+
+.catalog-page .catalog-breadcrumb {
+  margin-bottom: 24px;
+}
+
+.catalog-page .catalog-intro-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: center;
+  gap: 35px;
+}
+
+.catalog-page .catalog-intro-content {
+  min-width: 0;
+}
+
+.catalog-page .catalog-intro .eyebrow {
+  margin-bottom: 17px;
+  font-size: 13px;
+  letter-spacing: 1.6px;
+}
+
+.catalog-page .catalog-intro h1 {
+  max-width: 850px;
+  margin-bottom: 20px;
+
+  font-size: clamp(42px, 4.5vw, 62px);
+  line-height: 1.14;
+  letter-spacing: -1.8px;
+}
+
+.catalog-page .catalog-intro-description {
+  max-width: 690px;
+  margin-bottom: 0;
+
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.6;
+}
+
+.catalog-page .catalog-decoration {
+  justify-self: center;
+
+  width: 290px;
+  height: 290px;
+
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.catalog-page .catalog-decoration img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Tablette */
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .catalog-page .catalog-intro-layout {
+    grid-template-columns: minmax(0, 1fr) 230px;
+    gap: 25px;
+  }
+
+  .catalog-page .catalog-intro h1 {
+    font-size: 43px;
+    letter-spacing: -1.2px;
+  }
+
+  .catalog-page .catalog-intro-description {
+    font-size: 17px;
+  }
+
+  .catalog-page .catalog-decoration {
+    width: 230px;
+    height: 230px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767.98px) {
+  .catalog-page .catalog-intro {
+    padding-top: 26px;
+    padding-bottom: 30px;
+  }
+
+  .catalog-page .catalog-intro-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .catalog-page .catalog-intro h1 {
+    margin-bottom: 16px;
+
+    font-size: clamp(34px, 8vw, 44px);
+    letter-spacing: -1px;
+  }
+
+  .catalog-page .catalog-intro-description {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .catalog-page .catalog-intro .eyebrow {
+    font-size: 11px;
+  }
+
+  .catalog-page .catalog-decoration {
+    display: none;
+  }
+}
