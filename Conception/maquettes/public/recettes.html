@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Saveurs Maison — Les recettes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="catalog-page">
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="accueil.html" class="brand">
+        <img
+          src="../assets/images/logo.png"
+          alt="Saveurs Maison — Accueil"
+          class="site-logo"
+        >
+      </a>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="accueil.html">Accueil</a>
+        <a href="recettes.html" class="active" aria-current="page">
+          Les recettes
+        </a>
+        <a href="a-propos.html">À propos</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="connexion.html" class="login-link">Connexion</a>
+        <a href="inscription.html" class="btn-green">
+          Créer un compte
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PRÉSENTATION -->
+    <section class="catalog-intro">
+      <div class="container">
+
+        <nav class="catalog-breadcrumb" aria-label="Fil d’Ariane">
+          <a href="accueil.html">Accueil</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Les recettes</span>
+        </nav>
+
+        <div class="catalog-intro-layout">
+
+          <div class="catalog-intro-content">
+            <p class="eyebrow">Le carnet gourmand</p>
+
+            <h1>
+              À chaque envie,<br class="catalog-mobile-break">
+              <em>sa recette.</em>
+            </h1>
+
+            <p class="catalog-intro-description">
+              Des idées maison à découvrir, cuisiner et partager.
+            </p>
+          </div>
+
+          <div class="catalog-decoration" aria-hidden="true">
+            <img
+              src="../assets/images/salade-mediterraneenne.jpg"
+              alt=""
+            >
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RECHERCHE ET FILTRES -->
+    <section class="catalog-filters-section" aria-label="Rechercher et filtrer">
+      <div class="container">
+
+        <div class="catalog-filters">
+
+          <div class="catalog-search">
+            <label for="recherche" class="visually-hidden">
+              Rechercher une recette par son nom
+            </label>
+
+            <i class="bi bi-search" aria-hidden="true"></i>
+
+            <input
+              type="search"
+              id="recherche"
+              placeholder="Rechercher une recette..."
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="catalog-filter">
+            <label for="categorie">Catégorie</label>
+
+            <select id="categorie" class="form-select">
+              <option value="">Toutes</option>
+              <option value="entrees">Entrées</option>
+              <option value="plats">Plats</option>
+              <option value="desserts">Desserts</option>
+              <option value="boissons">Boissons</option>
+            </select>
+          </div>
+
+          <div class="catalog-filter">
+            <label for="difficulte">Difficulté</label>
+
+            <select id="difficulte" class="form-select">
+              <option value="">Toutes</option>
+              <option value="facile">Facile</option>
+              <option value="moyenne">Moyenne</option>
+              <option value="difficile">Difficile</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RÉSULTATS -->
+    <section class="catalog-results-section">
+      <div class="container">
+
+        <div class="catalog-results-header">
+
+          <div class="catalog-heading-group">
+            <h2>Toutes les recettes</h2>
+
+            <span
+              class="catalog-count"
+              id="nombre-recettes"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+          </div>
+
+          <div class="catalog-sort">
+            <label for="tri">Trier :</label>
+
+            <select id="tri" class="form-select">
+              <option value="recentes">Plus récentes</option>
+              <option value="note">Mieux notées</option>
+              <option value="rapides">Plus rapides</option>
+              <option value="nom">Ordre alphabétique</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Cartes ajoutées par JavaScript -->
+        <div class="catalog-grid" id="liste-recettes"></div>
+
+        <!-- Aucun résultat -->
+        <div class="catalog-empty" id="aucun-resultat" hidden>
+          <i class="bi bi-search" aria-hidden="true"></i>
+
+          <h3>Aucune recette trouvée</h3>
+
+          <p>
+            Essayez un autre nom ou modifiez les filtres.
+          </p>
+
+          <button type="button" class="btn-green" id="reinitialiser">
+            Réinitialiser la recherche
+          </button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="catalog-pagination-bar" id="zone-pagination">
+
+          <p
+            class="catalog-range"
+            id="plage-resultats"
+          ></p>
+
+          <nav aria-label="Pagination des recettes">
+            <ul class="catalog-pagination" id="pagination"></ul>
+          </nav>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="row g-4 footer-main">
+
+        <div class="col-md-6 col-lg-4 footer-brand">
+          <a href="accueil.html">
+            <img
+              src="../assets/images/logo.png"
+              alt="Saveurs Maison"
+              class="footer-logo"
+              loading="lazy"
+            >
+          </a>
+
+          <p class="footer-tagline">
+            La cuisine se savoure,<br>
+            les recettes se partagent.
+          </p>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2 footer-column">
+          <h3>Explorer</h3>
+
+          <a href="recettes.html">Toutes les recettes</a>
+          <a href="recettes.html?categorie=entrees">Entrées</a>
+          <a href="recettes.html?categorie=plats">Plats</a>
+          <a href="recettes.html?categorie=desserts">Desserts</a>
+          <a href="recettes.html?categorie=boissons">Boissons</a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3 footer-column">
+          <h3>Participer</h3>
+
+          <a href="inscription.html">Créer un compte</a>
+          <a href="connexion.html">Connexion</a>
+          <a href="inscription.html">Partager une recette</a>
+        </div>
+
+        <div class="col-6 col-md-6 col-lg-3 footer-column">
+          <h3>Informations</h3>
+
+          <a href="a-propos.html">À propos</a>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© Saveurs Maison</span>
+
+        <span class="footer-bottom-tagline">
+          La cuisine se savoure, les recettes se partagent.
+        </span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /*
+     * Données de démonstration :
+     * 18 recettes pour tester les trois pages.
+     * Les photos existantes sont réutilisées pour les variantes.
+     * Ces données seront ensuite remplacées par celles de MySQL.
+     */
+    const recettes = [
+      {
+        id: 1,
+        titre: "Salade méditerranéenne",
+        categorie: "entrees",
+        difficulte: "facile",
+        duree: 15,
+        note: 4.7,
+        image: "salade-mediterraneenne.jpg"
+      },
+      {
+        id: 2,
+        titre: "Poulet rôti aux herbes",
+        categorie: "plats",
+        difficulte: "facile",
+        duree: 75,
+        note: 4.9,
+        image: "poulet-roti-herbes.jpg"
+      },
+      {
+        id: 3,
+        titre: "Gâteau au coco",
+        categorie: "desserts",
+        difficulte: "facile",
+        duree: 45,
+        note: 4.6,
+        image: "gateau-coco.jpg"
+      },
+      {
+        id: 4,
+        titre: "Samoussas aux légumes",
+        categorie: "entrees",
+        difficulte: "facile",
+        duree: 30,
+        note: 4.7,
+        image: "samoussas-legumes.jpg"
+      },
+      {
+        id: 5,
+        titre: "Tarte aux pommes",
+        categorie: "desserts",
+        difficulte: "moyenne",
+        duree: 55,
+        note: 4.8,
+        image: "tarte-pommes.jpg"
+      },
+      {
+        id: 6,
+        titre: "Smoothie mangue passion",
+        categorie: "boissons",
+        difficulte: "facile",
+        duree: 10,
+        note: 4.7,
+        image: "smoothie-mangue-passion.jpg"
+      },
+      {
+        id: 7,
+        titre: "Salade de tomates au basilic",
+        categorie: "entrees",
+        difficulte: "facile",
+        duree: 10,
+        note: 4.5,
+        image: "salade-mediterraneenne.jpg"
+      },
+      {
+        id: 8,
+        titre: "Poulet au thym et pommes de terre",
+        categorie: "plats",
+        difficulte: "moyenne",
+        duree: 80,
+        note: 4.8,
+        image: "poulet-roti-herbes.jpg"
+      },
+      {
+        id: 9,
+        titre: "Moelleux à la noix de coco",
+        categorie: "desserts",
+        difficulte: "facile",
+        duree: 40,
+        note: 4.6,
+        image: "gateau-coco.jpg"
+      },
+      {
+        id: 10,
+        titre: "Samoussas aux petits pois",
+        categorie: "entrees",
+        difficulte: "moyenne",
+        duree: 35,
+        note: 4.4,
+        image: "samoussas-legumes.jpg"
+      },
+      {
+        id: 11,
+        titre: "Tarte fine aux pommes",
+        categorie: "desserts",
+        difficulte: "moyenne",
+        duree: 50,
+        note: 4.7,
+        image: "tarte-pommes.jpg"
+      },
+      {
+        id: 12,
+        titre: "Smoothie tropical",
+        categorie: "boissons",
+        difficulte: "facile",
+        duree: 8,
+        note: 4.5,
+        image: "smoothie-mangue-passion.jpg"
+      },
+      {
+        id: 13,
+        titre: "Salade fraîche à la feta",
+        categorie: "entrees",
+        difficulte: "facile",
+        duree: 15,
+        note: 4.6,
+        image: "salade-mediterraneenne.jpg"
+      },
+      {
+        id: 14,
+        titre: "Poulet rôti du dimanche",
+        categorie: "plats",
+        difficulte: "moyenne",
+        duree: 90,
+        note: 4.9,
+        image: "poulet-roti-herbes.jpg"
+      },
+      {
+        id: 15,
+        titre: "Gâteau coco vanille",
+        categorie: "desserts",
+        difficulte: "facile",
+        duree: 50,
+        note: 4.8,
+        image: "gateau-coco.jpg"
+      },
+      {
+        id: 16,
+        titre: "Samoussas croustillants maison",
+        categorie: "entrees",
+        difficulte: "difficile",
+        duree: 60,
+        note: 4.8,
+        image: "samoussas-legumes.jpg"
+      },
+      {
+        id: 17,
+        titre: "Tarte aux pommes caramélisées",
+        categorie: "desserts",
+        difficulte: "difficile",
+        duree: 85,
+        note: 4.9,
+        image: "tarte-pommes.jpg"
+      },
+      {
+        id: 18,
+        titre: "Smoothie mangue coco",
+        categorie: "boissons",
+        difficulte: "facile",
+        duree: 10,
+        note: 4.6,
+        image: "smoothie-mangue-passion.jpg"
+      }
+    ];
+
+    const categories = {
+      entrees: "Entrée",
+      plats: "Plat",
+      desserts: "Dessert",
+      boissons: "Boisson"
+    };
+
+    const difficultes = {
+      facile: "Facile",
+      moyenne: "Moyenne",
+      difficile: "Difficile"
+    };
+
+    const recherche = document.getElementById("recherche");
+    const categorie = document.getElementById("categorie");
+    const difficulte = document.getElementById("difficulte");
+    const tri = document.getElementById("tri");
+
+    const liste = document.getElementById("liste-recettes");
+    const compteur = document.getElementById("nombre-recettes");
+    const aucunResultat = document.getElementById("aucun-resultat");
+    const pagination = document.getElementById("pagination");
+    const zonePagination = document.getElementById("zone-pagination");
+    const plageResultats = document.getElementById("plage-resultats");
+
+    const recettesParPage = 6;
+    let pageActuelle = 1;
+
+    function normaliser(texte) {
+      return texte
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .toLowerCase()
+        .trim();
+    }
+
+    function formaterDuree(minutes) {
+      if (minutes < 60) {
+        return `${minutes} min`;
+      }
+
+      const heures = Math.floor(minutes / 60);
+      const reste = minutes % 60;
+
+      return reste === 0
+        ? `${heures} h`
+        : `${heures} h ${String(reste).padStart(2, "0")}`;
+    }
+
+    function obtenirRecettesFiltrees() {
+      const terme = normaliser(recherche.value);
+
+      const resultat = recettes.filter(recette => {
+        const correspondAuNom =
+          normaliser(recette.titre).includes(terme);
+
+        const correspondALaCategorie =
+          !categorie.value ||
+          recette.categorie === categorie.value;
+
+        const correspondALaDifficulte =
+          !difficulte.value ||
+          recette.difficulte === difficulte.value;
+
+        return (
+          correspondAuNom &&
+          correspondALaCategorie &&
+          correspondALaDifficulte
+        );
+      });
+
+      switch (tri.value) {
+        case "note":
+          resultat.sort((a, b) => b.note - a.note);
+          break;
+
+        case "rapides":
+          resultat.sort((a, b) => a.duree - b.duree);
+          break;
+
+        case "nom":
+          resultat.sort((a, b) =>
+            a.titre.localeCompare(b.titre, "fr")
+          );
+          break;
+
+        default:
+          /*
+           * Le tableau de démonstration est déjà ordonné
+           * des publications les plus récentes aux plus anciennes.
+           */
+          break;
+      }
+
+      return resultat;
+    }
+
+    function creerCarte(recette) {
+      /*
+       * Les valeurs ci-dessous proviennent uniquement
+       * du tableau de démonstration défini dans ce fichier.
+       */
+      const article = document.createElement("article");
+      article.className = "catalog-card";
+
+      article.innerHTML = `
+        <a
+          href="recette.html?id=${recette.id}"
+          class="catalog-card-image"
+          aria-label="Voir la recette : ${recette.titre}"
+        >
+          <img
+            src="../assets/images/${recette.image}"
+            alt="${recette.titre}"
+            loading="lazy"
+          >
+        </a>
+
+        <div class="catalog-card-content">
+
+          <div class="catalog-card-top">
+            <span class="catalog-card-tag">
+              ${categories[recette.categorie]}
+            </span>
+
+            <a
+              href="connexion.html"
+              class="catalog-heart"
+              aria-label="Se connecter pour ajouter ${recette.titre} aux favoris"
+            >
+              <i class="bi bi-heart" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <h3>
+            <a href="recette.html?id=${recette.id}">
+              ${recette.titre}
+            </a>
+          </h3>
+
+          <div class="catalog-card-meta">
+
+            <span>
+              <i class="bi bi-clock" aria-hidden="true"></i>
+              ${formaterDuree(recette.duree)}
+            </span>
+
+            <span>
+              <i class="bi bi-egg-fried" aria-hidden="true"></i>
+              ${difficultes[recette.difficulte]}
+            </span>
+
+            <span class="catalog-rating" aria-label="Note : ${recette.note} sur 5">
+              <i class="bi bi-star-fill" aria-hidden="true"></i>
+              ${recette.note.toFixed(1).replace(".", ",")}
+            </span>
+
+          </div>
+
+        </div>
+      `;
+
+      return article;
+    }
+
+    function ajouterBoutonPagination(texte, numeroPage, options = {}) {
+      const item = document.createElement("li");
+      const bouton = document.createElement("button");
+
+      bouton.type = "button";
+      bouton.textContent = texte;
+      bouton.disabled = Boolean(options.desactive);
+
+      if (options.actif) {
+        bouton.classList.add("active");
+        bouton.setAttribute("aria-current", "page");
+      }
+
+      if (options.label) {
+        bouton.setAttribute("aria-label", options.label);
+      }
+
+      bouton.addEventListener("click", () => {
+        pageActuelle = numeroPage;
+        afficherRecettes();
+
+        const boutonCourant = pagination.querySelector(
+          '[aria-current="page"]'
+        );
+
+        boutonCourant?.focus({ preventScroll: true });
+      });
+
+      item.appendChild(bouton);
+      pagination.appendChild(item);
+    }
+
+    function afficherRecettes() {
+      const resultat = obtenirRecettesFiltrees();
+      const total = resultat.length;
+
+      const nombrePages = Math.max(
+        1,
+        Math.ceil(total / recettesParPage)
+      );
+
+      pageActuelle = Math.min(pageActuelle, nombrePages);
+
+      const debut = (pageActuelle - 1) * recettesParPage;
+      const fin = Math.min(debut + recettesParPage, total);
+
+      liste.replaceChildren();
+      pagination.replaceChildren();
+
+      compteur.textContent =
+        `${total} recette${total > 1 ? "s" : ""}`;
+
+      aucunResultat.hidden = total !== 0;
+      zonePagination.hidden = total === 0;
+
+      resultat.slice(debut, fin).forEach(recette => {
+        liste.appendChild(creerCarte(recette));
+      });
+
+      if (total === 0) {
+        plageResultats.textContent = "";
+        return;
+      }
+
+      plageResultats.textContent =
+        `${debut + 1}–${fin} sur ${total} recette${total > 1 ? "s" : ""}`;
+
+      if (nombrePages > 1) {
+        ajouterBoutonPagination(
+          "← Précédent",
+          pageActuelle - 1,
+          { desactive: pageActuelle === 1 }
+        );
+
+        for (let numero = 1; numero <= nombrePages; numero++) {
+          ajouterBoutonPagination(
+            String(numero),
+            numero,
+            {
+              actif: numero === pageActuelle,
+              label: `Page ${numero}`
+            }
+          );
+        }
+
+        ajouterBoutonPagination(
+          "Suivant →",
+          pageActuelle + 1,
+          { desactive: pageActuelle === nombrePages }
+        );
+      }
+    }
+
+    function appliquerFiltres() {
+      pageActuelle = 1;
+      afficherRecettes();
+    }
+
+    recherche.addEventListener("input", appliquerFiltres);
+    categorie.addEventListener("change", appliquerFiltres);
+    difficulte.addEventListener("change", appliquerFiltres);
+    tri.addEventListener("change", appliquerFiltres);
+
+    document.getElementById("reinitialiser")
+      .addEventListener("click", () => {
+        recherche.value = "";
+        categorie.value = "";
+        difficulte.value = "";
+        tri.value = "recentes";
+
+        appliquerFiltres();
+        recherche.focus();
+      });
+
+    // Prendre en compte les liens provenant de l’accueil.
+    const parametres = new URLSearchParams(window.location.search);
+
+    recherche.value = parametres.get("recherche") || "";
+
+    const categorieDemandee = parametres.get("categorie");
+
+    if (Object.prototype.hasOwnProperty.call(categories, categorieDemandee)) {
+      categorie.value = categorieDemandee;
+    }
+
+    const difficulteDemandee = parametres.get("difficulte");
+
+    if (Object.prototype.hasOwnProperty.call(difficultes, difficulteDemandee)) {
+      difficulte.value = difficulteDemandee;
+    }
+
+    afficherRecettes();
+  </script>
+
+</body>
+</html>
