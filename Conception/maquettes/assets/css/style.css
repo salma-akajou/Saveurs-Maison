@@ -294,6 +294,58 @@ button:focus-visible {
   color: var(--terracotta);
 }
 
+/* Bouton menu mobile (case à cocher cachée + étiquette) */
+
+.menu-toggle-input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid var(--border, #e7dfd5);
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--olive);
+
+  font-size: 22px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.menu-toggle .bi-x {
+  display: none;
+}
+
+.menu-toggle-input:checked ~ .menu-toggle .bi-list {
+  display: none;
+}
+
+.menu-toggle-input:checked ~ .menu-toggle .bi-x {
+  display: inline;
+}
+
+.menu-toggle-input:focus-visible ~ .menu-toggle {
+  outline: 3px solid #99aa80;
+  outline-offset: 2px;
+}
+
 /* =========================================
    ACCUEIL — HERO
    ========================================= */
@@ -1494,9 +1546,8 @@ button:focus-visible {
 @media (max-width: 991.98px) {
   .header-inner {
     flex-wrap: wrap;
-    gap: 0 18px;
 
-    padding-top: 5px;
+    padding-top: 12px;
     padding-bottom: 12px;
   }
 
@@ -1504,17 +1555,41 @@ button:focus-visible {
     order: 1;
   }
 
-  .header-actions {
+  .menu-toggle {
+    display: inline-flex;
     order: 2;
     margin-left: auto;
   }
 
   .main-nav {
+    display: none;
     order: 3;
-    justify-content: center;
-    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 
     width: 100%;
+    margin-top: 16px;
+  }
+
+  .header-actions {
+    display: none;
+    order: 4;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    margin-top: 16px;
+    padding-top: 16px;
+    padding-bottom: 14px;
+
+    border-top: 1px solid #eee8df;
+  }
+
+  .menu-toggle-input:checked ~ .main-nav,
+  .menu-toggle-input:checked ~ .header-actions {
+    display: flex;
   }
 
   .site-logo {
@@ -1852,23 +1927,6 @@ button:focus-visible {
    ========================================= */
 
 @media (max-width: 479.98px) {
-  .header-inner {
-    justify-content: center;
-    padding-bottom: 12px;
-  }
-
-  .brand {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .header-actions {
-    justify-content: center;
-
-    width: 100%;
-    margin: 0 0 8px;
-  }
-
   .header-actions .btn-green {
     min-height: 38px;
     padding: 8px 16px;
