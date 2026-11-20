@@ -4877,15 +4877,15 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* NAVBAR */
+/* NAVBAR MEMBRE — DESIGN DE LA MAQUETTE */
 
 .favorites-page .fv-header {
-  border-bottom: 1px solid var(--fv-border);
-  background: #fffefa;
+  background: #fcfaf7;
+  border-bottom: 1px solid #deded3;
 }
 
-.favorites-page .navbar {
-  padding: 12px 0;
+.favorites-page .fv-header .navbar {
+  padding: 10px 0;
 }
 
 .favorites-page .fv-brand {
@@ -4900,14 +4900,15 @@ button:focus-visible {
 }
 
 .favorites-page .fv-nav-links {
-  gap: 25px;
+  align-items: center;
+  gap: 30px;
 }
 
 .favorites-page .fv-nav-links .nav-link {
   position: relative;
   padding: 12px 0;
   color: var(--fv-text);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -4930,27 +4931,72 @@ button:focus-visible {
   content: "";
 }
 
+/* Séparation entre les liens et le compte */
+
+.favorites-page .fv-account {
+  margin-left: 30px;
+  padding-left: 25px;
+  border-left: 1px solid #d5ccbe;
+}
+
+/* Avatar + prénom + flèche, sans bouton encadré */
+
 .favorites-page .fv-account-button {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 18px;
-  border: 1px solid var(--fv-border);
-  border-radius: 8px;
+  min-height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--fv-text);
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+
+.favorites-page .fv-account-button:hover,
+.favorites-page .fv-account-button[aria-expanded="true"] {
+  border: none;
   background: transparent;
   color: var(--fv-green);
-  font: inherit;
-  font-size: 14px;
+}
+
+.favorites-page .fv-avatar {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #dfe3ce;
+  color: var(--fv-green-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
   font-weight: 600;
 }
 
-.favorites-page .fv-account-button:hover {
-  border-color: var(--fv-green);
-  background: #f1f3e9;
+.favorites-page .fv-account-name {
+  font-size: 15px;
+  font-weight: 500;
 }
+
+.favorites-page .fv-account-chevron {
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.favorites-page .fv-account-button[aria-expanded="true"]
+.fv-account-chevron {
+  transform: rotate(180deg);
+}
+
+/* Menu déroulant : uniquement Mes recettes et Mon profil */
 
 .favorites-page .fv-account .dropdown-menu {
   min-width: 180px;
+  margin-top: 13px;
   padding: 7px;
   border: 1px solid var(--fv-border);
   border-radius: 10px;
@@ -4959,7 +5005,7 @@ button:focus-visible {
 }
 
 .favorites-page .fv-account .dropdown-item {
-  padding: 9px 12px;
+  padding: 10px 13px;
   border-radius: 6px;
   color: var(--fv-text);
   font-size: 14px;
@@ -4967,7 +5013,7 @@ button:focus-visible {
 
 .favorites-page .fv-account .dropdown-item:hover,
 .favorites-page .fv-account .dropdown-item:focus {
-  background: var(--fv-sage);
+  background: #e8ebdc;
   color: var(--fv-green-dark);
 }
 
@@ -5413,11 +5459,15 @@ button:focus-visible {
   }
 
   .favorites-page .fv-account {
-    margin-top: 18px;
+    margin: 18px 0 0;
+    padding: 17px 0 0;
+    border-top: 1px solid var(--fv-border);
+    border-left: none;
   }
 
   .favorites-page .fv-account .dropdown-menu {
     max-width: 230px;
+    margin-top: 10px;
   }
 
   .favorites-page .fv-card {
@@ -5562,7 +5612,8 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .favorites-page .fv-card,
   .favorites-page .fv-card-image img,
-  .favorites-page .fv-remove {
+  .favorites-page .fv-remove,
+  .favorites-page .fv-account-chevron {
     transition: none;
   }
 
