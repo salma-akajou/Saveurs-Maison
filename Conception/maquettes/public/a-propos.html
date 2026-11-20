@@ -19,62 +19,35 @@
 <body class="about-page">
 
   <!-- NAVIGATION -->
-  <header class="ap-header">
-    <nav class="navbar navbar-expand-lg ap-navbar" aria-label="Navigation principale">
-      <div class="container">
+  <header class="site-header">
+    <div class="container header-inner">
 
-        <a class="navbar-brand ap-brand" href="accueil.html">
-          <img
-            src="../assets/images/logo.png"
-            alt="Saveurs Maison — Accueil"
-          >
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navigationPrincipale"
-          aria-controls="navigationPrincipale"
-          aria-expanded="false"
-          aria-label="Ouvrir le menu"
+      <a href="accueil.html" class="brand">
+        <img
+          src="../assets/images/logo.png"
+          alt="Saveurs Maison — Accueil"
+          class="site-logo"
         >
-          <i class="bi bi-list" aria-hidden="true"></i>
-        </button>
+      </a>
 
-        <div class="collapse navbar-collapse" id="navigationPrincipale">
+      <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
+      <label for="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">
+        <i class="bi bi-list" aria-hidden="true"></i>
+        <i class="bi bi-x" aria-hidden="true"></i>
+      </label>
 
-          <ul class="navbar-nav mx-auto ap-nav-links">
-            <li class="nav-item">
-              <a class="nav-link" href="accueil.html">Accueil</a>
-            </li>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="accueil.html">Accueil</a>
+        <a href="a-propos.html" class="active" aria-current="page">À propos</a>
+        <a href="recettes.html">Les recettes</a>
+      </nav>
 
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                href="a-propos.html"
-                aria-current="page"
-              >
-                À propos
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="recettes.html">Les recettes</a>
-            </li>
-          </ul>
-
-          <div class="ap-auth-links">
-            <a href="connexion.html" class="ap-login">Connexion</a>
-
-            <a href="inscription.html" class="ap-button ap-button-primary">
-              Créer un compte
-            </a>
-          </div>
-
-        </div>
+      <div class="header-actions">
+        <a href="connexion.html" class="login-link">Connexion</a>
+        <a href="inscription.html" class="btn-green">Créer un compte</a>
       </div>
-    </nav>
+
+    </div>
   </header>
 
   <main>
@@ -310,8 +283,6 @@
 
     </div>
   </footer>
-
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

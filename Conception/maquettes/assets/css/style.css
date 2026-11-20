@@ -4352,87 +4352,6 @@ button:focus-visible {
   outline-offset: 5px;
 }
 
-/* NAVIGATION */
-
-.about-page .ap-header {
-  background: #fffefa;
-  border-bottom: 1px solid var(--ap-border);
-}
-
-.about-page .ap-navbar {
-  padding: 12px 0;
-}
-
-.about-page .ap-brand {
-  margin: 0;
-  padding: 0;
-}
-
-.about-page .ap-brand img {
-  width: 175px;
-  height: 64px;
-  object-fit: contain;
-}
-
-.about-page .ap-nav-links {
-  gap: 25px;
-}
-
-.about-page .ap-nav-links .nav-link {
-  position: relative;
-  padding: 12px 0;
-  color: var(--ap-text);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.about-page .ap-nav-links .nav-link:hover,
-.about-page .ap-nav-links .nav-link.active {
-  color: var(--ap-green);
-}
-
-.about-page .ap-nav-links .nav-link.active {
-  font-weight: 700;
-}
-
-.about-page .ap-nav-links .nav-link.active::after {
-  position: absolute;
-  right: 0;
-  bottom: 3px;
-  left: 0;
-  height: 2px;
-  background: var(--ap-terracotta);
-  content: "";
-}
-
-.about-page .ap-auth-links {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.about-page .ap-login {
-  color: var(--ap-green-dark);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.about-page .ap-login:hover {
-  color: var(--ap-terracotta);
-}
-
-.about-page .navbar-toggler {
-  padding: 5px 10px;
-  border: 1px solid var(--ap-border);
-  color: var(--ap-green);
-  font-size: 25px;
-  line-height: 1;
-}
-
-.about-page .navbar-toggler:focus {
-  box-shadow: 0 0 0 3px rgb(36 71 41 / 12%);
-}
-
 /* BOUTONS */
 
 .about-page .ap-button {
@@ -4776,19 +4695,6 @@ button:focus-visible {
 /* TABLETTES */
 
 @media (max-width: 991.98px) {
-  .about-page .ap-navbar .navbar-collapse {
-    padding: 15px 0 10px;
-  }
-
-  .about-page .ap-nav-links {
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  .about-page .ap-auth-links {
-    margin-top: 18px;
-  }
-
   .about-page .ap-cover {
     height: 290px;
   }
@@ -4813,11 +4719,6 @@ button:focus-visible {
 /* MOBILES */
 
 @media (max-width: 767.98px) {
-  .about-page .ap-brand img {
-    width: 150px;
-    height: 55px;
-  }
-
   .about-page .ap-breadcrumb {
     margin-top: 20px;
   }
