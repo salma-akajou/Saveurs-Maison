@@ -3265,33 +3265,6 @@ button:focus-visible {
   --rd-panel-height: 440px;
 }
 
-/* ===== NAVIGATION MEMBRE ===== */
-
-.rd-member-actions {
-  gap: 22px;
-}
-
-.rd-favorites-link,
-.rd-account-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-
-  color: var(--rd-text);
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-.rd-favorites-link > i {
-  color: var(--rd-accent);
-  font-size: 23px;
-}
-
-.rd-account-link:hover,
-.rd-favorites-link:hover {
-  color: var(--rd-accent);
-}
-
 .rd-avatar {
   display: inline-flex;
   flex-shrink: 0;
@@ -4078,15 +4051,6 @@ button:focus-visible {
    ========================================= */
 
 @media (max-width: 1199.98px) {
-  .rd-member-actions {
-    gap: 13px;
-  }
-
-  .rd-favorites-link,
-  .rd-account-link {
-    font-size: 12px;
-  }
-
   .rd-hero {
     gap: 28px;
   }
@@ -4167,11 +4131,6 @@ button:focus-visible {
    ========================================= */
 
 @media (max-width: 767.98px) {
-  .rd-member-actions {
-    justify-content: center;
-    gap: 22px;
-  }
-
   .rd-breadcrumb {
     gap: 8px;
     padding: 20px 0 24px;
