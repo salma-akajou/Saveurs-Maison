@@ -4877,63 +4877,67 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* NAVBAR MEMBRE — DESIGN DE LA MAQUETTE */
+/* =========================================
+   NAVBAR MEMBRE — DESIGN DE LA MAQUETTE
+   Partagée par toutes les pages sauf l'accueil
+   (recettes, recette, a-propos, favoris...)
+   ========================================= */
 
-.favorites-page .fv-header {
+.fv-header {
   background: #fcfaf7;
   border-bottom: 1px solid #deded3;
 }
 
-.favorites-page .fv-header .navbar {
+.fv-header .navbar {
   padding: 10px 0;
 }
 
-.favorites-page .fv-brand {
+.fv-brand {
   margin: 0;
   padding: 0;
 }
 
-.favorites-page .fv-brand img {
+.fv-brand img {
   width: 175px;
   height: 64px;
   object-fit: contain;
 }
 
-.favorites-page .fv-nav-links {
+.fv-nav-links {
   align-items: center;
   gap: 30px;
 }
 
-.favorites-page .fv-nav-links .nav-link {
+.fv-nav-links .nav-link {
   position: relative;
   padding: 12px 0;
-  color: var(--fv-text);
+  color: var(--text);
   font-size: 15px;
   font-weight: 500;
 }
 
-.favorites-page .fv-nav-links .nav-link:hover {
-  color: var(--fv-terracotta);
+.fv-nav-links .nav-link:hover {
+  color: var(--terracotta);
 }
 
-.favorites-page .fv-nav-links .nav-link.active {
-  color: var(--fv-terracotta);
+.fv-nav-links .nav-link.active {
+  color: var(--terracotta);
   font-weight: 600;
 }
 
-.favorites-page .fv-nav-links .nav-link.active::after {
+.fv-nav-links .nav-link.active::after {
   position: absolute;
   right: 0;
   bottom: 3px;
   left: 0;
   height: 2px;
-  background: var(--fv-terracotta);
+  background: var(--terracotta);
   content: "";
 }
 
 /* Séparation entre les liens et le compte */
 
-.favorites-page .fv-account {
+.fv-account {
   margin-left: 30px;
   padding-left: 25px;
   border-left: 1px solid #d5ccbe;
@@ -4941,7 +4945,7 @@ button:focus-visible {
 
 /* Avatar + prénom + flèche, sans bouton encadré */
 
-.favorites-page .fv-account-button {
+.fv-account-button {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -4950,19 +4954,19 @@ button:focus-visible {
   border: none;
   border-radius: 0;
   background: transparent;
-  color: var(--fv-text);
+  color: var(--text);
   font-family: "Inter", sans-serif;
   cursor: pointer;
 }
 
-.favorites-page .fv-account-button:hover,
-.favorites-page .fv-account-button[aria-expanded="true"] {
+.fv-account-button:hover,
+.fv-account-button[aria-expanded="true"] {
   border: none;
   background: transparent;
-  color: var(--fv-green);
+  color: var(--olive);
 }
 
-.favorites-page .fv-avatar {
+.fv-avatar {
   display: inline-flex;
   width: 42px;
   height: 42px;
@@ -4971,57 +4975,57 @@ button:focus-visible {
   justify-content: center;
   border-radius: 50%;
   background: #dfe3ce;
-  color: var(--fv-green-dark);
+  color: var(--olive-hover);
   font-family: "Playfair Display", serif;
   font-size: 15px;
   font-weight: 600;
 }
 
-.favorites-page .fv-account-name {
+.fv-account-name {
   font-size: 15px;
   font-weight: 500;
 }
 
-.favorites-page .fv-account-chevron {
+.fv-account-chevron {
   font-size: 13px;
   transition: transform 0.2s ease;
 }
 
-.favorites-page .fv-account-button[aria-expanded="true"]
+.fv-account-button[aria-expanded="true"]
 .fv-account-chevron {
   transform: rotate(180deg);
 }
 
 /* Menu déroulant : uniquement Mes recettes et Mon profil */
 
-.favorites-page .fv-account .dropdown-menu {
+.fv-account .dropdown-menu {
   min-width: 180px;
   margin-top: 13px;
   padding: 7px;
-  border: 1px solid var(--fv-border);
+  border: 1px solid var(--border);
   border-radius: 10px;
   background: #fffefa;
   box-shadow: 0 10px 30px rgb(36 71 41 / 8%);
 }
 
-.favorites-page .fv-account .dropdown-item {
+.fv-account .dropdown-item {
   padding: 10px 13px;
   border-radius: 6px;
-  color: var(--fv-text);
+  color: var(--text);
   font-size: 14px;
 }
 
-.favorites-page .fv-account .dropdown-item:hover,
-.favorites-page .fv-account .dropdown-item:focus {
+.fv-account .dropdown-item:hover,
+.fv-account .dropdown-item:focus {
   background: #e8ebdc;
-  color: var(--fv-green-dark);
+  color: var(--olive-hover);
 }
 
-.favorites-page .navbar-toggler {
-  border-color: var(--fv-border);
+.fv-header .navbar-toggler {
+  border-color: var(--border);
 }
 
-.favorites-page .navbar-toggler:focus {
+.fv-header .navbar-toggler:focus {
   box-shadow: 0 0 0 3px rgb(36 71 41 / 12%);
 }
 
@@ -5449,23 +5453,23 @@ button:focus-visible {
 /* TABLETTES */
 
 @media (max-width: 991.98px) {
-  .favorites-page .navbar-collapse {
+  .fv-header .navbar-collapse {
     padding: 15px 0 10px;
   }
 
-  .favorites-page .fv-nav-links {
+  .fv-nav-links {
     align-items: flex-start;
     gap: 4px;
   }
 
-  .favorites-page .fv-account {
+  .fv-account {
     margin: 18px 0 0;
     padding: 17px 0 0;
-    border-top: 1px solid var(--fv-border);
+    border-top: 1px solid var(--border);
     border-left: none;
   }
 
-  .favorites-page .fv-account .dropdown-menu {
+  .fv-account .dropdown-menu {
     max-width: 230px;
     margin-top: 10px;
   }
@@ -5492,7 +5496,7 @@ button:focus-visible {
 /* MOBILES */
 
 @media (max-width: 767.98px) {
-  .favorites-page .fv-brand img {
+  .fv-brand img {
     width: 150px;
     height: 55px;
   }
@@ -5613,7 +5617,7 @@ button:focus-visible {
   .favorites-page .fv-card,
   .favorites-page .fv-card-image img,
   .favorites-page .fv-remove,
-  .favorites-page .fv-account-chevron {
+  .fv-account-chevron {
     transition: none;
   }
 

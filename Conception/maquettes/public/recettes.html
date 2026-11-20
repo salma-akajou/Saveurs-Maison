@@ -18,40 +18,88 @@
 
 <body class="catalog-page">
 
-  <!-- NAVIGATION -->
-  <header class="site-header">
-    <div class="container header-inner">
+  <!-- NAVBAR -->
+  <header class="fv-header">
+    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+      <div class="container">
 
-      <a href="accueil.html" class="brand">
-        <img
-          src="../assets/images/logo.png"
-          alt="Saveurs Maison — Accueil"
-          class="site-logo"
+        <a class="navbar-brand fv-brand" href="accueil.html">
+          <img
+            src="../assets/images/logo.png"
+            alt="Saveurs Maison — Accueil"
+          >
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navigationMembre"
+          aria-controls="navigationMembre"
+          aria-expanded="false"
+          aria-label="Ouvrir le menu"
         >
-      </a>
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
-      <label for="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">
-        <i class="bi bi-list" aria-hidden="true"></i>
-        <i class="bi bi-x" aria-hidden="true"></i>
-      </label>
+        <div class="collapse navbar-collapse" id="navigationMembre">
 
-      <nav class="main-nav" aria-label="Navigation principale">
-        <a href="accueil.html">Accueil</a>
-        <a href="a-propos.html">À propos</a>
-        <a href="recettes.html" class="active" aria-current="page">
-          Les recettes
-        </a>
-      </nav>
+          <ul class="navbar-nav ms-auto fv-nav-links">
+            <li class="nav-item">
+              <a class="nav-link" href="accueil.html">Accueil</a>
+            </li>
 
-      <div class="header-actions">
-        <a href="connexion.html" class="login-link">Connexion</a>
-        <a href="inscription.html" class="btn-green">
-          Créer un compte
-        </a>
+            <li class="nav-item">
+              <a class="nav-link" href="a-propos.html">À propos</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="recettes.html"
+                aria-current="page"
+              >
+                Les recettes
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="favoris.html">Mes favoris</a>
+            </li>
+          </ul>
+
+          <div class="dropdown fv-account">
+
+            <button
+              class="fv-account-button"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span class="fv-avatar" aria-hidden="true">SL</span>
+              <span class="fv-account-name">Sophie</span>
+              <i class="bi bi-chevron-down fv-account-chevron" aria-hidden="true"></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="mes-recettes.html">
+                  Mes recettes
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="profil.html">
+                  Mon profil
+                </a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
       </div>
-
-    </div>
+    </nav>
   </header>
 
   <main>
@@ -270,6 +318,8 @@
 
     </div>
   </footer>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script>
     /*
