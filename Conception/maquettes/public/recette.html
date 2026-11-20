@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Salade méditerranéenne — Saveurs Maison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="recipe-detail-page">
+
+  <!-- NAVIGATION : EXEMPLE MEMBRE CONNECTÉ -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="accueil.html" class="brand">
+        <img
+          src="../assets/images/logo.png"
+          alt="Saveurs Maison — Accueil"
+          class="site-logo"
+        >
+      </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
+      <label for="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">
+        <i class="bi bi-list" aria-hidden="true"></i>
+        <i class="bi bi-x" aria-hidden="true"></i>
+      </label>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="accueil.html">Accueil</a>
+        <a href="recettes.html" class="active">Les recettes</a>
+        <a href="a-propos.html">À propos</a>
+      </nav>
+
+      <div class="header-actions rd-member-actions">
+
+        <a href="favoris.html" class="rd-favorites-link">
+          <i class="bi bi-heart" aria-hidden="true"></i>
+          <span>Mes favoris</span>
+        </a>
+
+        <a href="mon-espace.html" class="rd-account-link">
+          <span class="rd-avatar" aria-hidden="true">SL</span>
+          <span>Mon espace</span>
+        </a>
+
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- FIL D’ARIANE -->
+      <nav class="rd-breadcrumb" aria-label="Fil d’Ariane">
+        <a href="accueil.html">Accueil</a>
+        <span aria-hidden="true">/</span>
+
+        <a href="recettes.html">Les recettes</a>
+        <span aria-hidden="true">/</span>
+
+        <span aria-current="page">Salade méditerranéenne</span>
+      </nav>
+
+      <!-- PRÉSENTATION -->
+      <section class="rd-hero" aria-labelledby="titre-recette">
+
+        <div class="rd-hero-visual">
+          <img
+            src="../assets/images/salade-mediterraneenne.jpg"
+            alt="Salade de tomates, concombre, feta, olives et basilic"
+            fetchpriority="high"
+          >
+        </div>
+
+        <div class="rd-hero-content">
+
+          <a href="recettes.html?categorie=entrees" class="rd-category">
+            Entrée
+          </a>
+
+          <h1 id="titre-recette">Salade méditerranéenne</h1>
+
+          <p class="rd-description">
+            Une salade fraîche et colorée, pleine de saveurs ensoleillées.
+            À préparer en quelques minutes pour une pause gourmande.
+          </p>
+
+          <div class="rd-author-rating">
+
+            <div class="rd-author">
+              <span class="rd-avatar" aria-hidden="true">SL</span>
+              <span>Par <strong>Sarah Laurent</strong></span>
+            </div>
+
+            <a href="#avis" class="rd-rating-summary">
+              <i class="bi bi-star-fill" aria-hidden="true"></i>
+              <span><strong>4,7</strong> / 5</span>
+              <span class="rd-rating-count">(12 avis)</span>
+            </a>
+
+          </div>
+
+          <dl class="rd-facts">
+
+            <div class="rd-fact">
+              <i class="bi bi-clock" aria-hidden="true"></i>
+              <div>
+                <dt>Préparation</dt>
+                <dd>15 min</dd>
+              </div>
+            </div>
+
+            <div class="rd-fact">
+              <i class="bi bi-fire" aria-hidden="true"></i>
+              <div>
+                <dt>Cuisson</dt>
+                <dd>Sans cuisson</dd>
+              </div>
+            </div>
+
+            <div class="rd-fact">
+              <i class="bi bi-egg-fried" aria-hidden="true"></i>
+              <div>
+                <dt>Difficulté</dt>
+                <dd>Facile</dd>
+              </div>
+            </div>
+
+            <div class="rd-fact">
+              <i class="bi bi-people" aria-hidden="true"></i>
+              <div>
+                <dt>Personnes</dt>
+                <dd>4</dd>
+              </div>
+            </div>
+
+          </dl>
+
+          <!-- À relier ensuite au traitement PHP des favoris -->
+          <button type="button" class="btn-green rd-favorite-button">
+            <i class="bi bi-heart" aria-hidden="true"></i>
+            Ajouter aux favoris
+          </button>
+
+        </div>
+
+      </section>
+
+      <!-- INGRÉDIENTS ET PRÉPARATION -->
+      <section class="rd-preparation">
+
+        <!-- INGRÉDIENTS -->
+        <aside class="rd-ingredients-panel" aria-labelledby="titre-ingredients">
+
+          <div class="rd-panel-heading">
+            <h2 id="titre-ingredients">Dans votre panier</h2>
+            <p>Ingrédients pour 4 personnes</p>
+          </div>
+
+          <div
+            class="rd-panel-scroll rd-ingredients-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Liste des ingrédients"
+          >
+            <ul class="rd-ingredient-list">
+
+              <li>
+                <span>Tomates</span>
+                <span>4</span>
+              </li>
+
+              <li>
+                <span>Concombre</span>
+                <span>1</span>
+              </li>
+
+              <li>
+                <span>Feta</span>
+                <span>150 g</span>
+              </li>
+
+              <li>
+                <span>Olives noires</span>
+                <span>80 g</span>
+              </li>
+
+              <li>
+                <span>Huile d’olive</span>
+                <span>3 c. à soupe</span>
+              </li>
+
+              <li>
+                <span>Basilic</span>
+                <span>Quelques feuilles</span>
+              </li>
+
+              <li>
+                <span>Sel et poivre</span>
+                <span>À votre convenance</span>
+              </li>
+
+            </ul>
+          </div>
+
+        </aside>
+
+        <!-- ÉTAPES -->
+        <div class="rd-steps-panel">
+
+          <div class="rd-panel-heading">
+            <h2 id="titre-preparation">À vous de cuisiner</h2>
+          </div>
+
+          <div
+            class="rd-panel-scroll rd-steps-scroll"
+            tabindex="0"
+            role="region"
+            aria-labelledby="titre-preparation"
+          >
+
+            <!--
+              Les étapes seront générées en PHP à partir de ETAPE,
+              dans l'ordre de numero_ordre.
+              Le texte en gras fait ici partie de la description :
+              aucun champ titre supplémentaire n'est obligatoire.
+            -->
+            <ol class="rd-step-list">
+
+              <li>
+                <div class="rd-step-content">
+                  <p>
+                    <strong>Préparez les légumes.</strong>
+                    Lavez les tomates, le concombre et les feuilles de basilic.
+                    Séchez-les soigneusement.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="rd-step-content">
+                  <p>
+                    <strong>Découpez les légumes.</strong>
+                    Coupez les tomates en quartiers et le concombre
+                    en demi-rondelles. Déposez-les dans un grand saladier.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="rd-step-content">
+                  <p>
+                    <strong>Ajoutez la feta.</strong>
+                    Égouttez la feta, puis coupez-la en cubes ou émiettez-la
+                    délicatement sur les légumes.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="rd-step-content">
+                  <p>
+                    <strong>Incorporez les olives.</strong>
+                    Ajoutez les olives noires et mélangez doucement
+                    pour conserver les morceaux de feta.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="rd-step-content">
+                  <p>
+                    <strong>Assaisonnez.</strong>
+                    Arrosez d’huile d’olive. Salez et poivrez selon votre goût,
+                    puis mélangez pour bien répartir les saveurs.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="rd-step-content">
+                  <p>
+                    <strong>Servez et savourez.</strong>
+                    Ajoutez les feuilles de basilic et servez la salade fraîche.
+                    Goûtez et ajustez l’assaisonnement si nécessaire.
+                  </p>
+                </div>
+              </li>
+
+            </ol>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- AVIS -->
+      <section id="avis" class="rd-reviews-section" aria-labelledby="titre-avis">
+
+        <div class="rd-reviews-heading">
+          <h2 id="titre-avis">Ils l’ont cuisinée</h2>
+
+          <p class="rd-reviews-score">
+            <i class="bi bi-star-fill" aria-hidden="true"></i>
+            <span><strong>4,7</strong> / 5 · 12 avis</span>
+          </p>
+        </div>
+
+        <!-- Exemples de deux avis -->
+        <div class="rd-reviews-grid">
+
+          <article class="rd-review-card">
+
+            <div class="rd-review-header">
+
+              <div class="rd-review-author">
+                <span class="rd-avatar" aria-hidden="true">NA</span>
+
+                <div>
+                  <h3>Nadia A.</h3>
+                  <div class="rd-review-stars" aria-label="Note : 5 sur 5">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+
+              <time datetime="2026-11-15">15 novembre 2026</time>
+
+            </div>
+
+            <p>
+              Simple, fraîche et délicieuse.
+              Parfaite pour le déjeuner !
+            </p>
+
+          </article>
+
+          <article class="rd-review-card">
+
+            <div class="rd-review-header">
+
+              <div class="rd-review-author">
+                <span class="rd-avatar" aria-hidden="true">KM</span>
+
+                <div>
+                  <h3>Karim M.</h3>
+                  <div class="rd-review-stars" aria-label="Note : 4 sur 5">
+                    ★★★★☆
+                  </div>
+                </div>
+              </div>
+
+              <time datetime="2026-11-12">12 novembre 2026</time>
+
+            </div>
+
+            <p>
+              Très bonne recette,
+              j’ai ajouté un peu de citron.
+            </p>
+
+          </article>
+
+        </div>
+
+        <!-- FORMULAIRE : MEMBRE CONNECTÉ -->
+        <div class="rd-review-form-panel">
+
+          <h3>Et vous, qu’en pensez-vous ?</h3>
+
+          <!-- Maquette : traitement PHP à ajouter ensuite -->
+          <form class="rd-review-form" onsubmit="event.preventDefault()">
+
+            <div class="rd-review-form-grid">
+
+              <fieldset class="rd-rating-field">
+                <legend>Votre note</legend>
+
+                <div class="rd-star-options">
+
+                  <div class="rd-star-choice">
+                    <input type="radio" name="note" id="note-1" value="1" required>
+                    <label for="note-1">
+                      <span aria-hidden="true">★</span>
+                      <span class="visually-hidden">1 étoile sur 5</span>
+                    </label>
+                  </div>
+
+                  <div class="rd-star-choice">
+                    <input type="radio" name="note" id="note-2" value="2">
+                    <label for="note-2">
+                      <span aria-hidden="true">★</span>
+                      <span class="visually-hidden">2 étoiles sur 5</span>
+                    </label>
+                  </div>
+
+                  <div class="rd-star-choice">
+                    <input type="radio" name="note" id="note-3" value="3">
+                    <label for="note-3">
+                      <span aria-hidden="true">★</span>
+                      <span class="visually-hidden">3 étoiles sur 5</span>
+                    </label>
+                  </div>
+
+                  <div class="rd-star-choice">
+                    <input type="radio" name="note" id="note-4" value="4">
+                    <label for="note-4">
+                      <span aria-hidden="true">★</span>
+                      <span class="visually-hidden">4 étoiles sur 5</span>
+                    </label>
+                  </div>
+
+                  <div class="rd-star-choice">
+                    <input type="radio" name="note" id="note-5" value="5">
+                    <label for="note-5">
+                      <span aria-hidden="true">★</span>
+                      <span class="visually-hidden">5 étoiles sur 5</span>
+                    </label>
+                  </div>
+
+                </div>
+
+              </fieldset>
+
+              <div class="rd-comment-field">
+                <label for="commentaire">Votre commentaire</label>
+
+                <textarea
+                  id="commentaire"
+                  name="commentaire"
+                  rows="3"
+                  placeholder="Partagez votre expérience en cuisine…"
+                  required
+                ></textarea>
+              </div>
+
+            </div>
+
+            <div class="rd-review-form-bottom">
+              <p>Un seul avis par recette et par membre.</p>
+
+              <button type="submit" class="btn-green">
+                Publier mon avis
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="row g-4 footer-main">
+
+        <div class="col-12 col-md-6 col-lg-4 footer-brand">
+          <a href="accueil.html">
+            <img
+              src="../assets/images/logo.png"
+              alt="Saveurs Maison"
+              class="footer-logo"
+              loading="lazy"
+            >
+          </a>
+
+          <p class="footer-tagline">
+            La cuisine se savoure,<br>
+            les recettes se partagent.
+          </p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2 footer-column">
+          <h3>Explorer</h3>
+          <a href="accueil.html">Accueil</a>
+          <a href="recettes.html">Les recettes</a>
+          <a href="a-propos.html">À propos</a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 footer-column">
+          <h3>Participer</h3>
+          <a href="mon-espace.html">Mon espace</a>
+          <a href="mes-recettes.html">Mes recettes</a>
+          <a href="ajouter-recette.html">Partager une recette</a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 footer-column">
+          <h3>Informations</h3>
+          <a href="a-propos.html">À propos</a>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© Saveurs Maison</span>
+
+        <span class="footer-bottom-tagline">
+          La cuisine se savoure, les recettes se partagent.
+        </span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Colorer les étoiles jusqu’à la note choisie.
+    const notes = document.querySelectorAll(
+      '.rd-star-choice input[name="note"]'
+    );
+
+    function actualiserEtoiles() {
+      const noteSelectionnee = document.querySelector(
+        '.rd-star-choice input[name="note"]:checked'
+      );
+
+      const valeur = noteSelectionnee
+        ? Number(noteSelectionnee.value)
+        : 0;
+
+      notes.forEach(input => {
+        input.parentElement.classList.toggle(
+          "is-filled",
+          Number(input.value) <= valeur
+        );
+      });
+    }
+
+    notes.forEach(input => {
+      input.addEventListener("change", actualiserEtoiles);
+    });
+  </script>
+
+</body>
+</html>
