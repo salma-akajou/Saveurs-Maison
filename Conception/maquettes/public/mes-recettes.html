@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mes recettes — Saveurs Maison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="my-recipes-page">
+
+  <!-- NAVBAR -->
+  <header class="fv-header">
+    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+      <div class="container">
+
+        <a class="navbar-brand fv-brand" href="accueil.html">
+          <img
+            src="../assets/images/logo.png"
+            alt="Saveurs Maison — Accueil"
+          >
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navigationMembre"
+          aria-controls="navigationMembre"
+          aria-expanded="false"
+          aria-label="Ouvrir le menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigationMembre">
+
+          <ul class="navbar-nav ms-auto fv-nav-links">
+            <li class="nav-item">
+              <a class="nav-link" href="accueil.html">Accueil</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="a-propos.html">À propos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="recettes.html">Les recettes</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="favoris.html">Mes favoris</a>
+            </li>
+          </ul>
+
+          <div class="dropdown fv-account">
+
+            <button
+              class="fv-account-button"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span class="fv-avatar" aria-hidden="true">SL</span>
+              <span class="fv-account-name">Sophie</span>
+
+              <i
+                class="bi bi-chevron-down fv-account-chevron"
+                aria-hidden="true"
+              ></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a
+                  class="dropdown-item active"
+                  href="mes-recettes.html"
+                  aria-current="page"
+                >
+                  Mes recettes
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="profil.html">
+                  Mon profil
+                </a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- FIL D'ARIANE -->
+      <nav class="mr-breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li><a href="accueil.html">Accueil</a></li>
+          <li>Mon espace</li>
+          <li aria-current="page">Mes recettes</li>
+        </ol>
+      </nav>
+
+      <!-- INTRODUCTION -->
+      <section class="mr-intro" aria-labelledby="titre-mes-recettes">
+
+        <div>
+          <p class="mr-eyebrow">Mon carnet de cuisine</p>
+
+          <h1 id="titre-mes-recettes">
+            Mes recettes, <em>mes inspirations.</em>
+          </h1>
+
+          <p class="mr-intro-text">
+            Retrouvez vos créations et suivez leur publication.
+          </p>
+        </div>
+
+        <a href="proposer-recette.html" class="mr-primary-button">
+          <i class="bi bi-plus-lg" aria-hidden="true"></i>
+          Proposer une recette
+        </a>
+
+      </section>
+
+      <!-- FILTRES -->
+      <div
+        class="mr-filters"
+        role="group"
+        aria-label="Filtrer les recettes par statut"
+      >
+        <button
+          class="mr-filter active"
+          type="button"
+          data-filter="toutes"
+          aria-pressed="true"
+        >
+          Toutes (<span data-count="toutes">3</span>)
+        </button>
+
+        <button
+          class="mr-filter"
+          type="button"
+          data-filter="publiee"
+          aria-pressed="false"
+        >
+          Publiées (<span data-count="publiee">1</span>)
+        </button>
+
+        <button
+          class="mr-filter"
+          type="button"
+          data-filter="en_attente"
+          aria-pressed="false"
+        >
+          En attente (<span data-count="en_attente">1</span>)
+        </button>
+
+        <button
+          class="mr-filter"
+          type="button"
+          data-filter="refusee"
+          aria-pressed="false"
+        >
+          Refusées (<span data-count="refusee">1</span>)
+        </button>
+      </div>
+
+      <!-- LISTE -->
+      <section class="mr-collection" aria-label="Vos recettes">
+
+        <div class="mr-list" id="liste-recettes">
+
+          <!-- RECETTE PUBLIÉE -->
+          <article class="mr-recipe" data-status="publiee">
+
+            <a
+              href="recette.html?id=5"
+              class="mr-recipe-image"
+              aria-label="Consulter Tarte aux pommes"
+            >
+              <img
+                src="../assets/images/tarte-pommes.jpg"
+                alt="Tarte aux pommes maison dorée"
+              >
+            </a>
+
+            <div class="mr-recipe-content">
+
+              <div class="mr-recipe-main">
+
+                <div class="mr-recipe-description">
+                  <p class="mr-category">Dessert</p>
+
+                  <h2>
+                    <a href="recette.html?id=5">Tarte aux pommes</a>
+                  </h2>
+
+                  <p class="mr-date">
+                    Créée le
+                    <time datetime="2026-11-18">18 novembre 2026</time>
+                  </p>
+                </div>
+
+                <div class="mr-status-wrap">
+                  <span class="mr-status mr-status-published">
+                    Publiée
+                  </span>
+                </div>
+
+                <div class="mr-actions">
+
+                  <a href="recette.html?id=5">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+                    Consulter
+                  </a>
+
+                  <a href="modifier-recette.html?id=5">
+                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                    Modifier
+                  </a>
+
+                  <button
+                    type="button"
+                    class="mr-delete"
+                    data-title="Tarte aux pommes"
+                    aria-label="Supprimer Tarte aux pommes"
+                  >
+                    <i class="bi bi-trash" aria-hidden="true"></i>
+                    Supprimer
+                  </button>
+
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- RECETTE EN ATTENTE -->
+          <article class="mr-recipe" data-status="en_attente">
+
+            <a
+              href="recette.html?id=4"
+              class="mr-recipe-image"
+              aria-label="Consulter Samoussas aux légumes"
+            >
+              <img
+                src="../assets/images/samoussas-legumes.jpg"
+                alt="Samoussas croustillants garnis de légumes"
+                loading="lazy"
+              >
+            </a>
+
+            <div class="mr-recipe-content">
+
+              <div class="mr-recipe-main">
+
+                <div class="mr-recipe-description">
+                  <p class="mr-category">Entrée</p>
+
+                  <h2>
+                    <a href="recette.html?id=4">
+                      Samoussas aux légumes
+                    </a>
+                  </h2>
+
+                  <p class="mr-date">
+                    Créée le
+                    <time datetime="2026-11-19">19 novembre 2026</time>
+                  </p>
+                </div>
+
+                <div class="mr-status-wrap">
+                  <span class="mr-status mr-status-pending">
+                    En attente
+                  </span>
+
+                  <p class="mr-status-note">
+                    En cours de vérification
+                  </p>
+                </div>
+
+                <div class="mr-actions">
+
+                  <a href="recette.html?id=4">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+                    Consulter
+                  </a>
+
+                  <a href="modifier-recette.html?id=4">
+                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                    Modifier
+                  </a>
+
+                  <button
+                    type="button"
+                    class="mr-delete"
+                    data-title="Samoussas aux légumes"
+                    aria-label="Supprimer Samoussas aux légumes"
+                  >
+                    <i class="bi bi-trash" aria-hidden="true"></i>
+                    Supprimer
+                  </button>
+
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- RECETTE REFUSÉE -->
+          <article class="mr-recipe" data-status="refusee">
+
+            <a
+              href="recette.html?id=6"
+              class="mr-recipe-image"
+              aria-label="Consulter Smoothie mangue passion"
+            >
+              <img
+                src="../assets/images/smoothie-mangue-passion.jpg"
+                alt="Smoothie à la mangue et aux fruits de la passion"
+                loading="lazy"
+              >
+            </a>
+
+            <div class="mr-recipe-content">
+
+              <div class="mr-recipe-main">
+
+                <div class="mr-recipe-description">
+                  <p class="mr-category">Boisson</p>
+
+                  <h2>
+                    <a href="recette.html?id=6">
+                      Smoothie mangue passion
+                    </a>
+                  </h2>
+
+                  <p class="mr-date">
+                    Créée le
+                    <time datetime="2026-11-20">20 novembre 2026</time>
+                  </p>
+                </div>
+
+                <div class="mr-status-wrap">
+                  <span class="mr-status mr-status-rejected">
+                    Refusée
+                  </span>
+                </div>
+
+                <div class="mr-actions">
+
+                  <a href="recette.html?id=6">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+                    Consulter
+                  </a>
+
+                  <a href="modifier-recette.html?id=6">
+                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                    Modifier
+                  </a>
+
+                  <button
+                    type="button"
+                    class="mr-delete"
+                    data-title="Smoothie mangue passion"
+                    aria-label="Supprimer Smoothie mangue passion"
+                  >
+                    <i class="bi bi-trash" aria-hidden="true"></i>
+                    Supprimer
+                  </button>
+
+                </div>
+              </div>
+
+              <!-- MOTIF : DEUX LIGNES MAXIMUM -->
+              <div class="mr-refusal">
+
+                <p class="mr-refusal-preview">
+                  <strong>Motif du refus :</strong>
+                  précisez les quantités de mangue et de jus de passion.
+                  Détaillez également les étapes de préparation et indiquez
+                  la quantité de boisson obtenue afin de rendre la recette
+                  plus facile à reproduire.
+                </p>
+
+                <a
+                  href="modifier-recette.html?id=6#motif-refus"
+                  class="mr-refusal-link"
+                  aria-label="Voir le motif complet du refus de Smoothie mangue passion"
+                >
+                  … Voir la suite
+                </a>
+
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+
+        <!-- AUCUNE RECETTE POUR LE FILTRE -->
+        <div class="mr-empty" id="recettes-vides" hidden>
+          <h2>Aucune recette à afficher</h2>
+          <p id="texte-vide">Vous n’avez aucune recette dans cette catégorie.</p>
+
+          <a href="proposer-recette.html" class="mr-primary-button">
+            Proposer une recette
+          </a>
+        </div>
+
+        <p
+          id="message-recettes"
+          class="mr-feedback"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+
+      </section>
+
+      <!-- RAPPEL -->
+      <aside class="mr-information" aria-label="Information sur la publication">
+        <i class="bi bi-info-circle" aria-hidden="true"></i>
+
+        <p>
+          Toute modification d’une recette entraîne une nouvelle
+          vérification avant publication.
+        </p>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mr-footer">
+    <div class="container">
+
+      <div class="row gy-4 mr-footer-main">
+
+        <div class="col-lg-4 col-md-6 mr-footer-brand">
+          <a href="accueil.html">
+            <img
+              src="../assets/images/logo.png"
+              alt="Saveurs Maison — Accueil"
+              loading="lazy"
+            >
+          </a>
+
+          <p>
+            La cuisine se savoure,<br>
+            les recettes se partagent.
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mr-footer-column">
+          <h2>Explorer</h2>
+
+          <ul>
+            <li><a href="recettes.html">Toutes les recettes</a></li>
+            <li><a href="recettes.html?categorie=entree">Entrées</a></li>
+            <li><a href="recettes.html?categorie=plat">Plats</a></li>
+            <li><a href="recettes.html?categorie=dessert">Desserts</a></li>
+            <li><a href="recettes.html?categorie=boisson">Boissons</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 mr-footer-column">
+          <h2>Mon espace</h2>
+
+          <ul>
+            <li>
+              <a href="mes-recettes.html" aria-current="page">
+                Mes recettes
+              </a>
+            </li>
+            <li><a href="favoris.html">Mes favoris</a></li>
+            <li><a href="profil.html">Mon profil</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mr-footer-column">
+          <h2>Informations</h2>
+
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="confidentialite.html">Confidentialité</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mr-footer-bottom">
+        <p>© Saveurs Maison</p>
+        <p>La cuisine se savoure, les recettes se partagent.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Interactions de démonstration, sans enregistrement en base.
+
+    const listeRecettes = document.getElementById("liste-recettes");
+    const filtres = document.querySelectorAll(".mr-filter");
+    const zoneVide = document.getElementById("recettes-vides");
+    const texteVide = document.getElementById("texte-vide");
+    const message = document.getElementById("message-recettes");
+
+    let filtreActif = "toutes";
+
+    function actualiserListe() {
+      const recettes = [...listeRecettes.querySelectorAll(".mr-recipe")];
+
+      document.querySelectorAll("[data-count]").forEach(function (compteur) {
+        const statut = compteur.dataset.count;
+
+        compteur.textContent = statut === "toutes"
+          ? recettes.length
+          : recettes.filter(function (recette) {
+              return recette.dataset.status === statut;
+            }).length;
+      });
+
+      let totalVisible = 0;
+
+      recettes.forEach(function (recette) {
+        const visible =
+          filtreActif === "toutes" ||
+          recette.dataset.status === filtreActif;
+
+        recette.hidden = !visible;
+
+        if (visible) totalVisible++;
+      });
+
+      listeRecettes.hidden = totalVisible === 0;
+      zoneVide.hidden = totalVisible > 0;
+
+      texteVide.textContent = recettes.length === 0
+        ? "Partagez votre première création avec la communauté."
+        : "Vous n’avez aucune recette avec ce statut.";
+
+      return totalVisible;
+    }
+
+    filtres.forEach(function (bouton) {
+      bouton.addEventListener("click", function () {
+        filtreActif = bouton.dataset.filter;
+
+        filtres.forEach(function (filtre) {
+          const actif = filtre === bouton;
+
+          filtre.classList.toggle("active", actif);
+          filtre.setAttribute("aria-pressed", String(actif));
+        });
+
+        const total = actualiserListe();
+
+        message.textContent =
+          total + (total === 1 ? " recette affichée." : " recettes affichées.");
+      });
+    });
+
+    listeRecettes.addEventListener("click", function (event) {
+      const bouton = event.target.closest(".mr-delete");
+
+      if (!bouton) return;
+
+      const titre = bouton.dataset.title;
+
+      const confirmation = window.confirm(
+        "Voulez-vous supprimer la recette « " + titre + " » ?"
+      );
+
+      if (!confirmation) return;
+
+      bouton.closest(".mr-recipe").remove();
+
+      actualiserListe();
+
+      message.textContent =
+        "La recette « " + titre + " » a été supprimée de cette démonstration.";
+
+      document.querySelector(
+        '.mr-filter[data-filter="' + filtreActif + '"]'
+      ).focus();
+    });
+
+    actualiserListe();
+  </script>
+
+</body>
+</html>
