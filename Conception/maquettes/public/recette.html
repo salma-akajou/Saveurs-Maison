@@ -319,62 +319,196 @@
           </p>
         </div>
 
-        <!-- Exemples de deux avis -->
-        <div class="rd-reviews-grid">
+        <!--
+          Carrousel d'avis : n'affiche que quelques avis à la fois,
+          avec des flèches pour parcourir les autres, pour que la liste
+          ne pousse jamais le formulaire plus bas même si une recette
+          a beaucoup d'avis. Pagination gérée en JavaScript simple
+          (data-page sur chaque carte, voir le script en bas de page).
+        -->
+        <div class="rd-reviews-carousel">
 
-          <article class="rd-review-card">
+          <button
+            type="button"
+            class="rd-reviews-arrow rd-reviews-prev"
+            aria-label="Avis précédents"
+            disabled
+          >
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
 
-            <div class="rd-review-header">
+          <div class="rd-reviews-grid" id="avis-grid">
 
-              <div class="rd-review-author">
-                <span class="rd-avatar" aria-hidden="true">NA</span>
+            <article class="rd-review-card" data-page="0">
 
-                <div>
-                  <h3>Nadia A.</h3>
-                  <div class="rd-review-stars" aria-label="Note : 5 sur 5">
-                    ★★★★★
+              <div class="rd-review-header">
+
+                <div class="rd-review-author">
+                  <span class="rd-avatar" aria-hidden="true">NA</span>
+
+                  <div>
+                    <h3>Nadia A.</h3>
+                    <div class="rd-review-stars" aria-label="Note : 5 sur 5">
+                      ★★★★★
+                    </div>
                   </div>
                 </div>
+
+                <time datetime="2026-11-15">15 novembre 2026</time>
+
               </div>
 
-              <time datetime="2026-11-15">15 novembre 2026</time>
+              <p>
+                Simple, fraîche et délicieuse.
+                Parfaite pour le déjeuner !
+              </p>
 
-            </div>
+            </article>
 
-            <p>
-              Simple, fraîche et délicieuse.
-              Parfaite pour le déjeuner !
-            </p>
+            <article class="rd-review-card" data-page="0">
 
-          </article>
+              <div class="rd-review-header">
 
-          <article class="rd-review-card">
+                <div class="rd-review-author">
+                  <span class="rd-avatar" aria-hidden="true">KM</span>
 
-            <div class="rd-review-header">
-
-              <div class="rd-review-author">
-                <span class="rd-avatar" aria-hidden="true">KM</span>
-
-                <div>
-                  <h3>Karim M.</h3>
-                  <div class="rd-review-stars" aria-label="Note : 4 sur 5">
-                    ★★★★☆
+                  <div>
+                    <h3>Karim M.</h3>
+                    <div class="rd-review-stars" aria-label="Note : 4 sur 5">
+                      ★★★★☆
+                    </div>
                   </div>
                 </div>
+
+                <time datetime="2026-11-12">12 novembre 2026</time>
+
               </div>
 
-              <time datetime="2026-11-12">12 novembre 2026</time>
+              <p>
+                Très bonne recette,
+                j’ai ajouté un peu de citron.
+              </p>
 
-            </div>
+            </article>
 
-            <p>
-              Très bonne recette,
-              j’ai ajouté un peu de citron.
-            </p>
+            <article class="rd-review-card" data-page="1" hidden>
 
-          </article>
+              <div class="rd-review-header">
+
+                <div class="rd-review-author">
+                  <span class="rd-avatar" aria-hidden="true">FB</span>
+
+                  <div>
+                    <h3>Fatima B.</h3>
+                    <div class="rd-review-stars" aria-label="Note : 5 sur 5">
+                      ★★★★★
+                    </div>
+                  </div>
+                </div>
+
+                <time datetime="2026-11-09">9 novembre 2026</time>
+
+              </div>
+
+              <p>
+                Un classique réussi, toute la famille a adoré.
+              </p>
+
+            </article>
+
+            <article class="rd-review-card" data-page="1" hidden>
+
+              <div class="rd-review-header">
+
+                <div class="rd-review-author">
+                  <span class="rd-avatar" aria-hidden="true">YD</span>
+
+                  <div>
+                    <h3>Yanis D.</h3>
+                    <div class="rd-review-stars" aria-label="Note : 4 sur 5">
+                      ★★★★☆
+                    </div>
+                  </div>
+                </div>
+
+                <time datetime="2026-11-05">5 novembre 2026</time>
+
+              </div>
+
+              <p>
+                Très rafraîchissant, parfait pour l’été.
+              </p>
+
+            </article>
+
+            <article class="rd-review-card" data-page="2" hidden>
+
+              <div class="rd-review-header">
+
+                <div class="rd-review-author">
+                  <span class="rd-avatar" aria-hidden="true">CP</span>
+
+                  <div>
+                    <h3>Claire P.</h3>
+                    <div class="rd-review-stars" aria-label="Note : 5 sur 5">
+                      ★★★★★
+                    </div>
+                  </div>
+                </div>
+
+                <time datetime="2026-10-29">29 octobre 2026</time>
+
+              </div>
+
+              <p>
+                Simple et rapide à préparer, exactement ce que je cherchais.
+              </p>
+
+            </article>
+
+            <article class="rd-review-card" data-page="2" hidden>
+
+              <div class="rd-review-header">
+
+                <div class="rd-review-author">
+                  <span class="rd-avatar" aria-hidden="true">HT</span>
+
+                  <div>
+                    <h3>Hugo T.</h3>
+                    <div class="rd-review-stars" aria-label="Note : 4 sur 5">
+                      ★★★★☆
+                    </div>
+                  </div>
+                </div>
+
+                <time datetime="2026-10-22">22 octobre 2026</time>
+
+              </div>
+
+              <p>
+                Bonne recette, j’ai rajouté un peu d’oignon rouge.
+              </p>
+
+            </article>
+
+          </div>
+
+          <button
+            type="button"
+            class="rd-reviews-arrow rd-reviews-next"
+            aria-label="Avis suivants"
+          >
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
 
         </div>
+
+        <p
+          class="rd-reviews-page-indicator"
+          id="avis-indicator"
+          role="status"
+          aria-live="polite"
+        ></p>
 
         <!-- FORMULAIRE : MEMBRE CONNECTÉ -->
         <div class="rd-review-form-panel">
@@ -548,6 +682,46 @@
     notes.forEach(input => {
       input.addEventListener("change", actualiserEtoiles);
     });
+
+    // Carrousel d'avis : affiche les avis page par page.
+    const cartesAvis = document.querySelectorAll(
+      "#avis-grid .rd-review-card"
+    );
+
+    const boutonPrecedent = document.querySelector(".rd-reviews-prev");
+    const boutonSuivant = document.querySelector(".rd-reviews-next");
+    const indicateurPage = document.getElementById("avis-indicator");
+
+    const nombreDePages =
+      Math.max(...Array.from(cartesAvis, carte =>
+        Number(carte.dataset.page)
+      )) + 1;
+
+    let pageActuelle = 0;
+
+    function afficherPageAvis() {
+      cartesAvis.forEach(carte => {
+        carte.hidden = Number(carte.dataset.page) !== pageActuelle;
+      });
+
+      boutonPrecedent.disabled = pageActuelle === 0;
+      boutonSuivant.disabled = pageActuelle === nombreDePages - 1;
+
+      indicateurPage.textContent =
+        `Page ${pageActuelle + 1} sur ${nombreDePages}`;
+    }
+
+    boutonPrecedent.addEventListener("click", () => {
+      pageActuelle = Math.max(0, pageActuelle - 1);
+      afficherPageAvis();
+    });
+
+    boutonSuivant.addEventListener("click", () => {
+      pageActuelle = Math.min(nombreDePages - 1, pageActuelle + 1);
+      afficherPageAvis();
+    });
+
+    afficherPageAvis();
   </script>
 
 </body>
