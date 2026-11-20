@@ -4338,6 +4338,10 @@ button:focus-visible {
   text-decoration: none;
 }
 
+.about-page .btn-green {
+  color: var(--white);
+}
+
 .about-page h1,
 .about-page h2,
 .about-page h3 {
