@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mes favoris — Saveurs Maison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="favorites-page">
+
+  <!-- NAVBAR -->
+  <header class="fv-header">
+    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+      <div class="container">
+
+        <a class="navbar-brand fv-brand" href="accueil.html">
+          <img
+            src="../assets/images/logo.png"
+            alt="Saveurs Maison — Accueil"
+          >
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navigationMembre"
+          aria-controls="navigationMembre"
+          aria-expanded="false"
+          aria-label="Ouvrir le menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigationMembre">
+
+          <ul class="navbar-nav mx-auto fv-nav-links">
+            <li class="nav-item">
+              <a class="nav-link" href="accueil.html">Accueil</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="a-propos.html">À propos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="recettes.html">Les recettes</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="favoris.html"
+                aria-current="page"
+              >
+                Mes favoris
+              </a>
+            </li>
+          </ul>
+
+          <div class="dropdown fv-account">
+
+            <button
+              class="fv-account-button dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Mon espace
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="mes-recettes.html">
+                  Mes recettes
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="favoris.html"
+                  aria-current="page"
+                >
+                  Mes favoris
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="profil.html">
+                  Mon profil
+                </a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="fv-main">
+    <div class="container">
+
+      <!-- FIL D'ARIANE -->
+      <nav class="fv-breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li><a href="accueil.html">Accueil</a></li>
+          <li aria-current="page">Mes favoris</li>
+        </ol>
+      </nav>
+
+      <!-- INTRODUCTION -->
+      <section class="fv-intro" aria-labelledby="titre-favoris">
+
+        <p class="fv-eyebrow">Mon carnet personnel</p>
+
+        <h1 id="titre-favoris">
+          Mes envies <em>à cuisiner.</em>
+        </h1>
+
+        <p class="fv-intro-text">
+          Une recette à essayer, un dessert à refaire…
+          Retrouvez ici vos idées gourmandes mises de côté.
+        </p>
+
+      </section>
+
+      <!-- FAVORIS -->
+      <section class="fv-collection" aria-labelledby="titre-collection">
+
+        <div class="fv-collection-heading">
+
+          <div class="fv-collection-title">
+            <h2 id="titre-collection">Ma sélection gourmande</h2>
+            <span class="fv-count" id="nombre-favoris">3 recettes</span>
+          </div>
+
+          <a href="recettes.html" class="fv-discover-link">
+            Découvrir d’autres recettes
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+
+        </div>
+
+        <!-- LISTE : 3 FAVORIS -->
+        <div class="fv-list" id="liste-favoris">
+
+          <!-- FAVORI 1 -->
+          <article class="fv-card">
+
+            <a
+              href="recette.html?id=1"
+              class="fv-card-image"
+              aria-label="Voir la recette Salade méditerranéenne"
+            >
+              <img
+                src="../assets/images/salade-mediterraneenne.jpg"
+                alt="Salade méditerranéenne aux tomates, concombre et feta"
+              >
+            </a>
+
+            <div class="fv-card-content">
+
+              <div class="fv-card-top">
+                <span class="fv-category">Entrée</span>
+
+                <button
+                  class="fv-remove"
+                  type="button"
+                  aria-label="Retirer Salade méditerranéenne des favoris"
+                  data-title="Salade méditerranéenne"
+                >
+                  <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <h3>
+                <a href="recette.html?id=1">
+                  Salade méditerranéenne
+                </a>
+              </h3>
+
+              <p class="fv-description">
+                Une salade fraîche et colorée, entre légumes croquants,
+                feta et huile d’olive.
+              </p>
+
+              <div class="fv-card-bottom">
+
+                <ul class="fv-metadata" aria-label="Informations sur la recette">
+                  <li>
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    15 min
+                  </li>
+
+                  <li>
+                    <i class="bi bi-speedometer2" aria-hidden="true"></i>
+                    Facile
+                  </li>
+
+                  <li>
+                    <i class="bi bi-star-fill fv-star" aria-hidden="true"></i>
+                    <span>
+                      <span class="visually-hidden">Note : </span>
+                      4,7<span class="visually-hidden"> sur 5</span>
+                    </span>
+                  </li>
+                </ul>
+
+                <a href="recette.html?id=1" class="fv-recipe-link">
+                  Voir la recette
+                  <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+
+              </div>
+
+            </div>
+          </article>
+
+          <!-- FAVORI 2 -->
+          <article class="fv-card">
+
+            <a
+              href="recette.html?id=5"
+              class="fv-card-image"
+              aria-label="Voir la recette Tarte aux pommes"
+            >
+              <img
+                src="../assets/images/tarte-pommes.jpg"
+                alt="Tarte maison garnie de fines tranches de pommes dorées"
+                loading="lazy"
+              >
+            </a>
+
+            <div class="fv-card-content">
+
+              <div class="fv-card-top">
+                <span class="fv-category">Dessert</span>
+
+                <button
+                  class="fv-remove"
+                  type="button"
+                  aria-label="Retirer Tarte aux pommes des favoris"
+                  data-title="Tarte aux pommes"
+                >
+                  <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <h3>
+                <a href="recette.html?id=5">Tarte aux pommes</a>
+              </h3>
+
+              <p class="fv-description">
+                Des pommes fondantes sur une pâte croustillante,
+                pour une pause gourmande à partager.
+              </p>
+
+              <div class="fv-card-bottom">
+
+                <ul class="fv-metadata" aria-label="Informations sur la recette">
+                  <li>
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    55 min
+                  </li>
+
+                  <li>
+                    <i class="bi bi-speedometer2" aria-hidden="true"></i>
+                    Moyenne
+                  </li>
+
+                  <li>
+                    <i class="bi bi-star-fill fv-star" aria-hidden="true"></i>
+                    <span>
+                      <span class="visually-hidden">Note : </span>
+                      4,8<span class="visually-hidden"> sur 5</span>
+                    </span>
+                  </li>
+                </ul>
+
+                <a href="recette.html?id=5" class="fv-recipe-link">
+                  Voir la recette
+                  <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+
+              </div>
+
+            </div>
+          </article>
+
+          <!-- FAVORI 3 -->
+          <article class="fv-card">
+
+            <a
+              href="recette.html?id=6"
+              class="fv-card-image"
+              aria-label="Voir la recette Smoothie mangue passion"
+            >
+              <img
+                src="../assets/images/smoothie-mangue-passion.jpg"
+                alt="Smoothie jaune à la mangue et aux fruits de la passion"
+                loading="lazy"
+              >
+            </a>
+
+            <div class="fv-card-content">
+
+              <div class="fv-card-top">
+                <span class="fv-category">Boisson</span>
+
+                <button
+                  class="fv-remove"
+                  type="button"
+                  aria-label="Retirer Smoothie mangue passion des favoris"
+                  data-title="Smoothie mangue passion"
+                >
+                  <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <h3>
+                <a href="recette.html?id=6">
+                  Smoothie mangue passion
+                </a>
+              </h3>
+
+              <p class="fv-description">
+                Une boisson fruitée et onctueuse aux saveurs
+                ensoleillées de mangue et de passion.
+              </p>
+
+              <div class="fv-card-bottom">
+
+                <ul class="fv-metadata" aria-label="Informations sur la recette">
+                  <li>
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    10 min
+                  </li>
+
+                  <li>
+                    <i class="bi bi-speedometer2" aria-hidden="true"></i>
+                    Facile
+                  </li>
+
+                  <li>
+                    <i class="bi bi-star-fill fv-star" aria-hidden="true"></i>
+                    <span>
+                      <span class="visually-hidden">Note : </span>
+                      4,7<span class="visually-hidden"> sur 5</span>
+                    </span>
+                  </li>
+                </ul>
+
+                <a href="recette.html?id=6" class="fv-recipe-link">
+                  Voir la recette
+                  <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ÉTAT VIDE -->
+        <div class="fv-empty" id="favoris-vides" hidden>
+          <h3>Votre carnet attend ses premières recettes.</h3>
+
+          <p>
+            Explorez les recettes et cliquez sur un cœur
+            pour retrouver vos coups de cœur ici.
+          </p>
+
+          <a href="recettes.html" class="fv-button">
+            Découvrir les recettes
+          </a>
+        </div>
+
+        <!-- MESSAGE APRÈS RETRAIT -->
+        <p
+          class="fv-feedback"
+          id="message-favoris"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="fv-footer">
+    <div class="container">
+
+      <div class="row gy-4 fv-footer-main">
+
+        <div class="col-lg-4 col-md-6 fv-footer-brand">
+          <a href="accueil.html">
+            <img
+              src="../assets/images/logo.png"
+              alt="Saveurs Maison — Accueil"
+              loading="lazy"
+            >
+          </a>
+
+          <p>
+            La cuisine se savoure,<br>
+            les recettes se partagent.
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 fv-footer-column">
+          <h2>Explorer</h2>
+
+          <ul>
+            <li><a href="recettes.html">Toutes les recettes</a></li>
+            <li><a href="recettes.html?categorie=entree">Entrées</a></li>
+            <li><a href="recettes.html?categorie=plat">Plats</a></li>
+            <li><a href="recettes.html?categorie=dessert">Desserts</a></li>
+            <li><a href="recettes.html?categorie=boisson">Boissons</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 fv-footer-column">
+          <h2>Mon espace</h2>
+
+          <ul>
+            <li><a href="mes-recettes.html">Mes recettes</a></li>
+            <li><a href="favoris.html" aria-current="page">Mes favoris</a></li>
+            <li><a href="profil.html">Mon profil</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 fv-footer-column">
+          <h2>Informations</h2>
+
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="confidentialite.html">Confidentialité</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="fv-footer-bottom">
+        <p>© Saveurs Maison</p>
+        <p>La cuisine se savoure, les recettes se partagent.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /*
+     * Démonstration de la maquette :
+     * le retrait fonctionne sur la page affichée.
+     * La sauvegarde en base sera ajoutée avec PHP.
+     */
+
+    const listeFavoris = document.getElementById("liste-favoris");
+    const nombreFavoris = document.getElementById("nombre-favoris");
+    const favorisVides = document.getElementById("favoris-vides");
+    const messageFavoris = document.getElementById("message-favoris");
+
+    listeFavoris.addEventListener("click", function (event) {
+      const bouton = event.target.closest(".fv-remove");
+
+      if (!bouton) return;
+
+      const carte = bouton.closest(".fv-card");
+      const cartesAvantRetrait = [...listeFavoris.querySelectorAll(".fv-card")];
+      const position = cartesAvantRetrait.indexOf(carte);
+      const titre = bouton.dataset.title;
+
+      carte.remove();
+
+      const cartesRestantes = [...listeFavoris.querySelectorAll(".fv-card")];
+      const total = cartesRestantes.length;
+
+      nombreFavoris.textContent =
+        total + (total === 1 ? " recette" : " recettes");
+
+      favorisVides.hidden = total > 0;
+      listeFavoris.hidden = total === 0;
+
+      messageFavoris.textContent =
+        "« " + titre + " » a été retirée de vos favoris.";
+
+      // Replacer le focus après la suppression du bouton.
+      if (total > 0) {
+        const prochaineCarte =
+          cartesRestantes[Math.min(position, total - 1)];
+
+        prochaineCarte.querySelector(".fv-remove").focus();
+      } else {
+        favorisVides.querySelector("a").focus();
+      }
+    });
+  </script>
+
+</body>
+</html>
