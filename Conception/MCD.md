@@ -9,7 +9,7 @@ Ce document décrit les entités de l'application, leurs propriétés, ainsi que
 | UTILISATEUR | id_utilisateur | nom, prenom, email, mot_de_passe, role, statut_compte, date_inscription |
 | CATEGORIE | id_categorie | nom |
 | RECETTE | id_recette | titre, description, photo, nb_personnes, temps_preparation, temps_cuisson, difficulte, statut, motif_refus, date_creation, date_modification |
-| ETAPE | id_etape | numero_ordre, description |
+| ETAPE | id_etape | titre, numero_ordre, description |
 | INGREDIENT | id_ingredient | nom |
 | AVIS | id_avis | note, commentaire, date_avis |
 

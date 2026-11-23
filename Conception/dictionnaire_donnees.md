@@ -50,6 +50,7 @@ Règle de gestion : lorsqu'un membre modifie une recette déjà publiée ou refu
 | Champ | Type | Taille | Contraintes | Description |
 |---|---|---|---|---|
 | id_etape | Entier | - | Clé primaire, auto-incrément | Identifiant unique de l'étape |
+| titre | Texte | 100 | Non nul | Titre court de l'étape |
 | numero_ordre | Entier | - | Non nul, > 0 | Ordre d'affichage de l'étape |
 | description | Texte long | - | Non nul | Contenu de l'étape |
 | id_recette | Entier | - | Clé étrangère → RECETTE, non nul | Recette concernée |

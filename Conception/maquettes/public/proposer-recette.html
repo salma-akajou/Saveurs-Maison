@@ -528,6 +528,16 @@
       <span class="rf-step-number" aria-hidden="true"></span>
 
       <div>
+        <label class="visually-hidden rf-step-title-label"></label>
+
+        <input
+          type="text"
+          class="form-control rf-step-title"
+          placeholder="Titre de l’étape"
+          maxlength="100"
+          required
+        >
+
         <label class="visually-hidden rf-step-label"></label>
 
         <textarea
@@ -648,8 +658,13 @@
         const numero = index + 1;
 
         ligne.querySelector(".rf-step-number").textContent = numero;
+        ligne.querySelector(".rf-step-title-label").textContent =
+          "Titre de l’étape " + numero;
         ligne.querySelector(".rf-step-label").textContent =
           "Description de l’étape " + numero;
+
+        ligne.querySelector(".rf-step-title").name =
+          "etapes[" + index + "][titre]";
 
         ligne.querySelector(".rf-step-description").name =
           "etapes[" + index + "][description]";
@@ -670,15 +685,20 @@
     function ajouterEtape(donnerFocus = true) {
       const fragment = modeleEtape.content.cloneNode(true);
       const ligne = fragment.querySelector(".rf-step-row");
+      const titre = ligne.querySelector(".rf-step-title");
       const description = ligne.querySelector(".rf-step-description");
 
-      description.id = "etape-" + (++identifiantEtape);
+      const suffixe = ++identifiantEtape;
+      titre.id = "etape-titre-" + suffixe;
+      description.id = "etape-description-" + suffixe;
+
+      ligne.querySelector(".rf-step-title-label").htmlFor = titre.id;
       ligne.querySelector(".rf-step-label").htmlFor = description.id;
 
       listeEtapes.appendChild(fragment);
       actualiserEtapes();
 
-      if (donnerFocus) description.focus();
+      if (donnerFocus) titre.focus();
     }
 
     boutonEtape.addEventListener("click", function () {

@@ -10,7 +10,7 @@ Convention : clé primaire en **gras**, clé étrangère précédée de `#` (une
 - `#id_categorie` et `#id_utilisateur` : non nuls (références obligatoires)
 - `#id_validateur` : nul tant que la recette n'est pas validée ou refusée (référence facultative, administrateur uniquement)
 
-**ETAPE** (**id_etape**, numero_ordre, description, #id_recette)
+**ETAPE** (**id_etape**, titre, numero_ordre, description, #id_recette)
 - Contrainte unique : (id_recette, numero_ordre)
 
 **INGREDIENT** (**id_ingredient**, nom)
