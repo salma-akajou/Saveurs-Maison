@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gestion des catégories — Saveurs Maison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="admin-page admin-static-page">
+
+  <!-- MENU LATÉRAL -->
+  <aside class="ad-sidebar">
+    <div class="ad-sidebar-body">
+
+      <a href="dashboard.html" class="ad-brand">
+        <img src="../assets/images/logo.png" alt="Saveurs Maison">
+      </a>
+
+      <p class="ad-sidebar-label">Administration</p>
+
+      <nav class="ad-navigation" aria-label="Navigation administration">
+
+        <a href="dashboard.html" class="ad-nav-link">
+          <i class="bi bi-house-door" aria-hidden="true"></i>
+          <span>Tableau de bord</span>
+        </a>
+
+        <a href="recettes.html" class="ad-nav-link">
+          <i class="bi bi-journal-text" aria-hidden="true"></i>
+          <span>Recettes</span>
+          <span class="ad-nav-badge">5</span>
+        </a>
+
+        <a
+          href="categories.html"
+          class="ad-nav-link active"
+          aria-current="page"
+        >
+          <i class="bi bi-tag" aria-hidden="true"></i>
+          <span>Catégories</span>
+        </a>
+
+        <a href="membres.html" class="ad-nav-link">
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <span>Membres</span>
+        </a>
+
+        <a href="avis.html" class="ad-nav-link">
+          <i class="bi bi-chat-left" aria-hidden="true"></i>
+          <span>Avis</span>
+        </a>
+
+      </nav>
+
+      <div class="ad-sidebar-bottom">
+
+        <a href="../public/accueil.html" class="ad-nav-link">
+          <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          <span>Voir le site</span>
+        </a>
+
+        <button type="button" class="ad-nav-link ad-logout">
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+          <span>Se déconnecter</span>
+        </button>
+
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="ad-main">
+
+    <!-- BARRE SUPÉRIEURE -->
+    <header class="ad-topbar">
+
+      <nav class="ad-breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li>Administration</li>
+          <li aria-current="page">Catégories</li>
+        </ol>
+      </nav>
+
+      <div class="as-account">
+        <span class="ad-avatar" aria-hidden="true">AD</span>
+        <span>Administrateur</span>
+      </div>
+
+    </header>
+
+    <main class="ad-content">
+
+      <!-- TITRE -->
+      <section class="ad-page-heading" aria-labelledby="titre-page">
+
+        <div>
+          <h1 id="titre-page">
+            Gestion des <em>catégories</em>
+          </h1>
+
+          <p class="ad-page-description">
+            Organisez les recettes de la plateforme.
+          </p>
+        </div>
+
+      </section>
+
+      <div class="row g-4">
+
+        <!-- LISTE DES CATÉGORIES -->
+        <div class="col-xl-7">
+
+          <section
+            class="ad-panel ac-list-panel"
+            aria-labelledby="titre-categories"
+          >
+
+            <div class="ad-panel-heading">
+
+              <h2 id="titre-categories">Liste des catégories</h2>
+
+              <span class="ad-badge ac-count">
+                4 catégories
+              </span>
+
+            </div>
+
+            <div class="table-responsive">
+
+              <table class="table ad-table ac-table">
+
+                <caption class="visually-hidden">
+                  Catégories, nombre de recettes associées et actions.
+                </caption>
+
+                <thead>
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col" class="text-center">
+                      Recettes associées
+                    </th>
+                    <th scope="col" class="text-center">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <!-- ENTRÉES -->
+                  <tr>
+
+                    <th scope="row">Entrées</th>
+
+                    <td class="text-center">8</td>
+
+                    <td>
+                      <div class="ac-actions">
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-edit"
+                          title="Modifier Entrées"
+                          aria-label="Modifier la catégorie Entrées"
+                        >
+                          <i class="bi bi-pencil" aria-hidden="true"></i>
+                        </button>
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-delete"
+                          title="Suppression impossible : catégorie utilisée"
+                          aria-label="Supprimer Entrées : indisponible, catégorie utilisée"
+                          disabled
+                        >
+                          <i class="bi bi-trash" aria-hidden="true"></i>
+                        </button>
+
+                      </div>
+                    </td>
+
+                  </tr>
+
+                  <!-- PLATS -->
+                  <tr>
+
+                    <th scope="row">Plats</th>
+
+                    <td class="text-center">14</td>
+
+                    <td>
+                      <div class="ac-actions">
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-edit"
+                          title="Modifier Plats"
+                          aria-label="Modifier la catégorie Plats"
+                        >
+                          <i class="bi bi-pencil" aria-hidden="true"></i>
+                        </button>
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-delete"
+                          title="Suppression impossible : catégorie utilisée"
+                          aria-label="Supprimer Plats : indisponible, catégorie utilisée"
+                          disabled
+                        >
+                          <i class="bi bi-trash" aria-hidden="true"></i>
+                        </button>
+
+                      </div>
+                    </td>
+
+                  </tr>
+
+                  <!-- DESSERTS -->
+                  <tr>
+
+                    <th scope="row">Desserts</th>
+
+                    <td class="text-center">10</td>
+
+                    <td>
+                      <div class="ac-actions">
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-edit"
+                          title="Modifier Desserts"
+                          aria-label="Modifier la catégorie Desserts"
+                        >
+                          <i class="bi bi-pencil" aria-hidden="true"></i>
+                        </button>
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-delete"
+                          title="Suppression impossible : catégorie utilisée"
+                          aria-label="Supprimer Desserts : indisponible, catégorie utilisée"
+                          disabled
+                        >
+                          <i class="bi bi-trash" aria-hidden="true"></i>
+                        </button>
+
+                      </div>
+                    </td>
+
+                  </tr>
+
+                  <!-- BOISSONS : AUCUNE RECETTE ASSOCIÉE -->
+                  <tr>
+
+                    <th scope="row">Boissons</th>
+
+                    <td class="text-center">0</td>
+
+                    <td>
+                      <div class="ac-actions">
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-edit"
+                          title="Modifier Boissons"
+                          aria-label="Modifier la catégorie Boissons"
+                        >
+                          <i class="bi bi-pencil" aria-hidden="true"></i>
+                        </button>
+
+                        <button
+                          type="button"
+                          class="ac-icon-button ac-delete"
+                          title="Supprimer Boissons"
+                          aria-label="Supprimer la catégorie Boissons"
+                        >
+                          <i class="bi bi-trash" aria-hidden="true"></i>
+                        </button>
+
+                      </div>
+                    </td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+            </div>
+
+            <p class="ac-information">
+              <i class="bi bi-info-circle" aria-hidden="true"></i>
+
+              <span>
+                Une catégorie utilisée par une recette ne peut pas être supprimée.
+              </span>
+            </p>
+
+          </section>
+        </div>
+
+        <!-- AJOUT D’UNE CATÉGORIE -->
+        <div class="col-xl-5">
+
+          <section
+            class="ad-panel ac-form-panel"
+            aria-labelledby="titre-ajout"
+          >
+
+            <h2 id="titre-ajout">Ajouter une catégorie</h2>
+
+            <label class="form-label" for="nom-categorie">
+              Nom de la catégorie
+              <span class="ac-required" aria-hidden="true">*</span>
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="nom-categorie"
+              name="nom"
+              maxlength="50"
+              placeholder="Ex. Soupes"
+              aria-describedby="aide-categorie unicite-categorie"
+              required
+            >
+
+            <p class="ac-hint" id="aide-categorie">
+              50 caractères maximum.
+            </p>
+
+            <button
+              type="button"
+              class="ad-button ad-button-primary ac-add-button"
+            >
+              <i class="bi bi-plus-lg" aria-hidden="true"></i>
+              Ajouter la catégorie
+            </button>
+
+            <p class="ac-unique" id="unicite-categorie">
+              Le nom doit être unique.
+            </p>
+
+          </section>
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer class="ad-footer">
+      © Saveurs Maison · Administration
+    </footer>
+
+  </div>
+
+</body>
+</html>
