@@ -8104,10 +8104,6 @@ button:focus-visible {
   border-bottom: none;
 }
 
-.admin-page .ad-pending-table {
-  min-width: 620px;
-}
-
 .admin-page .ad-pending-table td:nth-child(2),
 .admin-page .ad-pending-table td:nth-child(3) {
   white-space: nowrap;
@@ -8196,10 +8192,6 @@ button:focus-visible {
 
 .admin-page .ad-reviews-panel {
   height: auto;
-}
-
-.admin-page .ad-reviews-table {
-  min-width: 780px;
 }
 
 .admin-page .ad-member-cell {
