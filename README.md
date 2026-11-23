@@ -142,7 +142,6 @@ L’administrateur dispose de pages dédiées à la gestion des recettes, des ca
 | Inscription | Création d’un compte |
 | Connexion | Authentification des membres et de l’administrateur |
 | À propos | Présentation du concept et du fonctionnement |
-| Mentions légales et confidentialité | Informations légales et utilisation des données personnelles |
 
 ### Espace membre
 
@@ -213,8 +212,8 @@ Le projet est développé en suivant les phases ci-dessous, dans l'ordre. Chaque
 |---|---|---|---|
 | 1. Analyse des besoins | Tableau des besoins priorisés (méthode MoSCoW) | `Analyse/` | Fait |
 | 2. Conception des données | Dictionnaire de données, MCD, MLD (notation Merise) | `Conception/` | Fait |
-| 3. Maquettage | Maquettes statiques HTML/CSS/Bootstrap des pages principales | `Conception/maquettes/` | En cours |
-| 4. Création de la base de données | Scripts SQL de création des tables et d'insertion des données de test (à partir du MLD) | `app/base_de_donnees/` | À venir |
+| 3. Maquettage | Maquettes statiques HTML/CSS/Bootstrap des pages principales | `Conception/maquettes/` | Fait |
+| 4. Création de la base de données | Scripts SQL de création des tables et d'insertion des données de test (à partir du MLD) | `app/base_de_donnees/` | En cours |
 | 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | À venir |
 | 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | À venir |
 | 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | À venir |
@@ -243,8 +242,8 @@ Saveurs-Maison/
 │
 ├── app/
 │   ├── base_de_donnees/
-│   │   ├── script_creation.sql          Script de création des tables, à partir du MLD (à venir)
-│   │   └── script_insertion.sql         Jeu de données de test (à venir)
+│   │   ├── script_creation.sql          Script de création des tables, à partir du MLD
+│   │   └── script_insertion.sql         Jeu de données de test
 │   ├── config/                          Connexion PDO, constantes de configuration
 │   ├── controleurs/                     Classes PHP de traitement des actions (une par entité)
 │   ├── modeles/                         Classes PHP d'accès aux données (une par entité)
