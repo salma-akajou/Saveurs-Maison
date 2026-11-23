@@ -5022,6 +5022,16 @@ button:focus-visible {
   color: var(--olive-hover);
 }
 
+.fv-account .dropdown-item i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.fv-account .dropdown-divider {
+  margin: 6px 4px;
+  border-color: var(--border);
+}
+
 .fv-header .navbar-toggler {
   border-color: var(--border);
 }
@@ -7232,5 +7242,319 @@ button:focus-visible {
 
   .recipe-edit-page .re-step .rf-label {
     font-size: 11px;
+  }
+}
+
+/* ==================================================
+   MON PROFIL — SAVEURS MAISON
+   ================================================== */
+
+.profile-page {
+  --pr-background: #fcfaf7;
+  --pr-green: #244729;
+  --pr-green-dark: #19341e;
+  --pr-orange: #b83f1d;
+  --pr-border: #d9cfc2;
+  --pr-text: #273029;
+  --pr-muted: #6b6c66;
+
+  margin: 0;
+  background: var(--pr-background);
+  color: var(--pr-text);
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.profile-page *,
+.profile-page *::before,
+.profile-page *::after {
+  box-sizing: border-box;
+}
+
+.profile-page img {
+  display: block;
+  max-width: 100%;
+}
+
+.profile-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.profile-page button,
+.profile-page input {
+  font-family: inherit;
+}
+
+.profile-page h1,
+.profile-page h2 {
+  color: var(--pr-green-dark);
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+.profile-page .pr-orange {
+  color: var(--pr-orange);
+}
+
+.profile-page a:focus-visible,
+.profile-page button:focus-visible {
+  outline: 3px solid var(--pr-orange);
+  outline-offset: 4px;
+}
+
+/* FIL D'ARIANE */
+
+.profile-page .pr-breadcrumb {
+  margin-top: 27px;
+  font-size: 13px;
+}
+
+.profile-page .pr-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-page .pr-breadcrumb li + li::before {
+  margin-right: 10px;
+  color: #96988e;
+  content: "/";
+}
+
+.profile-page .pr-breadcrumb a {
+  color: var(--pr-green);
+}
+
+.profile-page .pr-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* CONTENU */
+
+.profile-page .pr-content {
+  max-width: 850px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.profile-page .pr-intro {
+  padding: 30px 0;
+}
+
+.profile-page .pr-intro h1 {
+  margin: 0 0 12px;
+  font-size: clamp(36px, 4.5vw, 52px);
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.profile-page .pr-intro h1 em {
+  color: var(--pr-orange);
+  font-weight: 600;
+}
+
+.profile-page .pr-intro p {
+  margin: 0;
+  color: var(--pr-muted);
+  font-size: 16px;
+}
+
+/* CARTES NEUTRES */
+
+.profile-page .pr-card {
+  margin-bottom: 26px;
+  padding: 25px 28px;
+  border: 1px solid var(--pr-border);
+  border-radius: 13px;
+  background: var(--pr-background);
+}
+
+.profile-page .pr-card:last-child {
+  margin-bottom: 0;
+}
+
+.profile-page .pr-card h2 {
+  margin: 0 0 23px;
+  font-size: clamp(25px, 3vw, 32px);
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+
+/* CHAMPS */
+
+.profile-page .pr-card .form-label {
+  margin-bottom: 7px;
+  color: var(--pr-text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profile-page .pr-card .form-control {
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid #bfbcb5;
+  border-radius: 7px;
+  background: #fffefd;
+  color: var(--pr-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.profile-page .pr-card .form-control:focus {
+  border-color: #8b9c7c;
+  box-shadow: 0 0 0 3px rgb(36 71 41 / 9%);
+}
+
+.profile-page .pr-hint {
+  margin: 5px 0 0;
+  color: var(--pr-muted);
+  font-size: 12px;
+}
+
+/* BOUTONS */
+
+.profile-page .pr-button {
+  display: inline-flex;
+  min-height: 43px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 23px;
+  padding: 10px 25px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.profile-page .pr-button-green {
+  border-color: var(--pr-green);
+  background: var(--pr-green);
+  color: #fff;
+}
+
+.profile-page .pr-button-green:hover {
+  border-color: var(--pr-green-dark);
+  background: var(--pr-green-dark);
+}
+
+.profile-page .pr-button-orange {
+  border-color: var(--pr-orange);
+  background: var(--pr-orange);
+  color: #fff;
+}
+
+.profile-page .pr-button-orange:hover {
+  border-color: #963216;
+  background: #963216;
+}
+
+.profile-page .pr-message {
+  margin: 13px 0 0;
+  color: var(--pr-green);
+  font-size: 13px;
+}
+
+.profile-page .pr-message:empty {
+  margin: 0;
+}
+
+/* FOOTER */
+
+.profile-page .pr-footer {
+  padding-top: 28px;
+  background: var(--pr-green);
+  color: #fffaf0;
+}
+
+.profile-page .pr-footer-main {
+  padding-bottom: 26px;
+}
+
+.profile-page .pr-footer-brand img {
+  width: 190px;
+  height: 68px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: #fcfaf7;
+  object-fit: contain;
+}
+
+.profile-page .pr-footer-brand p {
+  margin: 12px 0 0;
+  color: #f5efdf;
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.profile-page .pr-footer-column h2 {
+  margin: 6px 0 12px;
+  color: #fffaf0;
+  font-size: 22px;
+}
+
+.profile-page .pr-footer-column ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-page .pr-footer-column li {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.profile-page .pr-footer-column a {
+  color: #f5efdf;
+}
+
+.profile-page .pr-footer-column a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.profile-page .pr-footer-bottom {
+  padding: 14px 0;
+  border-top: 1px solid rgb(255 255 255 / 35%);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* MOBILES */
+
+@media (max-width: 575.98px) {
+  .profile-page .pr-breadcrumb {
+    margin-top: 20px;
+  }
+
+  .profile-page .pr-intro {
+    padding: 25px 0;
+  }
+
+  .profile-page .pr-intro p {
+    font-size: 14px;
+  }
+
+  .profile-page .pr-card {
+    margin-bottom: 20px;
+    padding: 22px 18px;
+  }
+
+  .profile-page .pr-card h2 {
+    margin-bottom: 19px;
+    font-size: 25px;
+  }
+
+  .profile-page .pr-content {
+    padding-bottom: 30px;
   }
 }
