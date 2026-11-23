@@ -3697,23 +3697,16 @@ button:focus-visible {
 
 .rd-step-content p {
   margin: 0;
+  padding-top: 5px;
 
   color: var(--rd-text);
 
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-.rd-step-content strong {
-  display: block;
-  margin-bottom: 5px;
-
-  color: var(--rd-heading);
-
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.25;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
 }
 
 /* =========================================
@@ -4112,10 +4105,6 @@ button:focus-visible {
     padding-left: 52px;
   }
 
-  .rd-step-content strong {
-    font-size: 20px;
-  }
-
   .rd-review-form-grid {
     grid-template-columns: 210px minmax(0, 1fr);
     gap: 23px;
@@ -4226,10 +4215,6 @@ button:focus-visible {
     padding-bottom: 25px;
   }
 
-  .rd-step-content strong {
-    font-size: 22px;
-  }
-
   .rd-reviews-heading {
     gap: 14px;
   }
@@ -4297,6 +4282,13 @@ button:focus-visible {
 
   .rd-review-form-bottom .btn-green {
     width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .rd-step-content p {
+    font-size: 14px;
+    line-height: 1.75;
   }
 }
 
