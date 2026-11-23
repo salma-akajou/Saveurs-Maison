@@ -229,9 +229,9 @@ Saveurs-Maison/
 ├── Analyse/
 │   └── tableau_besoins_moscow.md        Besoins fonctionnels priorisés (MoSCoW)
 │
-├── Maquettes/                            Captures d'écran des maquettes, pour reproduction dans Figma par les stagiaires
-│   ├── public/                          Captures des pages de l'espace public
-│   └── admin/                           Captures des pages de l'espace administrateur
+├── Maquettes/
+│   ├── public/
+│   └── admin/
 │
 ├── Conception/
 │   ├── dictionnaire_donnees.md          Description de tous les champs des données
@@ -267,8 +267,6 @@ Saveurs-Maison/
 │
 └── README.md                            Présentation générale du projet
 ```
-
-Le dossier `Maquettes/` contient des captures d'écran des pages réalisées dans `Conception/maquettes/` (HTML/CSS/Bootstrap). Il sert de référence visuelle aux stagiaires chargés de reproduire ces mêmes maquettes dans Figma, sans coder.
 
 Cette structure reste la même pour les sept projets de la promotion 2027 : seuls le contenu de `Conception/` et de `app/` changent d'un projet à l'autre, les dossiers de premier niveau et leur rôle restent identiques.
 
