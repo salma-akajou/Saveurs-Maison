@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gestion des recettes — Saveurs Maison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="admin-page admin-static-page">
+
+  <!-- MENU LATÉRAL -->
+  <aside class="ad-sidebar">
+
+    <div class="ad-sidebar-body">
+
+      <a href="dashboard.html" class="ad-brand">
+        <img src="../assets/images/logo.png" alt="Saveurs Maison">
+      </a>
+
+      <p class="ad-sidebar-label">Administration</p>
+
+      <nav class="ad-navigation" aria-label="Navigation administration">
+
+        <a href="dashboard.html" class="ad-nav-link">
+          <i class="bi bi-house-door" aria-hidden="true"></i>
+          <span>Tableau de bord</span>
+        </a>
+
+        <a
+          href="recettes.html"
+          class="ad-nav-link active"
+          aria-current="page"
+        >
+          <i class="bi bi-journal-text" aria-hidden="true"></i>
+          <span>Recettes</span>
+          <span class="ad-nav-badge">5</span>
+        </a>
+
+        <a href="categories.html" class="ad-nav-link">
+          <i class="bi bi-tag" aria-hidden="true"></i>
+          <span>Catégories</span>
+        </a>
+
+        <a href="membres.html" class="ad-nav-link">
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <span>Membres</span>
+        </a>
+
+        <a href="avis.html" class="ad-nav-link">
+          <i class="bi bi-chat-left" aria-hidden="true"></i>
+          <span>Avis</span>
+        </a>
+
+      </nav>
+
+      <div class="ad-sidebar-bottom">
+
+        <a href="../public/accueil.html" class="ad-nav-link">
+          <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          <span>Voir le site</span>
+        </a>
+
+        <button type="button" class="ad-nav-link ad-logout">
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+          <span>Se déconnecter</span>
+        </button>
+
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="ad-main">
+
+    <header class="ad-topbar">
+
+      <nav class="ad-breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li>Administration</li>
+          <li aria-current="page">Recettes</li>
+        </ol>
+      </nav>
+
+      <div class="as-account">
+        <span class="ad-avatar" aria-hidden="true">AD</span>
+        <span>Administrateur</span>
+      </div>
+
+    </header>
+
+    <main class="ad-content">
+
+      <!-- TITRE -->
+      <section class="ad-page-heading" aria-labelledby="titre-page">
+
+        <div>
+          <h1 id="titre-page">Gestion des <em>recettes</em></h1>
+
+          <p class="ad-page-description">
+            Consultez et gérez les recettes de la plateforme.
+          </p>
+        </div>
+
+        <a href="ajouter-recette.html" class="ad-button ad-button-primary">
+          <i class="bi bi-plus-lg" aria-hidden="true"></i>
+          Ajouter une recette
+        </a>
+
+      </section>
+
+      <!-- FILTRES STATIQUES -->
+      <section class="ad-panel ar-filter-panel" aria-label="Filtres des recettes">
+
+        <div class="row g-3">
+
+          <div class="col-lg-5">
+            <label class="form-label" for="recherche">
+              Rechercher une recette
+            </label>
+
+            <input
+              type="search"
+              class="form-control"
+              id="recherche"
+              placeholder="Rechercher une recette…"
+            >
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <label class="form-label" for="statut">Statut</label>
+
+            <select class="form-select" id="statut">
+              <option>Tous les statuts</option>
+              <option>Publiée</option>
+              <option>En attente</option>
+              <option>Refusée</option>
+            </select>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <label class="form-label" for="categorie">Catégorie</label>
+
+            <select class="form-select" id="categorie">
+              <option>Toutes les catégories</option>
+              <option>Entrée</option>
+              <option>Plat</option>
+              <option>Dessert</option>
+              <option>Boisson</option>
+            </select>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- TABLEAU -->
+      <section class="ad-panel ar-list-panel" aria-labelledby="titre-liste">
+
+        <div class="ad-panel-heading">
+          <div class="ad-panel-title">
+            <h2 id="titre-liste">Toutes les recettes</h2>
+            <span class="ad-badge ar-count">32 recettes</span>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+
+          <table class="table ad-table ar-table">
+
+            <caption class="visually-hidden">
+              Liste des recettes et actions disponibles.
+            </caption>
+
+            <thead>
+              <tr>
+                <th scope="col">Recette</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Créée le</th>
+                <th scope="col" class="ar-actions-column">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <!-- RECETTE DE L’ADMIN -->
+              <tr>
+
+                <td>
+                  <div class="ad-recipe-cell">
+                    <img
+                      src="../assets/images/salade-mediterraneenne.jpg"
+                      alt=""
+                    >
+                    <span>Salade méditerranéenne</span>
+                  </div>
+                </td>
+
+                <td>Administrateur (vous)</td>
+                <td>Entrée</td>
+
+                <td>
+                  <span class="ad-badge ar-status-published">
+                    Publiée
+                  </span>
+                </td>
+
+                <td>18/11/2026</td>
+
+                <td>
+                  <div class="ar-actions">
+
+                    <a
+                      href="../public/recette.html"
+                      class="ar-icon-button"
+                      title="Consulter la recette"
+                      aria-label="Consulter Salade méditerranéenne"
+                    >
+                      <i class="bi bi-eye" aria-hidden="true"></i>
+                    </a>
+
+                    <a
+                      href="modifier-recette.html"
+                      class="ar-icon-button ar-icon-edit"
+                      title="Modifier la recette"
+                      aria-label="Modifier Salade méditerranéenne"
+                    >
+                      <i class="bi bi-pencil" aria-hidden="true"></i>
+                    </a>
+
+                    <button
+                      type="button"
+                      class="ar-icon-button ar-icon-delete"
+                      title="Supprimer la recette"
+                      aria-label="Supprimer Salade méditerranéenne"
+                    >
+                      <i class="bi bi-trash" aria-hidden="true"></i>
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+
+              <!-- RECETTE D’UN MEMBRE EN ATTENTE -->
+              <tr>
+
+                <td>
+                  <div class="ad-recipe-cell">
+                    <img
+                      src="../assets/images/samoussas-legumes.jpg"
+                      alt=""
+                      loading="lazy"
+                    >
+                    <span>Samoussas aux légumes</span>
+                  </div>
+                </td>
+
+                <td>Sophie Laurent</td>
+                <td>Entrée</td>
+
+                <td>
+                  <span class="ad-badge ar-status-pending">
+                    En attente
+                  </span>
+                </td>
+
+                <td>23/11/2026</td>
+
+                <td>
+                  <div class="ar-actions">
+
+                    <a
+                      href="detail-recette.html"
+                      class="ar-icon-button"
+                      title="Consulter la recette"
+                      aria-label="Consulter Samoussas aux légumes"
+                    >
+                      <i class="bi bi-eye" aria-hidden="true"></i>
+                    </a>
+
+                  </div>
+                </td>
+
+              </tr>
+
+              <!-- RECETTE D’UN MEMBRE EN ATTENTE -->
+              <tr>
+
+                <td>
+                  <div class="ad-recipe-cell">
+                    <img
+                      src="../assets/images/gateau-coco.jpg"
+                      alt=""
+                      loading="lazy"
+                    >
+                    <span>Gâteau au coco</span>
+                  </div>
+                </td>
+
+                <td>Nadia Ali</td>
+                <td>Dessert</td>
+
+                <td>
+                  <span class="ad-badge ar-status-pending">
+                    En attente
+                  </span>
+                </td>
+
+                <td>22/11/2026</td>
+
+                <td>
+                  <div class="ar-actions">
+
+                    <button
+                      type="button"
+                      class="ar-icon-button"
+                      title="Consulter la recette"
+                      aria-label="Consulter Gâteau au coco"
+                    >
+                      <i class="bi bi-eye" aria-hidden="true"></i>
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+
+              <!-- RECETTE DE L’ADMIN -->
+              <tr>
+
+                <td>
+                  <div class="ad-recipe-cell">
+                    <img
+                      src="../assets/images/tarte-pommes.jpg"
+                      alt=""
+                      loading="lazy"
+                    >
+                    <span>Tarte aux pommes</span>
+                  </div>
+                </td>
+
+                <td>Administrateur (vous)</td>
+                <td>Dessert</td>
+
+                <td>
+                  <span class="ad-badge ar-status-published">
+                    Publiée
+                  </span>
+                </td>
+
+                <td>20/11/2026</td>
+
+                <td>
+                  <div class="ar-actions">
+
+                    <button
+                      type="button"
+                      class="ar-icon-button"
+                      title="Consulter la recette"
+                      aria-label="Consulter Tarte aux pommes"
+                    >
+                      <i class="bi bi-eye" aria-hidden="true"></i>
+                    </button>
+
+                    <a
+                      href="modifier-recette.html"
+                      class="ar-icon-button ar-icon-edit"
+                      title="Modifier la recette"
+                      aria-label="Modifier Tarte aux pommes"
+                    >
+                      <i class="bi bi-pencil" aria-hidden="true"></i>
+                    </a>
+
+                    <button
+                      type="button"
+                      class="ar-icon-button ar-icon-delete"
+                      title="Supprimer la recette"
+                      aria-label="Supprimer Tarte aux pommes"
+                    >
+                      <i class="bi bi-trash" aria-hidden="true"></i>
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+
+              <!-- RECETTE D’UN MEMBRE REFUSÉE -->
+              <tr>
+
+                <td>
+                  <div class="ad-recipe-cell">
+                    <img
+                      src="../assets/images/smoothie-mangue-passion.jpg"
+                      alt=""
+                      loading="lazy"
+                    >
+                    <span>Smoothie mangue passion</span>
+                  </div>
+                </td>
+
+                <td>Sophie Laurent</td>
+                <td>Boisson</td>
+
+                <td>
+                  <span class="ad-badge ar-status-rejected">
+                    Refusée
+                  </span>
+                </td>
+
+                <td>20/11/2026</td>
+
+                <td>
+                  <div class="ar-actions">
+
+                    <button
+                      type="button"
+                      class="ar-icon-button"
+                      title="Consulter la recette"
+                      aria-label="Consulter Smoothie mangue passion"
+                    >
+                      <i class="bi bi-eye" aria-hidden="true"></i>
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+
+              <!-- RECETTE D’UN MEMBRE PUBLIÉE -->
+              <tr>
+
+                <td>
+                  <div class="ad-recipe-cell">
+                    <img
+                      src="../assets/images/poulet-roti-herbes.jpg"
+                      alt=""
+                      loading="lazy"
+                    >
+                    <span>Poulet rôti aux herbes</span>
+                  </div>
+                </td>
+
+                <td>Yanis Diallo</td>
+                <td>Plat</td>
+
+                <td>
+                  <span class="ad-badge ar-status-published">
+                    Publiée
+                  </span>
+                </td>
+
+                <td>19/11/2026</td>
+
+                <td>
+                  <div class="ar-actions">
+
+                    <button
+                      type="button"
+                      class="ar-icon-button"
+                      title="Consulter la recette"
+                      aria-label="Consulter Poulet rôti aux herbes"
+                    >
+                      <i class="bi bi-eye" aria-hidden="true"></i>
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <p class="ar-permissions">
+          Modification et suppression réservées à vos propres recettes.
+        </p>
+
+        <!-- PAGINATION STATIQUE -->
+        <div class="ar-pagination-row">
+
+          <p>1–6 sur 32 recettes</p>
+
+          <nav class="ar-pagination" aria-label="Pagination des recettes">
+
+            <button
+              type="button"
+              class="ar-page-button"
+              aria-label="Page précédente"
+              disabled
+            >
+              <i class="bi bi-chevron-left" aria-hidden="true"></i>
+            </button>
+
+            <button
+              type="button"
+              class="ar-page-button active"
+              aria-current="page"
+              aria-label="Page 1"
+            >
+              1
+            </button>
+
+            <button type="button" class="ar-page-button" aria-label="Page 2">
+              2
+            </button>
+
+            <button type="button" class="ar-page-button" aria-label="Page 3">
+              3
+            </button>
+
+            <span class="ar-pagination-dots" aria-hidden="true">…</span>
+
+            <button type="button" class="ar-page-button" aria-label="Page 6">
+              6
+            </button>
+
+            <button
+              type="button"
+              class="ar-page-button"
+              aria-label="Page suivante"
+            >
+              <i class="bi bi-chevron-right" aria-hidden="true"></i>
+            </button>
+
+          </nav>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="ad-footer">
+      © Saveurs Maison · Administration
+    </footer>
+
+  </div>
+
+</body>
+</html>

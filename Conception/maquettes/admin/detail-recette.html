@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Samoussas aux légumes — Administration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="admin-page admin-static-page">
+
+  <!-- MENU LATÉRAL -->
+  <aside class="ad-sidebar">
+
+    <div class="ad-sidebar-body">
+
+      <a href="dashboard.html" class="ad-brand">
+        <img src="../assets/images/logo.png" alt="Saveurs Maison">
+      </a>
+
+      <p class="ad-sidebar-label">Administration</p>
+
+      <nav class="ad-navigation" aria-label="Navigation administration">
+
+        <a href="dashboard.html" class="ad-nav-link">
+          <i class="bi bi-house-door" aria-hidden="true"></i>
+          <span>Tableau de bord</span>
+        </a>
+
+        <a href="recettes.html" class="ad-nav-link active">
+          <i class="bi bi-journal-text" aria-hidden="true"></i>
+          <span>Recettes</span>
+          <span class="ad-nav-badge">5</span>
+        </a>
+
+        <a href="categories.html" class="ad-nav-link">
+          <i class="bi bi-tag" aria-hidden="true"></i>
+          <span>Catégories</span>
+        </a>
+
+        <a href="membres.html" class="ad-nav-link">
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <span>Membres</span>
+        </a>
+
+        <a href="avis.html" class="ad-nav-link">
+          <i class="bi bi-chat-left" aria-hidden="true"></i>
+          <span>Avis</span>
+        </a>
+
+      </nav>
+
+      <div class="ad-sidebar-bottom">
+
+        <a href="../public/accueil.html" class="ad-nav-link">
+          <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          <span>Voir le site</span>
+        </a>
+
+        <button type="button" class="ad-nav-link ad-logout">
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+          <span>Se déconnecter</span>
+        </button>
+
+      </div>
+
+    </div>
+  </aside>
+
+  <div class="ad-main">
+
+    <!-- BARRE SUPÉRIEURE -->
+    <header class="ad-topbar">
+
+      <nav class="ad-breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li>Administration</li>
+          <li><a href="recettes.html">Recettes</a></li>
+          <li aria-current="page">Détail</li>
+        </ol>
+      </nav>
+
+      <div class="as-account">
+        <span class="ad-avatar" aria-hidden="true">AD</span>
+        <span>Administrateur</span>
+      </div>
+
+    </header>
+
+    <main class="ad-content">
+
+      <!-- TITRE -->
+      <section class="ad-page-heading" aria-labelledby="titre-page">
+
+        <div>
+          <h1 id="titre-page">Détail de la <em>recette</em></h1>
+
+          <p class="ad-page-description">
+            Consultez le contenu avant de prendre une décision.
+          </p>
+        </div>
+
+        <a href="recettes.html" class="ad-button ar-return-button">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          Retour aux recettes
+        </a>
+
+      </section>
+
+      <!-- PRÉSENTATION -->
+      <section class="ad-panel av-hero" aria-labelledby="titre-recette">
+
+        <img
+          class="av-photo"
+          src="../assets/images/samoussas-legumes.jpg"
+          alt="Samoussas croustillants garnis de légumes"
+        >
+
+        <div class="av-hero-content">
+
+          <div class="av-badges">
+            <span class="ad-badge av-category">Entrée</span>
+
+            <span class="ad-badge ar-status-pending">
+              En attente
+            </span>
+          </div>
+
+          <h2 id="titre-recette">Samoussas aux légumes</h2>
+
+          <p class="av-author">
+            Par <strong>Sophie Laurent</strong>
+            · Proposée le
+            <time datetime="2026-11-23">23/11/2026</time>
+          </p>
+
+          <p class="av-description">
+            Des samoussas croustillants garnis de légumes,
+            à partager en entrée.
+          </p>
+
+          <dl class="av-facts">
+
+            <div>
+              <i class="bi bi-clock" aria-hidden="true"></i>
+              <dt>Préparation</dt>
+              <dd>20 min</dd>
+            </div>
+
+            <div>
+              <i class="bi bi-fire" aria-hidden="true"></i>
+              <dt>Cuisson</dt>
+              <dd>10 min</dd>
+            </div>
+
+            <div>
+              <i class="bi bi-bar-chart" aria-hidden="true"></i>
+              <dt>Difficulté</dt>
+              <dd>Facile</dd>
+            </div>
+
+            <div>
+              <i class="bi bi-people" aria-hidden="true"></i>
+              <dt>Personnes</dt>
+              <dd>4</dd>
+            </div>
+
+          </dl>
+
+        </div>
+      </section>
+
+      <!-- INGRÉDIENTS ET ÉTAPES -->
+      <div class="row g-4 av-preparation">
+
+        <!-- INGRÉDIENTS -->
+        <div class="col-lg-4">
+
+          <section class="ad-panel av-preparation-panel">
+
+            <h2 id="titre-ingredients">Ingrédients</h2>
+
+            <div
+              class="av-scroll"
+              tabindex="0"
+              role="region"
+              aria-labelledby="titre-ingredients"
+            >
+
+              <ul class="av-ingredients">
+
+                <li>
+                  <span>Feuilles de brick</span>
+                  <span>8 pièces</span>
+                </li>
+
+                <li>
+                  <span>Pommes de terre</span>
+                  <span>300 g</span>
+                </li>
+
+                <li>
+                  <span>Petits pois</span>
+                  <span>100 g</span>
+                </li>
+
+                <li>
+                  <span>Carottes</span>
+                  <span>2 pièces</span>
+                </li>
+
+                <li>
+                  <span>Huile d’olive</span>
+                  <span>2 c. à soupe</span>
+                </li>
+
+                <li>
+                  <span>Sel et poivre</span>
+                  <span>À votre convenance</span>
+                </li>
+
+              </ul>
+
+            </div>
+
+          </section>
+        </div>
+
+        <!-- ÉTAPES -->
+        <div class="col-lg-8">
+
+          <section class="ad-panel av-preparation-panel">
+
+            <h2 id="titre-etapes">Étapes de préparation</h2>
+
+            <div
+              class="av-scroll"
+              tabindex="0"
+              role="region"
+              aria-labelledby="titre-etapes"
+            >
+
+              <ol class="av-steps">
+
+                <li>
+                  <h3>Préparer les légumes</h3>
+
+                  <p>
+                    Épluchez les pommes de terre et les carottes.
+                    Coupez-les en petits morceaux et faites-les cuire.
+                  </p>
+                </li>
+
+                <li>
+                  <h3>Garnir et plier</h3>
+
+                  <p>
+                    Mélangez les légumes avec les petits pois.
+                    Répartissez la farce sur les feuilles de brick
+                    et pliez-les en triangles.
+                  </p>
+                </li>
+
+                <li>
+                  <h3>Faire dorer</h3>
+
+                  <p>
+                    Badigeonnez les samoussas d’huile et faites-les
+                    dorer pendant 10 minutes.
+                  </p>
+                </li>
+
+              </ol>
+
+            </div>
+
+          </section>
+        </div>
+
+      </div>
+
+      <!-- DÉCISION : POUR UNE RECETTE DE MEMBRE EN ATTENTE -->
+      <section class="ad-panel av-decision" aria-labelledby="titre-decision">
+
+        <h2 id="titre-decision">Décision de publication</h2>
+
+        <p>
+          Validez la recette ou indiquez les corrections nécessaires.
+        </p>
+
+        <label class="form-label" for="motif-refus">
+          Motif du refus (obligatoire en cas de refus)
+        </label>
+
+        <textarea
+          class="form-control"
+          id="motif-refus"
+          name="motif_refus"
+          rows="4"
+          placeholder="Expliquez les corrections à apporter…"
+        ></textarea>
+
+        <div class="av-decision-actions">
+
+          <button type="button" class="ad-button av-button-reject">
+            Refuser la recette
+          </button>
+
+          <button type="button" class="ad-button ad-button-primary">
+            Valider et publier
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="ad-footer">
+      © Saveurs Maison · Administration
+    </footer>
+
+  </div>
+
+</body>
+</html>
