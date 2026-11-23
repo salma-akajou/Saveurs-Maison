@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gestion des membres — Saveurs Maison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="admin-page admin-static-page">
+
+  <!-- MENU LATÉRAL -->
+  <aside class="ad-sidebar">
+    <div class="ad-sidebar-body">
+
+      <a href="dashboard.html" class="ad-brand">
+        <img src="../assets/images/logo.png" alt="Saveurs Maison">
+      </a>
+
+      <p class="ad-sidebar-label">Administration</p>
+
+      <nav class="ad-navigation" aria-label="Navigation administration">
+
+        <a href="dashboard.html" class="ad-nav-link">
+          <i class="bi bi-house-door" aria-hidden="true"></i>
+          <span>Tableau de bord</span>
+        </a>
+
+        <a href="recettes.html" class="ad-nav-link">
+          <i class="bi bi-journal-text" aria-hidden="true"></i>
+          <span>Recettes</span>
+          <span class="ad-nav-badge">5</span>
+        </a>
+
+        <a href="categories.html" class="ad-nav-link">
+          <i class="bi bi-tag" aria-hidden="true"></i>
+          <span>Catégories</span>
+        </a>
+
+        <a
+          href="membres.html"
+          class="ad-nav-link active"
+          aria-current="page"
+        >
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <span>Membres</span>
+        </a>
+
+        <a href="avis.html" class="ad-nav-link">
+          <i class="bi bi-chat-left" aria-hidden="true"></i>
+          <span>Avis</span>
+        </a>
+
+      </nav>
+
+      <div class="ad-sidebar-bottom">
+
+        <a href="../public/accueil.html" class="ad-nav-link">
+          <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          <span>Voir le site</span>
+        </a>
+
+        <button type="button" class="ad-nav-link ad-logout">
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+          <span>Se déconnecter</span>
+        </button>
+
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="ad-main">
+
+    <header class="ad-topbar">
+
+      <nav class="ad-breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li>Administration</li>
+          <li aria-current="page">Membres</li>
+        </ol>
+      </nav>
+
+      <div class="as-account">
+        <span class="ad-avatar" aria-hidden="true">AD</span>
+        <span>Administrateur</span>
+      </div>
+
+    </header>
+
+    <main class="ad-content">
+
+      <!-- TITRE -->
+      <section class="ad-page-heading" aria-labelledby="titre-page">
+        <div>
+          <h1 id="titre-page">Gestion des <em>membres</em></h1>
+
+          <p class="ad-page-description">
+            Consultez les comptes et gérez leur accès à la plateforme.
+          </p>
+        </div>
+      </section>
+
+      <!-- FILTRES STATIQUES -->
+      <section
+        class="ad-panel am-filter-panel"
+        aria-label="Rechercher et filtrer les membres"
+      >
+
+        <div class="row g-3">
+
+          <div class="col-md-7">
+            <label class="form-label" for="recherche-membre">
+              Nom ou adresse e-mail
+            </label>
+
+            <input
+              type="search"
+              class="form-control"
+              id="recherche-membre"
+              placeholder="Rechercher un membre…"
+            >
+          </div>
+
+          <div class="col-md-5">
+            <label class="form-label" for="statut-membre">
+              Statut
+            </label>
+
+            <select class="form-select" id="statut-membre">
+              <option value="">Tous les comptes</option>
+              <option value="actif">Actifs</option>
+              <option value="desactive">Désactivés</option>
+            </select>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- LISTE DES MEMBRES -->
+      <section
+        class="ad-panel am-list-panel"
+        aria-labelledby="titre-membres"
+      >
+
+        <div class="ad-panel-heading">
+          <div class="ad-panel-title">
+            <h2 id="titre-membres">Liste des membres</h2>
+            <span class="ad-badge am-count">6 membres</span>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+
+          <table class="table ad-table am-table">
+
+            <caption class="visually-hidden">
+              Membres inscrits et actions d’activation ou de désactivation.
+            </caption>
+
+            <thead>
+              <tr>
+                <th scope="col">Nom et prénom</th>
+                <th scope="col">Adresse e-mail</th>
+                <th scope="col">Inscription</th>
+                <th scope="col">Statut</th>
+                <th scope="col" class="am-action-column">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <th scope="row">Sophie Laurent</th>
+                <td>sophie.laurent@example.fr</td>
+                <td>
+                  <time datetime="2026-11-12">12/11/2026</time>
+                </td>
+                <td>
+                  <span class="ad-badge am-status-active">Actif</span>
+                </td>
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Désactiver le compte"
+                      aria-label="Désactiver le compte de Sophie Laurent"
+                    >
+                      <i class="bi bi-slash-circle" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Nadia Ali</th>
+                <td>nadia.ali@example.fr</td>
+                <td>
+                  <time datetime="2026-11-13">13/11/2026</time>
+                </td>
+                <td>
+                  <span class="ad-badge am-status-active">Actif</span>
+                </td>
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Désactiver le compte"
+                      aria-label="Désactiver le compte de Nadia Ali"
+                    >
+                      <i class="bi bi-slash-circle" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Karim Martin</th>
+                <td>karim.martin@example.fr</td>
+                <td>
+                  <time datetime="2026-11-14">14/11/2026</time>
+                </td>
+                <td>
+                  <span class="ad-badge am-status-disabled">
+                    Désactivé
+                  </span>
+                </td>
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-enable"
+                      title="Activer le compte"
+                      aria-label="Activer le compte de Karim Martin"
+                    >
+                      <i class="bi bi-person-check" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Yanis Diallo</th>
+                <td>yanis.diallo@example.fr</td>
+                <td>
+                  <time datetime="2026-11-15">15/11/2026</time>
+                </td>
+                <td>
+                  <span class="ad-badge am-status-active">Actif</span>
+                </td>
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Désactiver le compte"
+                      aria-label="Désactiver le compte de Yanis Diallo"
+                    >
+                      <i class="bi bi-slash-circle" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Claire Petit</th>
+                <td>claire.petit@example.fr</td>
+                <td>
+                  <time datetime="2026-11-16">16/11/2026</time>
+                </td>
+                <td>
+                  <span class="ad-badge am-status-active">Actif</span>
+                </td>
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Désactiver le compte"
+                      aria-label="Désactiver le compte de Claire Petit"
+                    >
+                      <i class="bi bi-slash-circle" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Hugo Thomas</th>
+                <td>hugo.thomas@example.fr</td>
+                <td>
+                  <time datetime="2026-11-17">17/11/2026</time>
+                </td>
+                <td>
+                  <span class="ad-badge am-status-disabled">
+                    Désactivé
+                  </span>
+                </td>
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-enable"
+                      title="Activer le compte"
+                      aria-label="Activer le compte de Hugo Thomas"
+                    >
+                      <i class="bi bi-person-check" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="ad-footer">
+      © Saveurs Maison · Administration
+    </footer>
+
+  </div>
+
+</body>
+</html>

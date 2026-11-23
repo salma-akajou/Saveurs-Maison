@@ -9145,3 +9145,224 @@ button:focus-visible {
     gap: 10px;
   }
 }
+
+/* ==================================================
+   ADMIN — MEMBRES ET AVIS
+   Complète les styles communs du dashboard
+   ================================================== */
+
+/* FILTRES */
+
+.admin-page .am-filter-panel {
+  height: auto;
+  margin-bottom: 25px;
+  padding: 20px;
+}
+
+.admin-page .am-filter-panel .form-label {
+  margin-bottom: 8px;
+  color: var(--ad-green-dark);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-page .am-filter-panel .form-control,
+.admin-page .am-filter-panel .form-select {
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid #cbc3b8;
+  border-radius: 7px;
+  background-color: #fffefd;
+  color: var(--ad-text);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+}
+
+.admin-page .am-filter-panel .form-control::placeholder {
+  color: #92918a;
+}
+
+.admin-page .am-filter-panel .form-control:focus,
+.admin-page .am-filter-panel .form-select:focus {
+  border-color: #8a9c77;
+  box-shadow: 0 0 0 3px rgb(36 71 41 / 9%);
+}
+
+/* PANNEAU ET COMPTEURS */
+
+.admin-page .am-list-panel {
+  height: auto;
+  padding: 20px;
+}
+
+.admin-page .am-count {
+  padding: 5px 13px;
+  background: var(--ad-sage);
+  color: var(--ad-green-dark);
+  font-size: 12px;
+}
+
+.admin-page .am-count-reviews {
+  padding: 5px 13px;
+  background: var(--ad-orange);
+  color: #fff;
+  font-size: 12px;
+}
+
+/* TABLEAU DES MEMBRES */
+
+.admin-page .am-table thead th,
+.admin-page .am-reviews-table thead th {
+  padding: 12px;
+}
+
+.admin-page .am-table tbody th,
+.admin-page .am-table tbody td {
+  padding: 16px 12px;
+  vertical-align: middle;
+}
+
+.admin-page .am-table tbody th,
+.admin-page .am-reviews-table tbody th {
+  color: var(--ad-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-page .am-table tbody td {
+  font-size: 13px;
+}
+
+.admin-page .am-table td:nth-child(2),
+.admin-page .am-table td:nth-child(3) {
+  white-space: nowrap;
+}
+
+.admin-page .am-table tbody tr:last-child th,
+.admin-page .am-table tbody tr:last-child td,
+.admin-page .am-reviews-table tbody tr:last-child th,
+.admin-page .am-reviews-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* STATUT DES COMPTES */
+
+.admin-page .am-status-active {
+  min-width: 72px;
+  justify-content: center;
+  background: #deebce;
+  color: #355c28;
+}
+
+.admin-page .am-status-disabled {
+  min-width: 88px;
+  justify-content: center;
+  background: #fae2d7;
+  color: #a23c20;
+}
+
+/* ACTIONS PAR ICÔNES */
+
+.admin-page .am-action-column {
+  width: 85px;
+  text-align: center;
+}
+
+.admin-page .am-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-page .am-icon-button {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.admin-page .am-disable {
+  border-color: var(--ad-orange);
+  color: var(--ad-orange);
+}
+
+.admin-page .am-disable:hover {
+  background: #fae9e1;
+}
+
+.admin-page .am-enable {
+  border-color: var(--ad-green);
+  color: var(--ad-green);
+}
+
+.admin-page .am-enable:hover {
+  background: #edf1e5;
+}
+
+/* TABLEAU DES AVIS */
+
+.admin-page .am-reviews-table tbody th,
+.admin-page .am-reviews-table tbody td {
+  padding: 16px 12px;
+  vertical-align: middle;
+}
+
+.admin-page .am-reviews-table tbody td {
+  font-size: 13px;
+}
+
+.admin-page .am-reviews-table tbody th,
+.admin-page .am-reviews-table td:nth-child(5) {
+  white-space: nowrap;
+}
+
+.admin-page .am-review-recipe {
+  min-width: 170px;
+  color: var(--ad-orange);
+}
+
+.admin-page .am-comment-column {
+  width: 30%;
+}
+
+.admin-page .am-comment {
+  min-width: 230px;
+  max-width: 360px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+/* ÉTOILES */
+
+.admin-page .am-stars {
+  color: #ca650d;
+  font-size: 20px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.admin-page .am-star-empty {
+  color: #bcbcb8;
+}
+
+/* MOBILES */
+
+@media (max-width: 575.98px) {
+  .admin-page .am-filter-panel,
+  .admin-page .am-list-panel {
+    padding: 16px;
+  }
+
+  .admin-page .am-list-panel .ad-panel-heading h2 {
+    font-size: 25px;
+  }
+}

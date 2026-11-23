@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gestion des avis — Saveurs Maison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="admin-page admin-static-page">
+
+  <!-- MENU LATÉRAL -->
+  <aside class="ad-sidebar">
+    <div class="ad-sidebar-body">
+
+      <a href="dashboard.html" class="ad-brand">
+        <img src="../assets/images/logo.png" alt="Saveurs Maison">
+      </a>
+
+      <p class="ad-sidebar-label">Administration</p>
+
+      <nav class="ad-navigation" aria-label="Navigation administration">
+
+        <a href="dashboard.html" class="ad-nav-link">
+          <i class="bi bi-house-door" aria-hidden="true"></i>
+          <span>Tableau de bord</span>
+        </a>
+
+        <a href="recettes.html" class="ad-nav-link">
+          <i class="bi bi-journal-text" aria-hidden="true"></i>
+          <span>Recettes</span>
+          <span class="ad-nav-badge">5</span>
+        </a>
+
+        <a href="categories.html" class="ad-nav-link">
+          <i class="bi bi-tag" aria-hidden="true"></i>
+          <span>Catégories</span>
+        </a>
+
+        <a href="membres.html" class="ad-nav-link">
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <span>Membres</span>
+        </a>
+
+        <a
+          href="avis.html"
+          class="ad-nav-link active"
+          aria-current="page"
+        >
+          <i class="bi bi-chat-left" aria-hidden="true"></i>
+          <span>Avis</span>
+        </a>
+
+      </nav>
+
+      <div class="ad-sidebar-bottom">
+
+        <a href="../public/accueil.html" class="ad-nav-link">
+          <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          <span>Voir le site</span>
+        </a>
+
+        <button type="button" class="ad-nav-link ad-logout">
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+          <span>Se déconnecter</span>
+        </button>
+
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="ad-main">
+
+    <header class="ad-topbar">
+
+      <nav class="ad-breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li>Administration</li>
+          <li aria-current="page">Avis</li>
+        </ol>
+      </nav>
+
+      <div class="as-account">
+        <span class="ad-avatar" aria-hidden="true">AD</span>
+        <span>Administrateur</span>
+      </div>
+
+    </header>
+
+    <main class="ad-content">
+
+      <!-- TITRE -->
+      <section class="ad-page-heading" aria-labelledby="titre-page">
+        <div>
+          <h1 id="titre-page">Gestion des <em>avis</em></h1>
+
+          <p class="ad-page-description">
+            Consultez les commentaires et retirez les contenus inappropriés.
+          </p>
+        </div>
+      </section>
+
+      <!-- FILTRES STATIQUES -->
+      <section
+        class="ad-panel am-filter-panel"
+        aria-label="Rechercher et filtrer les avis"
+      >
+
+        <div class="row g-3">
+
+          <div class="col-md-7">
+            <label class="form-label" for="recherche-avis">
+              Membre ou recette
+            </label>
+
+            <input
+              type="search"
+              class="form-control"
+              id="recherche-avis"
+              placeholder="Rechercher un avis…"
+            >
+          </div>
+
+          <div class="col-md-5">
+            <label class="form-label" for="note-avis">Note</label>
+
+            <select class="form-select" id="note-avis">
+              <option value="">Toutes les notes</option>
+              <option value="5">5 étoiles</option>
+              <option value="4">4 étoiles</option>
+              <option value="3">3 étoiles</option>
+              <option value="2">2 étoiles</option>
+              <option value="1">1 étoile</option>
+            </select>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- LISTE DES AVIS -->
+      <section class="ad-panel am-list-panel" aria-labelledby="titre-avis">
+
+        <div class="ad-panel-heading">
+          <div class="ad-panel-title">
+            <h2 id="titre-avis">Liste des avis</h2>
+            <span class="ad-badge am-count-reviews">5 avis</span>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+
+          <table class="table ad-table am-reviews-table">
+
+            <caption class="visually-hidden">
+              Avis publiés par les membres et action de suppression.
+            </caption>
+
+            <thead>
+              <tr>
+                <th scope="col">Membre</th>
+                <th scope="col">Recette</th>
+                <th scope="col">Note</th>
+                <th scope="col" class="am-comment-column">Commentaire</th>
+                <th scope="col">Date</th>
+                <th scope="col" class="am-action-column">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+
+                <th scope="row">Nadia Ali</th>
+
+                <td class="am-review-recipe">
+                  Salade méditerranéenne
+                </td>
+
+                <td>
+                  <span class="am-stars" role="img" aria-label="5 sur 5">
+                    <span aria-hidden="true">★★★★★</span>
+                  </span>
+                </td>
+
+                <td class="am-comment">
+                  Fraîche et facile à préparer.
+                </td>
+
+                <td>
+                  <time datetime="2026-11-23">23/11/2026</time>
+                </td>
+
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Supprimer l’avis"
+                      aria-label="Supprimer l’avis de Nadia Ali"
+                    >
+                      <i class="bi bi-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+
+                <th scope="row">Yanis Diallo</th>
+
+                <td class="am-review-recipe">
+                  Poulet rôti aux herbes
+                </td>
+
+                <td>
+                  <span class="am-stars" role="img" aria-label="4 sur 5">
+                    <span aria-hidden="true">★★★★<span class="am-star-empty">★</span></span>
+                  </span>
+                </td>
+
+                <td class="am-comment">
+                  Très bonne recette, cuisson parfaite.
+                </td>
+
+                <td>
+                  <time datetime="2026-11-22">22/11/2026</time>
+                </td>
+
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Supprimer l’avis"
+                      aria-label="Supprimer l’avis de Yanis Diallo"
+                    >
+                      <i class="bi bi-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+
+                <th scope="row">Claire Petit</th>
+
+                <td class="am-review-recipe">
+                  Gâteau au coco
+                </td>
+
+                <td>
+                  <span class="am-stars" role="img" aria-label="5 sur 5">
+                    <span aria-hidden="true">★★★★★</span>
+                  </span>
+                </td>
+
+                <td class="am-comment">
+                  Un dessert moelleux que je referai.
+                </td>
+
+                <td>
+                  <time datetime="2026-11-21">21/11/2026</time>
+                </td>
+
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Supprimer l’avis"
+                      aria-label="Supprimer l’avis de Claire Petit"
+                    >
+                      <i class="bi bi-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+
+                <th scope="row">Karim Martin</th>
+
+                <td class="am-review-recipe">
+                  Tarte aux pommes
+                </td>
+
+                <td>
+                  <span class="am-stars" role="img" aria-label="4 sur 5">
+                    <span aria-hidden="true">★★★★<span class="am-star-empty">★</span></span>
+                  </span>
+                </td>
+
+                <td class="am-comment">
+                  Une belle recette, simple à suivre.
+                </td>
+
+                <td>
+                  <time datetime="2026-11-20">20/11/2026</time>
+                </td>
+
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Supprimer l’avis"
+                      aria-label="Supprimer l’avis de Karim Martin"
+                    >
+                      <i class="bi bi-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+
+                <th scope="row">Hugo Thomas</th>
+
+                <td class="am-review-recipe">
+                  Samoussas aux légumes
+                </td>
+
+                <td>
+                  <span class="am-stars" role="img" aria-label="3 sur 5">
+                    <span aria-hidden="true">★★★<span class="am-star-empty">★★</span></span>
+                  </span>
+                </td>
+
+                <td class="am-comment">
+                  La farce est bonne, mais je préfère une cuisson plus longue.
+                </td>
+
+                <td>
+                  <time datetime="2026-11-19">19/11/2026</time>
+                </td>
+
+                <td>
+                  <div class="am-actions">
+                    <button
+                      type="button"
+                      class="am-icon-button am-disable"
+                      title="Supprimer l’avis"
+                      aria-label="Supprimer l’avis de Hugo Thomas"
+                    >
+                      <i class="bi bi-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="ad-footer">
+      © Saveurs Maison · Administration
+    </footer>
+
+  </div>
+
+</body>
+</html>
