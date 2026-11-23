@@ -7084,3 +7084,153 @@ button:focus-visible {
     width: 100%;
   }
 }
+
+/* ==================================================
+   MODIFIER UNE RECETTE
+   Complète les styles rf- du formulaire d'ajout
+   ================================================== */
+
+/* MOTIF DE REFUS EN HAUT */
+
+.recipe-edit-page .re-refusal {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 0 0 15px;
+  padding: 18px 23px;
+  border: 1px solid #f0cfbd;
+  border-radius: 14px;
+  background: #fbe5d9;
+  scroll-margin-top: 25px;
+}
+
+.recipe-edit-page .re-status {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 16px;
+  border-radius: 20px;
+  background: #f7ceb9;
+  color: #a13b1f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recipe-edit-page .re-refusal-content {
+  min-width: 0;
+  padding-left: 22px;
+  border-left: 1px solid #d88762;
+}
+
+.recipe-edit-page .re-refusal-content h2 {
+  margin: 0 0 5px;
+  color: #a13b1f;
+  font-size: 25px;
+  line-height: 1.3;
+}
+
+.recipe-edit-page .re-refusal-content p {
+  margin: 0;
+  color: #5c4034;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+/* PHOTO ACTUELLE */
+
+.recipe-edit-page .re-photo-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.recipe-edit-page .re-current-photo {
+  width: 100%;
+  height: 185px;
+  border-radius: 11px;
+  object-fit: cover;
+}
+
+.recipe-edit-page .re-photo-wrap .rf-upload-button {
+  gap: 8px;
+  margin: 0;
+}
+
+.recipe-edit-page .re-photo-help {
+  max-width: 280px;
+  margin: 0;
+  color: var(--rf-muted);
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.recipe-edit-page .re-photo-wrap:focus-within .rf-upload-button {
+  outline: 3px solid var(--rf-terracotta);
+  outline-offset: 3px;
+}
+
+/* ÉTAPES : TITRE + DESCRIPTION */
+
+.recipe-edit-page .re-step {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5dfd4;
+}
+
+.recipe-edit-page .re-step:last-child {
+  margin-bottom: 12px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.recipe-edit-page .re-step-fields {
+  min-width: 0;
+}
+
+.recipe-edit-page .re-step .rf-step-number {
+  margin-top: 3px;
+}
+
+.recipe-edit-page .re-step .rf-remove-button {
+  margin-top: 3px;
+}
+
+.recipe-edit-page .re-step .rf-step-description {
+  min-height: 76px;
+}
+
+/* MOBILES */
+
+@media (max-width: 767.98px) {
+  .recipe-edit-page .re-refusal {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 17px;
+  }
+
+  .recipe-edit-page .re-refusal-content {
+    padding-top: 12px;
+    padding-left: 0;
+    border-top: 1px solid #e5b9a2;
+    border-left: none;
+  }
+
+  .recipe-edit-page .re-refusal-content h2 {
+    font-size: 23px;
+  }
+
+  .recipe-edit-page .re-current-photo {
+    height: 220px;
+  }
+
+  .recipe-edit-page .re-step .rf-label {
+    font-size: 11px;
+  }
+}
