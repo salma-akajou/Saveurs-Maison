@@ -15,7 +15,7 @@ $nomsDifficultes = [
 ];
 
 // Enlève les zéros inutiles d'une quantité (ex. "4.00" -> "4", "2.50" -> "2,5").
-function formaterQuantite($quantite)
+function formaterQuantite(?string $quantite)
 {
     if ($quantite === null) {
         return null;
@@ -121,7 +121,7 @@ function formaterQuantite($quantite)
                   <?= strtoupper(mb_substr($recette['auteur_prenom'], 0, 1) . mb_substr($recette['auteur_nom'], 0, 1)) ?>
                 </span>
                 <span>
-                  Par <strong><?= htmlspecialchars($recette['auteur_prenom'] . ' ' . $recette['auteur_nom']) ?></strong>
+                  Par <strong><?= htmlspecialchars($recette['auteur_prenom']) ?></strong>
                 </span>
               </div>
 
@@ -325,14 +325,93 @@ function formaterQuantite($quantite)
 
           <?php endif; ?>
 
-          <!-- Pas encore de connexion : on invite à se connecter pour donner un avis. -->
+          <!-- FORMULAIRE D'AVIS -->
+          <!-- Pas encore de connexion : envoyer le formulaire redirige
+               simplement vers la page de connexion pour l'instant. -->
           <div class="rd-review-form-panel">
+
             <h3>Et vous, qu’en pensez-vous ?</h3>
 
-            <p>
-              <a href="connexion.php">Connectez-vous</a>
-              pour laisser une note et un commentaire.
-            </p>
+            <form
+              class="rd-review-form"
+              onsubmit="event.preventDefault(); window.location.href = 'connexion.php';"
+            >
+
+              <div class="rd-review-form-grid">
+
+                <fieldset class="rd-rating-field">
+                  <legend>Votre note</legend>
+
+                  <div class="rd-star-options">
+
+                    <div class="rd-star-choice">
+                      <input type="radio" name="note" id="note-1" value="1" required>
+                      <label for="note-1">
+                        <span aria-hidden="true">★</span>
+                        <span class="visually-hidden">1 étoile sur 5</span>
+                      </label>
+                    </div>
+
+                    <div class="rd-star-choice">
+                      <input type="radio" name="note" id="note-2" value="2">
+                      <label for="note-2">
+                        <span aria-hidden="true">★</span>
+                        <span class="visually-hidden">2 étoiles sur 5</span>
+                      </label>
+                    </div>
+
+                    <div class="rd-star-choice">
+                      <input type="radio" name="note" id="note-3" value="3">
+                      <label for="note-3">
+                        <span aria-hidden="true">★</span>
+                        <span class="visually-hidden">3 étoiles sur 5</span>
+                      </label>
+                    </div>
+
+                    <div class="rd-star-choice">
+                      <input type="radio" name="note" id="note-4" value="4">
+                      <label for="note-4">
+                        <span aria-hidden="true">★</span>
+                        <span class="visually-hidden">4 étoiles sur 5</span>
+                      </label>
+                    </div>
+
+                    <div class="rd-star-choice">
+                      <input type="radio" name="note" id="note-5" value="5">
+                      <label for="note-5">
+                        <span aria-hidden="true">★</span>
+                        <span class="visually-hidden">5 étoiles sur 5</span>
+                      </label>
+                    </div>
+
+                  </div>
+
+                </fieldset>
+
+                <div class="rd-comment-field">
+                  <label for="commentaire">Votre commentaire</label>
+
+                  <textarea
+                    id="commentaire"
+                    name="commentaire"
+                    rows="3"
+                    placeholder="Partagez votre expérience en cuisine…"
+                    required
+                  ></textarea>
+                </div>
+
+              </div>
+
+              <div class="rd-review-form-bottom">
+                <p>Un seul avis par recette et par membre.</p>
+
+                <button type="submit" class="btn-green">
+                  Publier mon avis
+                </button>
+              </div>
+
+            </form>
+
           </div>
 
         </section>
@@ -343,6 +422,32 @@ function formaterQuantite($quantite)
   </main>
 
   <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+
+  <?php if ($donnees !== null): ?>
+    <script>
+      // Colorer les étoiles jusqu'à la note choisie.
+      var notes = document.querySelectorAll('.rd-star-choice input[name="note"]');
+
+      function actualiserEtoiles() {
+        var noteSelectionnee = document.querySelector(
+          '.rd-star-choice input[name="note"]:checked'
+        );
+
+        var valeur = noteSelectionnee ? Number(noteSelectionnee.value) : 0;
+
+        notes.forEach(function (input) {
+          input.parentElement.classList.toggle(
+            "is-filled",
+            Number(input.value) <= valeur
+          );
+        });
+      }
+
+      notes.forEach(function (input) {
+        input.addEventListener("change", actualiserEtoiles);
+      });
+    </script>
+  <?php endif; ?>
 
 </body>
 </html>

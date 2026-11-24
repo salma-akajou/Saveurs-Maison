@@ -93,24 +93,34 @@ INSERT INTO ETAPE (titre, numero_ordre, description, id_recette) VALUES
   ('Assaisonnez', 5, 'Arrosez d’huile d’olive. Salez et poivrez selon votre goût, puis mélangez pour bien répartir les saveurs.', 1),
   ('Servez et savourez', 6, 'Ajoutez les feuilles de basilic et servez la salade fraîche. Goûtez et ajustez l’assaisonnement si nécessaire.', 1),
 
-  ('Préparer les légumes', 1, 'Épluchez les pommes de terre et les carottes. Coupez-les en petits morceaux et faites-les cuire.', 2),
-  ('Garnir et plier', 2, 'Mélangez les légumes avec les petits pois. Répartissez la farce sur les feuilles de brick et pliez-les en triangles.', 2),
-  ('Faire dorer', 3, 'Badigeonnez les samoussas d’huile et faites-les dorer pendant 10 minutes.', 2),
+  ('Préparer les légumes', 1, 'Épluchez les pommes de terre et les carottes. Coupez-les en petits morceaux.', 2),
+  ('Cuire les légumes', 2, 'Faites cuire les pommes de terre et les carottes à l’eau jusqu’à ce qu’elles soient tendres.', 2),
+  ('Préparer la farce', 3, 'Égouttez les légumes et écrasez-les grossièrement avec les petits pois.', 2),
+  ('Garnir et plier', 4, 'Répartissez la farce sur les feuilles de brick et pliez-les en triangles.', 2),
+  ('Faire dorer', 5, 'Badigeonnez les samoussas d’huile et faites-les dorer pendant 10 minutes.', 2),
 
-  ('Préparer la pâte', 1, 'Mélangez la farine, le sucre, les œufs et le beurre fondu jusqu’à obtenir une pâte lisse.', 3),
-  ('Ajouter le coco', 2, 'Incorporez la noix de coco râpée et le lait de coco à la préparation.', 3),
-  ('Cuire au four', 3, 'Versez la pâte dans un moule beurré et faites cuire au four jusqu’à ce que le gâteau soit doré.', 3),
+  ('Préparer les ingrédients', 1, 'Sortez le beurre à température ambiante et préchauffez le four.', 3),
+  ('Mélanger la pâte', 2, 'Mélangez la farine, le sucre, les œufs et le beurre fondu jusqu’à obtenir une pâte lisse.', 3),
+  ('Ajouter le coco', 3, 'Incorporez la noix de coco râpée et le lait de coco à la préparation.', 3),
+  ('Verser dans le moule', 4, 'Versez la pâte dans un moule beurré et égalisez la surface.', 3),
+  ('Cuire au four', 5, 'Faites cuire au four jusqu’à ce que le gâteau soit doré.', 3),
 
-  ('Préparer les pommes', 1, 'Épluchez et coupez les pommes en fines tranches. Mélangez-les avec le sucre et la cannelle.', 4),
-  ('Garnir la pâte', 2, 'Étalez la pâte brisée dans un moule et disposez les pommes en rosace.', 4),
-  ('Cuire au four', 3, 'Ajoutez quelques noisettes de beurre et faites cuire au four jusqu’à ce que la tarte soit dorée.', 4),
+  ('Préparer la pâte', 1, 'Étalez la pâte brisée dans un moule à tarte.', 4),
+  ('Éplucher les pommes', 2, 'Épluchez et coupez les pommes en fines tranches.', 4),
+  ('Garnir la pâte', 3, 'Disposez les tranches de pommes en rosace sur la pâte.', 4),
+  ('Saupoudrer de cannelle', 4, 'Saupoudrez de sucre et de cannelle, puis ajoutez quelques noisettes de beurre.', 4),
+  ('Cuire au four', 5, 'Faites cuire au four jusqu’à ce que la tarte soit dorée.', 4),
 
-  ('Préparer les fruits', 1, 'Épluchez la mangue et coupez sa chair en morceaux.', 5),
-  ('Mixer et servir', 2, 'Mixez la mangue avec le jus de passion et l’eau jusqu’à obtenir une texture lisse. Servez frais.', 5),
+  ('Préparer la mangue', 1, 'Épluchez la mangue et coupez sa chair en morceaux.', 5),
+  ('Préparer le jus de passion', 2, 'Coupez les fruits de la passion en deux et récupérez la pulpe.', 5),
+  ('Mixer les ingrédients', 3, 'Mixez la mangue, la pulpe de passion et l’eau jusqu’à obtenir une texture lisse.', 5),
+  ('Servir frais', 4, 'Versez le smoothie dans un verre et servez immédiatement.', 5),
 
-  ('Préparer le poulet', 1, 'Frottez le poulet avec l’ail écrasé, le thym et le romarin.', 6),
-  ('Assaisonner', 2, 'Arrosez d’huile d’olive, salez et poivrez l’intérieur et l’extérieur du poulet.', 6),
-  ('Rôtir au four', 3, 'Faites rôtir au four en arrosant régulièrement, jusqu’à ce que le poulet soit bien doré.', 6);
+  ('Préparer le poulet', 1, 'Sortez le poulet du réfrigérateur et préchauffez le four.', 6),
+  ('Préparer les herbes', 2, 'Hachez le thym, le romarin et l’ail.', 6),
+  ('Assaisonner', 3, 'Frottez le poulet avec les herbes, l’huile d’olive, le sel et le poivre.', 6),
+  ('Rôtir au four', 4, 'Faites rôtir au four en arrosant régulièrement, jusqu’à ce que le poulet soit bien doré.', 6),
+  ('Laisser reposer', 5, 'Laissez reposer le poulet quelques minutes avant de le découper.', 6);
 
 -- --------------------------------------------------
 -- INGREDIENT
@@ -205,11 +215,29 @@ INSERT INTO RECETTE_INGREDIENT (id_recette, id_ingredient, quantite, unite) VALU
 -- --------------------------------------------------
 
 INSERT INTO AVIS (note, commentaire, date_avis, id_utilisateur, id_recette) VALUES
+  -- Salade méditerranéenne (2 avis)
   (5, 'Fraîche et facile à préparer.',                               '2026-11-23 09:00:00', 3, 1),
-  (4, 'Très bonne recette, cuisson parfaite.',                       '2026-11-22 20:15:00', 5, 6),
+  (4, 'Simple et rapide, parfaite en été.',                          '2026-11-23 11:30:00', 2, 1),
+
+  -- Samoussas aux légumes (2 avis)
+  (3, 'La farce est bonne, mais je préfère une cuisson plus longue.', '2026-11-19 13:25:00', 7, 2),
+  (4, 'Bien croustillants, la farce est savoureuse.',                 '2026-11-20 10:00:00', 4, 2),
+
+  -- Gâteau au coco (2 avis)
   (5, 'Un dessert moelleux que je referai.',                         '2026-11-21 17:40:00', 6, 3),
+  (5, 'Un délice, toute la famille a adoré.',                        '2026-11-22 08:15:00', 5, 3),
+
+  -- Tarte aux pommes (2 avis)
   (4, 'Une belle recette, simple à suivre.',                         '2026-11-20 21:05:00', 4, 4),
-  (3, 'La farce est bonne, mais je préfère une cuisson plus longue.', '2026-11-19 13:25:00', 7, 2);
+  (5, 'Les pommes sont fondantes, très bonne recette.',               '2026-11-21 09:40:00', 7, 4),
+
+  -- Smoothie mangue passion (2 avis)
+  (4, 'Bien frais et fruité, parfait pour l’été.',                    '2026-11-20 16:00:00', 3, 5),
+  (5, 'Rapide à préparer et vraiment délicieux.',                    '2026-11-21 12:20:00', 6, 5),
+
+  -- Poulet rôti aux herbes (2 avis)
+  (4, 'Très bonne recette, cuisson parfaite.',                       '2026-11-22 20:15:00', 5, 6),
+  (5, 'Le poulet est parfaitement cuit, un régal.',                  '2026-11-23 19:00:00', 2, 6);
 
 -- --------------------------------------------------
 -- FAVORI
