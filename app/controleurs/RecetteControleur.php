@@ -17,6 +17,11 @@ class RecetteControleur
     {
         $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
+        // Envoi du formulaire d'avis : seulement possible si connecté.
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['utilisateur_id'])) {
+            $this->enregistrerAvis($id);
+        }
+
         $recette = Recette::trouverPublieeParId($id);
 
         if ($recette === null) {
@@ -24,9 +29,12 @@ class RecetteControleur
         }
 
         $estFavori = false;
+        $dejaDonneAvis = false;
 
         if (isset($_SESSION['utilisateur_id'])) {
-            $estFavori = Favori::estFavori((int) $_SESSION['utilisateur_id'], $id);
+            $idUtilisateur = (int) $_SESSION['utilisateur_id'];
+            $estFavori = Favori::estFavori($idUtilisateur, $id);
+            $dejaDonneAvis = Avis::aDejaDonneAvis($idUtilisateur, $id);
         }
 
         return [
@@ -35,6 +43,25 @@ class RecetteControleur
             'etapes' => Etape::listerParRecette($id),
             'avis' => Avis::listerParRecette($id),
             'estFavori' => $estFavori,
+            'dejaDonneAvis' => $dejaDonneAvis,
         ];
+    }
+
+    // Enregistre l'avis envoyé par le formulaire, puis redirige vers la
+    // même page (évite qu'un rechargement renvoie le même avis deux fois).
+    private function enregistrerAvis(int $idRecette)
+    {
+        $idUtilisateur = (int) $_SESSION['utilisateur_id'];
+        $note = (int) ($_POST['note'] ?? 0);
+        $commentaire = trim($_POST['commentaire'] ?? '');
+
+        $estValide = $note >= 1 && $note <= 5 && $commentaire !== '';
+
+        if ($estValide && !Avis::aDejaDonneAvis($idUtilisateur, $idRecette)) {
+            Avis::ajouter($idUtilisateur, $idRecette, $note, $commentaire);
+        }
+
+        header('Location: recette.php?id=' . $idRecette . '#avis');
+        exit;
     }
 }

@@ -3937,6 +3937,14 @@ button:focus-visible {
   background: #fffdfa;
 }
 
+.rd-review-already {
+  margin: 0;
+
+  color: var(--rd-text, #4a4a4a);
+
+  font-size: 15px;
+}
+
 .rd-review-form-panel > h3 {
   margin-bottom: 20px;
 

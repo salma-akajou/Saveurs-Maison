@@ -345,15 +345,23 @@ function formaterQuantite(?string $quantite)
           <?php endif; ?>
 
           <!-- FORMULAIRE D'AVIS -->
-          <!-- Pas encore de connexion : envoyer le formulaire redirige
-               simplement vers la page de connexion pour l'instant. -->
           <div class="rd-review-form-panel">
 
             <h3>Et vous, qu’en pensez-vous ?</h3>
 
+            <?php if ($donnees['dejaDonneAvis']): ?>
+
+              <p class="rd-review-already">
+                Vous avez déjà donné votre avis sur cette recette. Merci !
+              </p>
+
+            <?php else: ?>
+
             <form
               class="rd-review-form"
-              onsubmit="event.preventDefault(); window.location.href = 'connexion.php';"
+              method="post"
+              action="recette.php?id=<?= (int) $recette['id_recette'] ?>"
+              <?= !isset($_SESSION['utilisateur_id']) ? 'onsubmit="event.preventDefault(); window.location.href = \'connexion.php\';"' : '' ?>
             >
 
               <div class="rd-review-form-grid">
@@ -430,6 +438,8 @@ function formaterQuantite(?string $quantite)
               </div>
 
             </form>
+
+            <?php endif; ?>
 
           </div>
 
