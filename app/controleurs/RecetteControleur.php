@@ -61,7 +61,7 @@ class RecetteControleur
             Avis::ajouter($idUtilisateur, $idRecette, $note, $commentaire);
         }
 
-        header('Location: recette.php?id=' . $idRecette . '#avis');
+        header('Location: recette.php?id=' . $idRecette . '&avis=succes#avis');
         exit;
     }
 }

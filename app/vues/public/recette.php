@@ -10,6 +10,9 @@ $donnees = $controleur->afficher();
 
 $pageActuelle = 'recettes';
 
+// Vient de RecetteControleur juste après l'envoi réussi d'un avis.
+$avisEnvoye = isset($_GET['avis']) && $_GET['avis'] === 'succes';
+
 // Traduction de la difficulté pour l'affichage.
 $nomsDifficultes = [
     'facile' => 'Facile',
@@ -300,62 +303,108 @@ function formaterQuantite(?string $quantite)
 
           <?php else: ?>
 
-            <div class="rd-reviews-grid">
+            <!--
+              Carrousel d'avis : n'affiche que deux avis à la fois (une
+              "page"), avec des flèches pour voir les autres, pour que
+              la liste ne pousse jamais le formulaire plus bas même si
+              une recette a beaucoup d'avis.
+            -->
+            <div class="rd-reviews-carousel">
 
-              <?php foreach ($donnees['avis'] as $avis): ?>
+              <button
+                type="button"
+                class="rd-reviews-arrow rd-reviews-prev"
+                aria-label="Avis précédents"
+                disabled
+              >
+                <i class="bi bi-chevron-left" aria-hidden="true"></i>
+              </button>
 
-                <?php
-                  $initiales = strtoupper(mb_substr($avis['prenom'], 0, 1) . mb_substr($avis['nom'], 0, 1));
-                  $etoiles = str_repeat('★', $avis['note']) . str_repeat('☆', 5 - $avis['note']);
-                ?>
+              <div class="rd-reviews-grid" id="avis-grid">
 
-                <article class="rd-review-card">
+                <?php foreach ($donnees['avis'] as $index => $avis): ?>
 
-                  <div class="rd-review-header">
+                  <?php
+                    $initiales = strtoupper(mb_substr($avis['prenom'], 0, 1) . mb_substr($avis['nom'], 0, 1));
+                    $etoiles = str_repeat('★', $avis['note']) . str_repeat('☆', 5 - $avis['note']);
 
-                    <div class="rd-review-author">
-                      <span class="rd-avatar" aria-hidden="true"><?= $initiales ?></span>
+                    // Deux avis par page (0, 0, 1, 1, 2, 2, ...).
+                    $page = intdiv($index, 2);
+                  ?>
 
-                      <div>
-                        <h3>
-                          <?= htmlspecialchars($avis['prenom'] . ' ' . mb_substr($avis['nom'], 0, 1) . '.') ?>
-                        </h3>
-                        <div class="rd-review-stars" aria-label="Note : <?= $avis['note'] ?> sur 5">
-                          <?= $etoiles ?>
+                  <article class="rd-review-card" data-page="<?= $page ?>" <?= $page !== 0 ? 'hidden' : '' ?>>
+
+                    <div class="rd-review-header">
+
+                      <div class="rd-review-author">
+                        <span class="rd-avatar" aria-hidden="true"><?= $initiales ?></span>
+
+                        <div>
+                          <h3>
+                            <?= htmlspecialchars($avis['prenom'] . ' ' . mb_substr($avis['nom'], 0, 1) . '.') ?>
+                          </h3>
+                          <div class="rd-review-stars" aria-label="Note : <?= $avis['note'] ?> sur 5">
+                            <?= $etoiles ?>
+                          </div>
                         </div>
                       </div>
+
+                      <time datetime="<?= $avis['date_avis'] ?>">
+                        <?= date('d/m/Y', strtotime($avis['date_avis'])) ?>
+                      </time>
+
                     </div>
 
-                    <time datetime="<?= $avis['date_avis'] ?>">
-                      <?= date('d/m/Y', strtotime($avis['date_avis'])) ?>
-                    </time>
+                    <p>
+                      <?= htmlspecialchars($avis['commentaire']) ?>
+                    </p>
 
-                  </div>
+                  </article>
 
-                  <p>
-                    <?= htmlspecialchars($avis['commentaire']) ?>
-                  </p>
+                <?php endforeach; ?>
 
-                </article>
+              </div>
 
-              <?php endforeach; ?>
+              <button
+                type="button"
+                class="rd-reviews-arrow rd-reviews-next"
+                aria-label="Avis suivants"
+              >
+                <i class="bi bi-chevron-right" aria-hidden="true"></i>
+              </button>
 
             </div>
+
+            <p
+              class="rd-reviews-page-indicator"
+              id="avis-indicator"
+              role="status"
+              aria-live="polite"
+            ></p>
 
           <?php endif; ?>
 
           <!-- FORMULAIRE D'AVIS -->
           <div class="rd-review-form-panel">
 
-            <h3>Et vous, qu’en pensez-vous ?</h3>
+            <?php if ($avisEnvoye): ?>
 
-            <?php if ($donnees['dejaDonneAvis']): ?>
+              <!-- Message temporaire, disparaît tout seul après l'envoi. -->
+              <p class="rd-review-success" id="message-avis-succes">
+                Merci pour votre avis !
+              </p>
+
+            <?php elseif ($donnees['dejaDonneAvis']): ?>
+
+              <h3>Et vous, qu’en pensez-vous ?</h3>
 
               <p class="rd-review-already">
                 Vous avez déjà donné votre avis sur cette recette. Merci !
               </p>
 
             <?php else: ?>
+
+              <h3>Et vous, qu’en pensez-vous ?</h3>
 
             <form
               class="rd-review-form"
@@ -495,6 +544,59 @@ function formaterQuantite(?string $quantite)
       notes.forEach(function (input) {
         input.addEventListener("change", actualiserEtoiles);
       });
+
+      // Carrousel d'avis : affiche les avis deux par deux.
+      var cartesAvis = document.querySelectorAll("#avis-grid .rd-review-card");
+
+      if (cartesAvis.length > 0) {
+        var boutonPrecedent = document.querySelector(".rd-reviews-prev");
+        var boutonSuivant = document.querySelector(".rd-reviews-next");
+        var indicateurPage = document.getElementById("avis-indicator");
+
+        var numerosPage = Array.from(cartesAvis, function (carte) {
+          return Number(carte.dataset.page);
+        });
+        var nombreDePages = Math.max.apply(null, numerosPage) + 1;
+
+        var pageActuelle = 0;
+
+        function afficherPageAvis() {
+          cartesAvis.forEach(function (carte) {
+            carte.hidden = Number(carte.dataset.page) !== pageActuelle;
+          });
+
+          boutonPrecedent.disabled = pageActuelle === 0;
+          boutonSuivant.disabled = pageActuelle === nombreDePages - 1;
+
+          indicateurPage.textContent =
+            "Page " + (pageActuelle + 1) + " sur " + nombreDePages;
+        }
+
+        boutonPrecedent.addEventListener("click", function () {
+          pageActuelle = Math.max(0, pageActuelle - 1);
+          afficherPageAvis();
+        });
+
+        boutonSuivant.addEventListener("click", function () {
+          pageActuelle = Math.min(nombreDePages - 1, pageActuelle + 1);
+          afficherPageAvis();
+        });
+
+        afficherPageAvis();
+      }
+
+      // Message "Merci pour votre avis !" : disparaît tout seul.
+      var messageAvisSucces = document.getElementById("message-avis-succes");
+
+      if (messageAvisSucces) {
+        setTimeout(function () {
+          messageAvisSucces.classList.add("rd-review-success-sortie");
+        }, 2500);
+
+        messageAvisSucces.addEventListener("transitionend", function () {
+          messageAvisSucces.remove();
+        });
+      }
     </script>
   <?php endif; ?>
 
