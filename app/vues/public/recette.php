@@ -275,7 +275,7 @@ function formaterQuantite(?string $quantite)
 
           <?php if (count($donnees['avis']) === 0): ?>
 
-            <p>
+            <p class="rd-reviews-empty">
               Aucun avis pour cette recette pour le moment.
             </p>
 

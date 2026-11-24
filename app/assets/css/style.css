@@ -3806,6 +3806,11 @@ button:focus-visible {
 
   flex: 1;
   min-width: 0;
+  margin-bottom: 26px;
+}
+
+.rd-reviews-empty {
+  margin: 0 0 26px;
 }
 
 .rd-reviews-arrow {
