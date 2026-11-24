@@ -445,6 +445,23 @@ function formaterQuantite(?string $quantite)
   <!-- Nécessaire pour le menu déroulant du compte (navbar membre). -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <script>
+    // Garde la position de défilement lors d'un ajout/retrait de favori
+    // (sinon la page revient en haut après le rechargement).
+    document.querySelectorAll('form[action*="basculer-favori.php"]').forEach(function (formulaire) {
+      formulaire.addEventListener("submit", function () {
+        sessionStorage.setItem("positionAvantFavori", window.scrollY);
+      });
+    });
+
+    var positionMemorisee = sessionStorage.getItem("positionAvantFavori");
+
+    if (positionMemorisee !== null) {
+      window.scrollTo(0, parseInt(positionMemorisee, 10));
+      sessionStorage.removeItem("positionAvantFavori");
+    }
+  </script>
+
   <?php if ($donnees !== null): ?>
     <script>
       // Colorer les étoiles jusqu'à la note choisie.
