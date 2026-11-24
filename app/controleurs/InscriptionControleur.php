@@ -5,8 +5,8 @@ require_once __DIR__ . '/../modeles/Utilisateur.php';
 /*
  * Contrôleur de l'inscription.
  * Affiche le formulaire, et traite son envoi (méthode POST) :
- * validation des champs, création du compte, puis redirection
- * vers la connexion.
+ * validation des champs, création du compte, puis connexion
+ * automatique et redirection vers l'accueil.
  */
 class InscriptionControleur
 {
@@ -43,9 +43,16 @@ class InscriptionControleur
             }
 
             if (empty($erreurs)) {
-                Utilisateur::creerCompte($nom, $prenom, $email, $motDePasse);
+                $idUtilisateur = Utilisateur::creerCompte($nom, $prenom, $email, $motDePasse);
 
-                header('Location: connexion.php?inscription=succes');
+                // Connexion automatique : pas besoin de ressaisir
+                // son mot de passe juste après avoir créé le compte.
+                $_SESSION['utilisateur_id'] = $idUtilisateur;
+                $_SESSION['utilisateur_prenom'] = $prenom;
+                $_SESSION['utilisateur_role'] = 'membre';
+                session_regenerate_id(true);
+
+                header('Location: accueil.php?bienvenue=1');
                 exit;
             }
         }

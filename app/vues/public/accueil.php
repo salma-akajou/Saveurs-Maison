@@ -10,6 +10,9 @@ $controleur = new AccueilControleur();
 $recettes = $controleur->afficher();
 
 $pageActuelle = 'accueil';
+
+// Vient de InscriptionControleur, juste après la création du compte.
+$bienvenue = isset($_GET['bienvenue']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -35,6 +38,14 @@ $pageActuelle = 'accueil';
   <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
 
   <main>
+
+    <?php if ($bienvenue): ?>
+      <div class="container">
+        <div class="alert alert-success mt-3" role="alert">
+          Bienvenue <?= htmlspecialchars($_SESSION['utilisateur_prenom']) ?> ! Votre compte a bien été créé, vous êtes maintenant connecté(e).
+        </div>
+      </div>
+    <?php endif; ?>
 
     <!-- HERO -->
     <section class="hero-section">

@@ -8,9 +8,6 @@ require_once __DIR__ . '/../../controleurs/ConnexionControleur.php';
 
 $controleur = new ConnexionControleur();
 $donnees = $controleur->afficher();
-
-// Vient de InscriptionControleur après une création de compte réussie.
-$inscriptionReussie = isset($_GET['inscription']) && $_GET['inscription'] === 'succes';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -70,12 +67,6 @@ $inscriptionReussie = isset($_GET['inscription']) && $_GET['inscription'] === 's
             <p class="auth-subtext">
               Accédez à votre compte Saveurs Maison.
             </p>
-
-            <?php if ($inscriptionReussie): ?>
-              <div class="alert alert-success" role="alert">
-                Votre compte a bien été créé. Vous pouvez maintenant vous connecter.
-              </div>
-            <?php endif; ?>
 
             <?php if (!empty($donnees['erreurs'])): ?>
               <div class="alert alert-danger" role="alert">
