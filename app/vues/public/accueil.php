@@ -1,10 +1,3 @@
-<?php
-
-require_once __DIR__ . '/../controleurs/AccueilControleur.php';
-
-$controleur = new AccueilControleur();
-$recettes = $controleur->afficher();
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,9 +11,9 @@ $recettes = $controleur->afficher();
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="public/assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="public/assets/css/style.css">
 </head>
 
 <body>
@@ -29,9 +22,9 @@ $recettes = $controleur->afficher();
   <header class="site-header">
     <div class="container header-inner">
 
-      <a href="accueil.php" class="brand" aria-label="Saveurs Maison — Accueil">
+      <a href="index.php?page=accueil" class="brand" aria-label="Saveurs Maison — Accueil">
         <img
-          src="../assets/images/logo.png"
+          src="public/assets/images/logo.png"
           alt="Saveurs Maison"
           class="site-logo"
         >
@@ -44,14 +37,14 @@ $recettes = $controleur->afficher();
       </label>
 
       <nav class="main-nav" aria-label="Navigation principale">
-        <a href="accueil.php" class="active" aria-current="page">Accueil</a>
+        <a href="index.php?page=accueil" class="active" aria-current="page">Accueil</a>
         <a href="#a-propos">À propos</a>
-        <a href="recettes.php">Les recettes</a>
+        <a href="index.php?page=recettes">Les recettes</a>
       </nav>
 
       <div class="header-actions">
-        <a href="connexion.php" class="login-link">Connexion</a>
-        <a href="inscription.php" class="btn-green">Créer un compte</a>
+        <a href="index.php?page=connexion" class="login-link">Connexion</a>
+        <a href="index.php?page=inscription" class="btn-green">Créer un compte</a>
       </div>
 
     </div>
@@ -77,7 +70,9 @@ $recettes = $controleur->afficher();
               Découvrez des idées gourmandes et partagez vos recettes maison.
             </p>
 
-            <form class="hero-search" action="recettes.php" method="get">
+            <form class="hero-search" action="index.php" method="get">
+              <input type="hidden" name="page" value="recettes">
+
               <label for="recherche" class="visually-hidden">
                 Rechercher une recette
               </label>
@@ -105,7 +100,7 @@ $recettes = $controleur->afficher();
             <div class="hero-visual">
 
               <img
-                src="../assets/images/hero.jpg"
+                src="public/assets/images/hero.jpg"
                 alt="Couscous aux légumes rôtis, pois chiches et herbes fraîches"
                 class="hero-image"
                 fetchpriority="high"
@@ -131,9 +126,9 @@ $recettes = $controleur->afficher();
         <div class="row g-3">
 
           <div class="col-6 col-lg-3">
-            <a href="recettes.php?categorie=1" class="category-card">
+            <a href="index.php?page=recettes&amp;categorie=1" class="category-card">
               <img
-                src="../assets/images/salade-mediterraneenne.jpg"
+                src="public/assets/images/salade-mediterraneenne.jpg"
                 alt=""
                 loading="lazy"
               >
@@ -142,9 +137,9 @@ $recettes = $controleur->afficher();
           </div>
 
           <div class="col-6 col-lg-3">
-            <a href="recettes.php?categorie=2" class="category-card">
+            <a href="index.php?page=recettes&amp;categorie=2" class="category-card">
               <img
-                src="../assets/images/poulet-roti-herbes.jpg"
+                src="public/assets/images/poulet-roti-herbes.jpg"
                 alt=""
                 loading="lazy"
               >
@@ -153,9 +148,9 @@ $recettes = $controleur->afficher();
           </div>
 
           <div class="col-6 col-lg-3">
-            <a href="recettes.php?categorie=3" class="category-card">
+            <a href="index.php?page=recettes&amp;categorie=3" class="category-card">
               <img
-                src="../assets/images/gateau-coco.jpg"
+                src="public/assets/images/gateau-coco.jpg"
                 alt=""
                 loading="lazy"
               >
@@ -164,9 +159,9 @@ $recettes = $controleur->afficher();
           </div>
 
           <div class="col-6 col-lg-3">
-            <a href="recettes.php?categorie=4" class="category-card">
+            <a href="index.php?page=recettes&amp;categorie=4" class="category-card">
               <img
-                src="../assets/images/smoothie-mangue-passion.jpg"
+                src="public/assets/images/smoothie-mangue-passion.jpg"
                 alt=""
                 loading="lazy"
               >
@@ -187,7 +182,7 @@ $recettes = $controleur->afficher();
 
           <div class="col-lg-6">
             <img
-              src="../assets/images/a-propos-cuisine.jpg"
+              src="public/assets/images/a-propos-cuisine.jpg"
               alt="Préparation de légumes frais dans une cuisine"
               class="about-image"
               loading="lazy"
@@ -204,7 +199,7 @@ $recettes = $controleur->afficher();
               des saveurs du quotidien.
             </p>
 
-            <a href="a-propos.php" class="text-link">
+            <a href="index.php?page=a-propos" class="text-link">
               En savoir plus <span aria-hidden="true">→</span>
             </a>
 
@@ -290,7 +285,7 @@ $recettes = $controleur->afficher();
         <div class="section-heading">
           <h2 class="section-title">Les dernières recettes</h2>
 
-          <a href="recettes.php" class="text-link">
+          <a href="index.php?page=recettes" class="text-link">
             Toutes les recettes <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -331,16 +326,16 @@ $recettes = $controleur->afficher();
               <article class="recipe-card">
 
                 <div class="recipe-image-wrap">
-                  <a href="recette.php?id=<?= (int) $recette['id_recette'] ?>">
+                  <a href="index.php?page=recette&amp;id=<?= (int) $recette['id_recette'] ?>">
                     <img
-                      src="../assets/images/<?= htmlspecialchars($recette['photo']) ?>"
+                      src="public/assets/images/<?= htmlspecialchars($recette['photo']) ?>"
                       alt="<?= htmlspecialchars($recette['titre']) ?>"
                       loading="lazy"
                     >
                   </a>
 
                   <a
-                    href="connexion.php"
+                    href="index.php?page=connexion"
                     class="favorite-button"
                     aria-label="Se connecter pour enregistrer cette recette en favori"
                   >
@@ -354,7 +349,7 @@ $recettes = $controleur->afficher();
                   </span>
 
                   <h3 class="recipe-title">
-                    <a href="recette.php?id=<?= (int) $recette['id_recette'] ?>">
+                    <a href="index.php?page=recette&amp;id=<?= (int) $recette['id_recette'] ?>">
                       <?= htmlspecialchars($recette['titre']) ?>
                     </a>
                   </h3>
@@ -399,7 +394,7 @@ $recettes = $controleur->afficher();
               Rejoignez notre communauté et inspirez les cuisiniers du quotidien.
             </p>
 
-            <a href="inscription.php" class="btn-green">
+            <a href="index.php?page=inscription" class="btn-green">
               Partager une recette
             </a>
           </div>
@@ -418,9 +413,9 @@ $recettes = $controleur->afficher();
       <div class="row g-4 footer-main">
 
         <div class="col-12 col-md-6 col-lg-4 footer-brand">
-          <a href="accueil.php">
+          <a href="index.php?page=accueil">
             <img
-              src="../assets/images/logo.png"
+              src="public/assets/images/logo.png"
               alt="Saveurs Maison"
               class="footer-logo"
               loading="lazy"
@@ -436,25 +431,25 @@ $recettes = $controleur->afficher();
         <div class="col-12 col-sm-6 col-md-3 col-lg-2 footer-column">
           <h3>Explorer</h3>
 
-          <a href="recettes.php">Toutes les recettes</a>
-          <a href="recettes.php?categorie=1">Entrées</a>
-          <a href="recettes.php?categorie=2">Plats</a>
-          <a href="recettes.php?categorie=3">Desserts</a>
-          <a href="recettes.php?categorie=4">Boissons</a>
+          <a href="index.php?page=recettes">Toutes les recettes</a>
+          <a href="index.php?page=recettes&amp;categorie=1">Entrées</a>
+          <a href="index.php?page=recettes&amp;categorie=2">Plats</a>
+          <a href="index.php?page=recettes&amp;categorie=3">Desserts</a>
+          <a href="index.php?page=recettes&amp;categorie=4">Boissons</a>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3 col-lg-3 footer-column">
           <h3>Participer</h3>
 
-          <a href="inscription.php">Créer un compte</a>
-          <a href="connexion.php">Connexion</a>
-          <a href="inscription.php">Partager une recette</a>
+          <a href="index.php?page=inscription">Créer un compte</a>
+          <a href="index.php?page=connexion">Connexion</a>
+          <a href="index.php?page=inscription">Partager une recette</a>
         </div>
 
         <div class="col-12 col-md-6 col-lg-3 footer-column">
           <h3>Informations</h3>
 
-          <a href="a-propos.php">À propos</a>
+          <a href="index.php?page=a-propos">À propos</a>
         </div>
 
       </div>
