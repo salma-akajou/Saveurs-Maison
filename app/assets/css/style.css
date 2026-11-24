@@ -4342,6 +4342,16 @@ button:focus-visible {
   color: var(--white);
 }
 
+/* La navbar visiteur partagée garde ses propres couleurs, même sur
+   cette page (sans ça, ".about-page a" ci-dessus les écraserait). */
+.about-page .main-nav a {
+  color: var(--heading);
+}
+
+.about-page .login-link {
+  color: var(--olive);
+}
+
 .about-page h1,
 .about-page h2,
 .about-page h3 {

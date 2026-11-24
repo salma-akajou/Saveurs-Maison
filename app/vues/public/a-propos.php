@@ -1,3 +1,4 @@
+<?php $pageActuelle = 'a-propos'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,97 +20,7 @@
 <body class="about-page">
 
   <!-- NAVBAR -->
-  <header class="fv-header">
-    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
-      <div class="container">
-
-        <a class="navbar-brand fv-brand" href="accueil.php">
-          <img
-            src="../../assets/images/logo.png"
-            alt="Saveurs Maison — Accueil"
-          >
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navigationMembre"
-          aria-controls="navigationMembre"
-          aria-expanded="false"
-          aria-label="Ouvrir le menu"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navigationMembre">
-
-          <ul class="navbar-nav ms-auto fv-nav-links">
-            <li class="nav-item">
-              <a class="nav-link" href="accueil.php">Accueil</a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                href="a-propos.php"
-                aria-current="page"
-              >
-                À propos
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="recettes.php">Les recettes</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="favoris.php">Mes favoris</a>
-            </li>
-          </ul>
-
-          <div class="dropdown fv-account">
-
-            <button
-              class="fv-account-button"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span class="fv-avatar" aria-hidden="true">SL</span>
-              <span class="fv-account-name">Sophie</span>
-              <i class="bi bi-chevron-down fv-account-chevron" aria-hidden="true"></i>
-            </button>
-
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="mes-recettes.php">
-                  Mes recettes
-                </a>
-              </li>
-
-              <li>
-                <a class="dropdown-item" href="profil.php">
-                  Mon profil
-                </a>
-              </li>
-
-              <li><hr class="dropdown-divider"></li>
-
-              <li>
-                <a class="dropdown-item" href="connexion.php">
-                  <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
-                  Déconnexion
-                </a>
-              </li>
-            </ul>
-
-          </div>
-
-        </div>
-      </div>
-    </nav>
-  </header>
+  <?php require __DIR__ . '/navbar.php'; ?>
 
   <main>
 
@@ -342,8 +253,6 @@
 
     </div>
   </footer>
-
-  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -4,6 +4,8 @@ require_once __DIR__ . '/../../controleurs/AccueilControleur.php';
 
 $controleur = new AccueilControleur();
 $recettes = $controleur->afficher();
+
+$pageActuelle = 'accueil';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,36 +28,7 @@ $recettes = $controleur->afficher();
 <body>
 
   <!-- NAVIGATION -->
-  <header class="site-header">
-    <div class="container header-inner">
-
-      <a href="accueil.php" class="brand" aria-label="Saveurs Maison — Accueil">
-        <img
-          src="../../assets/images/logo.png"
-          alt="Saveurs Maison"
-          class="site-logo"
-        >
-      </a>
-
-      <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
-      <label for="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">
-        <i class="bi bi-list" aria-hidden="true"></i>
-        <i class="bi bi-x" aria-hidden="true"></i>
-      </label>
-
-      <nav class="main-nav" aria-label="Navigation principale">
-        <a href="accueil.php" class="active" aria-current="page">Accueil</a>
-        <a href="#a-propos">À propos</a>
-        <a href="recettes.php">Les recettes</a>
-      </nav>
-
-      <div class="header-actions">
-        <a href="connexion.php" class="login-link">Connexion</a>
-        <a href="inscription.php" class="btn-green">Créer un compte</a>
-      </div>
-
-    </div>
-  </header>
+  <?php require __DIR__ . '/navbar.php'; ?>
 
   <main>
 
