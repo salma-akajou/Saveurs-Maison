@@ -4352,6 +4352,11 @@ button:focus-visible {
   color: var(--olive);
 }
 
+/* Même raison : le footer partagé garde ses propres couleurs. */
+.about-page .footer-column a {
+  color: var(--text);
+}
+
 .about-page h1,
 .about-page h2,
 .about-page h3 {

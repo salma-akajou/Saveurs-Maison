@@ -191,7 +191,7 @@
     </div>
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer-apropos.php'; ?>
+  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
 
 </body>
 </html>
