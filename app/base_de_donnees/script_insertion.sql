@@ -11,6 +11,7 @@ USE saveurs_maison;
 -- UTILISATEUR
 -- Mots de passe de test uniquement (hachage factice, à remplacer
 -- par un vrai hachage password_hash() lors du développement PHP).
+-- id_utilisateur 1 = l'administrateur, 2 à 7 = les membres.
 -- --------------------------------------------------
 
 INSERT INTO UTILISATEUR
@@ -38,6 +39,9 @@ INSERT INTO CATEGORIE (id_categorie, nom) VALUES
 
 -- --------------------------------------------------
 -- RECETTE
+-- Chaque ligne illustre un cas différent :
+-- 1 et 4 publiées (par l'administrateur), 2 et 3 en attente,
+-- 5 refusée (avec son motif_refus), 6 publiée (par un membre).
 -- --------------------------------------------------
 
 INSERT INTO RECETTE
@@ -78,6 +82,8 @@ VALUES
 
 -- --------------------------------------------------
 -- ETAPE
+-- Les étapes sont groupées par recette ci-dessous (le dernier
+-- chiffre de chaque ligne est l'id_recette concerné).
 -- --------------------------------------------------
 
 INSERT INTO ETAPE (titre, numero_ordre, description, id_recette) VALUES
@@ -195,6 +201,8 @@ INSERT INTO RECETTE_INGREDIENT (id_recette, id_ingredient, quantite, unite) VALU
 
 -- --------------------------------------------------
 -- AVIS
+-- Un avis par ligne : id_utilisateur = qui a donné la note,
+-- id_recette = la recette concernée.
 -- --------------------------------------------------
 
 INSERT INTO AVIS (note, commentaire, date_avis, id_utilisateur, id_recette) VALUES
