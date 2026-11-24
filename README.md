@@ -244,15 +244,15 @@ Saveurs-Maison/
 │   ├── base_de_donnees/
 │   │   ├── script_creation.sql          Script de création des tables, à partir du MLD
 │   │   └── script_insertion.sql         Jeu de données de test
-│   ├── config/                          Connexion PDO, constantes de configuration
+│   ├── config/
+│   │   └── connexion.php                Connexion à la base de données (PDO)
 │   ├── controleurs/                     Classes PHP de traitement des actions (une par entité)
 │   ├── modeles/                         Classes PHP d'accès aux données (une par entité)
-│   ├── vues/
-│   │   ├── public/                      Pages accessibles aux visiteurs
-│   │   ├── membre/                      Pages de l'espace membre connecté
-│   │   └── admin/                       Pages de l'espace administrateur
-│   ├── public/                          Point d'entrée du site, fichiers CSS/JS/images
-│   └── index.php                        Point d'entrée unique de l'application
+│   ├── assets/                          CSS, JavaScript et images utilisées par l'application
+│   └── public/
+│       ├── accueil.php, recettes.php... Pages accessibles aux visiteurs
+│       ├── (à venir) membre/            Pages de l'espace membre connecté
+│       └── (à venir) admin/             Pages de l'espace administrateur
 │
 ├── Tests/
 │   └── scenarios_de_test.md             Jeux de test manuels par fonctionnalité (à venir)
