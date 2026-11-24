@@ -25,9 +25,9 @@ Ce projet est réalisé dans le cadre de la formation **Développeur Web et Web 
 | JavaScript | Interactions et formulaires dynamiques |
 | PHP | Traitements côté serveur |
 | MySQL | Stockage des données |
-| PDO | Accès à la base de données |
+| mysqli | Connexion et requêtes vers la base de données |
 
-L’application sera organisée selon une architecture **MVC (Modèle - Vue - Contrôleur)**.
+L’application sera organisée en pages PHP simples (une page = un fichier), avec un fichier de connexion à la base de données commun à toutes les pages.
 
 ## Profils utilisateurs
 
@@ -188,7 +188,7 @@ Une seule page de connexion est prévue. Après authentification, chaque utilisa
 - Navigation et formulaires cohérents entre les pages.
 - Validation des données côté client et côté serveur.
 - Stockage sécurisé des mots de passe par hachage.
-- Requêtes préparées avec PDO.
+- Requêtes préparées avec mysqli.
 - Contrôle des rôles et des droits d’accès.
 - Protection des formulaires contre les requêtes non autorisées (CSRF).
 - Échappement des contenus affichés pour prévenir les injections de scripts (XSS).
@@ -214,7 +214,7 @@ Le projet est développé en suivant les phases ci-dessous, dans l'ordre. Chaque
 | 2. Conception des données | Dictionnaire de données, MCD, MLD (notation Merise) | `Conception/` | Fait |
 | 3. Maquettage | Maquettes statiques HTML/CSS/Bootstrap des pages principales | `Conception/maquettes/` | Fait |
 | 4. Création de la base de données | Scripts SQL de création des tables et d'insertion des données de test (à partir du MLD) | `app/base_de_donnees/` | En cours |
-| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | À venir |
+| 5. Développement | Pages PHP (mysqli), HTML/CSS/Bootstrap/JavaScript | `app/` | À venir |
 | 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | À venir |
 | 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | À venir |
 | 8. Documentation et soutenance | Support de présentation finale | `Documentation/` | À venir |
@@ -244,15 +244,15 @@ Saveurs-Maison/
 │   ├── base_de_donnees/
 │   │   ├── script_creation.sql          Script de création des tables, à partir du MLD
 │   │   └── script_insertion.sql         Jeu de données de test
-│   ├── config/                          Connexion PDO, constantes de configuration
-│   ├── controleurs/                     Classes PHP de traitement des actions (une par entité)
-│   ├── modeles/                         Classes PHP d'accès aux données (une par entité)
-│   ├── vues/
-│   │   ├── public/                      Pages accessibles aux visiteurs
-│   │   ├── membre/                      Pages de l'espace membre connecté
-│   │   └── admin/                       Pages de l'espace administrateur
-│   ├── public/                          Point d'entrée du site, fichiers CSS/JS/images
-│   └── index.php                        Point d'entrée unique de l'application
+│   ├── config/
+│   │   └── connexion.php                Connexion à la base de données (mysqli), commune à toutes les pages
+│   ├── includes/
+│   │   ├── entete.php                   Barre de navigation commune, incluse en haut de chaque page
+│   │   └── pied_de_page.php             Pied de page commun, inclus en bas de chaque page
+│   ├── assets/                          CSS, JavaScript et images utilisées par l'application
+│   ├── public/                          Pages accessibles aux visiteurs
+│   ├── membre/                          Pages de l'espace membre connecté
+│   └── admin/                           Pages de l'espace administrateur
 │
 ├── Tests/
 │   └── scenarios_de_test.md             Jeux de test manuels par fonctionnalité (à venir)
