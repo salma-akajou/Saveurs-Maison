@@ -3935,6 +3935,8 @@ button:focus-visible {
   border-radius: 13px;
 
   background: #fffdfa;
+
+  transition: opacity 0.6s ease;
 }
 
 .rd-review-already {
@@ -3952,8 +3954,6 @@ button:focus-visible {
 
   font-size: 16px;
   font-weight: 600;
-
-  transition: opacity 0.6s ease;
 }
 
 .rd-review-success-sortie {

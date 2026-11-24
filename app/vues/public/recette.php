@@ -585,16 +585,19 @@ function formaterQuantite(?string $quantite)
         afficherPageAvis();
       }
 
-      // Message "Merci pour votre avis !" : disparaît tout seul.
+      // Message "Merci pour votre avis !" : toute la carte disparaît,
+      // pas seulement le texte à l'intérieur.
       var messageAvisSucces = document.getElementById("message-avis-succes");
 
       if (messageAvisSucces) {
+        var cartePanneau = messageAvisSucces.closest(".rd-review-form-panel");
+
         setTimeout(function () {
-          messageAvisSucces.classList.add("rd-review-success-sortie");
+          cartePanneau.classList.add("rd-review-success-sortie");
         }, 2500);
 
-        messageAvisSucces.addEventListener("transitionend", function () {
-          messageAvisSucces.remove();
+        cartePanneau.addEventListener("transitionend", function () {
+          cartePanneau.remove();
         });
       }
     </script>
