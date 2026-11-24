@@ -213,8 +213,8 @@ Le projet est développé en suivant les phases ci-dessous, dans l'ordre. Chaque
 | 1. Analyse des besoins | Tableau des besoins priorisés (méthode MoSCoW) | `Analyse/` | Fait |
 | 2. Conception des données | Dictionnaire de données, MCD, MLD (notation Merise) | `Conception/` | Fait |
 | 3. Maquettage | Maquettes statiques HTML/CSS/Bootstrap des pages principales | `Conception/maquettes/` | Fait |
-| 4. Création de la base de données | Scripts SQL de création des tables et d'insertion des données de test (à partir du MLD) | `app/base_de_donnees/` | En cours |
-| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | À venir |
+| 4. Création de la base de données | Scripts SQL de création des tables et d'insertion des données de test (à partir du MLD) | `app/base_de_donnees/` | Fait |
+| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | En cours |
 | 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | À venir |
 | 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | À venir |
 | 8. Documentation et soutenance | Support de présentation finale | `Documentation/` | À venir |
@@ -236,9 +236,10 @@ Saveurs-Maison/
 │   ├── dictionnaire_donnees.md          Description de tous les champs des données
 │   ├── MCD.md                           Modèle Conceptuel de Données (notation Merise)
 │   ├── MLD.md                           Modèle Logique de Données
-│   └── maquettes/                       Maquettes statiques HTML/CSS/Bootstrap (sans logique ni interaction)
+│   └── maquettes/                       Maquettes HTML/CSS/Bootstrap, avec un peu de JavaScript simple
 │       ├── public/                      Pages de l'espace public (accueil, inscription, connexion...)
-│       └── assets/                      CSS et images utilisées par les maquettes
+│       ├── admin/                       Pages de l'espace administrateur
+│       └── assets/                      CSS, JavaScript et images utilisées par les maquettes
 │
 ├── app/
 │   ├── base_de_donnees/
@@ -248,9 +249,11 @@ Saveurs-Maison/
 │   │   └── connexion.php                Connexion à la base de données (PDO)
 │   ├── controleurs/                     Classes PHP de traitement des actions (une par entité)
 │   ├── modeles/                         Classes PHP d'accès aux données (une par entité)
+│   ├── layouts/                         Navbar(s) et pied de page communs, inclus par les vues
 │   ├── assets/                          CSS, JavaScript et images utilisées par l'application
 │   └── vues/
-│       ├── public/                      Pages accessibles aux visiteurs et aux membres connectés
+│       ├── public/                      Pages accessibles aux visiteurs
+│       ├── membre/                      Pages de l'espace membre connecté
 │       └── admin/                       Pages de l'espace administrateur
 │
 ├── Tests/
