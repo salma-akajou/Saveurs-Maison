@@ -10,7 +10,7 @@ class Recette
 {
     // Retourne les dernières recettes publiées, avec leur catégorie
     // et leur note moyenne (calculée à partir de la table AVIS).
-    public static function dernieresPubliees(int $limite = 6)
+    public static function dernieresPubliees(int $limite = 3)
     {
         global $pdo;
 
@@ -36,6 +36,43 @@ class Recette
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Retourne une recette publiée à partir de son id, avec sa catégorie,
+    // son auteur, sa note moyenne et son nombre d'avis. Retourne null si
+    // la recette n'existe pas ou n'est pas publiée (on ne montre jamais
+    // une recette en attente ou refusée sur une page publique).
+    public static function trouverPublieeParId(int $id)
+    {
+        global $pdo;
+
+        $sql = "SELECT
+                    r.id_recette,
+                    r.titre,
+                    r.description,
+                    r.photo,
+                    r.nb_personnes,
+                    r.temps_preparation,
+                    r.temps_cuisson,
+                    r.difficulte,
+                    c.id_categorie,
+                    c.nom AS categorie,
+                    u.prenom AS auteur_prenom,
+                    u.nom AS auteur_nom,
+                    (SELECT AVG(a.note) FROM AVIS a WHERE a.id_recette = r.id_recette) AS note_moyenne,
+                    (SELECT COUNT(*) FROM AVIS a WHERE a.id_recette = r.id_recette) AS nombre_avis
+                FROM RECETTE r
+                JOIN CATEGORIE c ON c.id_categorie = r.id_categorie
+                JOIN UTILISATEUR u ON u.id_utilisateur = r.id_utilisateur
+                WHERE r.id_recette = ?
+                AND r.statut = 'publiee'";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+
+        $recette = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $recette !== false ? $recette : null;
     }
 
     // Construit la partie "WHERE ..." commune à la recherche et au comptage,
