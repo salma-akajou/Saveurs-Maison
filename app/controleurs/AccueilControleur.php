@@ -10,6 +10,6 @@ class AccueilControleur
 {
     public function afficher()
     {
-        return Recette::dernieresPubliees(6);
+        return Recette::dernieresPubliees(3);
     }
 }

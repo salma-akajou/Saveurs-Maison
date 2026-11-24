@@ -24,7 +24,7 @@ $nomsDifficultes = [
 
 // Construit un lien vers une autre page de résultats, en conservant
 // les filtres actuellement choisis (recherche, catégorie, difficulté).
-function construireLienPage($numeroPage, $donnees)
+function construireLienPage(int $numeroPage, array $donnees)
 {
     $parametres = [
         'recherche' => $donnees['recherche'],
@@ -38,7 +38,7 @@ function construireLienPage($numeroPage, $donnees)
         return $valeur !== null && $valeur !== '';
     });
 
-    return 'recettes.php?' . http_build_query($parametres);
+    return 'recettes.php?' . http_build_query($parametres) . '#resultats';
 }
 ?>
 <!DOCTYPE html>
@@ -106,7 +106,7 @@ function construireLienPage($numeroPage, $donnees)
     <section class="catalog-filters-section" aria-label="Rechercher et filtrer">
       <div class="container">
 
-        <form class="catalog-filters" method="get" action="recettes.php" id="formulaire-filtres">
+        <form class="catalog-filters" method="get" action="recettes.php#resultats" id="formulaire-filtres">
 
           <div class="catalog-search">
             <label for="recherche" class="visually-hidden">
@@ -165,7 +165,7 @@ function construireLienPage($numeroPage, $donnees)
     </section>
 
     <!-- RÉSULTATS -->
-    <section class="catalog-results-section">
+    <section class="catalog-results-section" id="resultats">
       <div class="container">
 
         <div class="catalog-results-header">
