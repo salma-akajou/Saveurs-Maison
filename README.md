@@ -248,12 +248,10 @@ Saveurs-Maison/
 │   │   └── connexion.php                Connexion à la base de données (PDO)
 │   ├── controleurs/                     Classes PHP de traitement des actions (une par entité)
 │   ├── modeles/                         Classes PHP d'accès aux données (une par entité)
-│   ├── vues/
-│   │   ├── public/                      Pages accessibles aux visiteurs
-│   │   ├── membre/                      Pages de l'espace membre connecté
-│   │   └── admin/                       Pages de l'espace administrateur
-│   ├── public/                          CSS, JavaScript et images utilisées par l'application
-│   └── index.php                        Point d'entrée unique de l'application
+│   ├── assets/                          CSS, JavaScript et images utilisées par l'application
+│   └── vues/
+│       ├── public/                      Pages accessibles aux visiteurs et aux membres connectés
+│       └── admin/                       Pages de l'espace administrateur
 │
 ├── Tests/
 │   └── scenarios_de_test.md             Jeux de test manuels par fonctionnalité (à venir)
