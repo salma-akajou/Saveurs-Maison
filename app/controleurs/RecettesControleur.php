@@ -5,8 +5,8 @@ require_once __DIR__ . '/../modeles/Recette.php';
 /*
  * Contrôleur du catalogue des recettes.
  * Lit les filtres envoyés dans l'URL (recherche, catégorie, difficulté,
- * tri, page), interroge le modèle, et retourne tout ce dont la vue
- * a besoin pour afficher les résultats.
+ * page), interroge le modèle, et retourne tout ce dont la vue a besoin
+ * pour afficher les résultats.
  */
 class RecettesControleur
 {
@@ -14,7 +14,6 @@ class RecettesControleur
     {
         $recherche = trim($_GET['recherche'] ?? '');
         $difficulte = $_GET['difficulte'] ?? '';
-        $tri = $_GET['tri'] ?? 'recentes';
 
         // La catégorie vaut null si aucune n'est choisie ("Toutes").
         $idCategorie = (isset($_GET['categorie']) && $_GET['categorie'] !== '')
@@ -32,7 +31,6 @@ class RecettesControleur
             $recherche,
             $idCategorie,
             $difficulte,
-            $tri,
             $parPage,
             $decalage
         );
@@ -50,7 +48,6 @@ class RecettesControleur
             'recherche' => $recherche,
             'idCategorie' => $idCategorie,
             'difficulte' => $difficulte,
-            'tri' => $tri,
         ];
     }
 }

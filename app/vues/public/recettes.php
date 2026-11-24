@@ -23,14 +23,13 @@ $nomsDifficultes = [
 ];
 
 // Construit un lien vers une autre page de résultats, en conservant
-// les filtres actuellement choisis (recherche, catégorie, difficulté, tri).
+// les filtres actuellement choisis (recherche, catégorie, difficulté).
 function construireLienPage($numeroPage, $donnees)
 {
     $parametres = [
         'recherche' => $donnees['recherche'],
         'categorie' => $donnees['idCategorie'],
         'difficulte' => $donnees['difficulte'],
-        'tri' => $donnees['tri'],
         'page' => $numeroPage,
     ];
 
@@ -157,25 +156,6 @@ function construireLienPage($numeroPage, $donnees)
                   <?= htmlspecialchars($nom) ?>
                 </option>
               <?php endforeach; ?>
-            </select>
-          </div>
-
-          <div class="catalog-filter">
-            <label for="tri">Trier</label>
-
-            <select id="tri" name="tri" class="form-select">
-              <option value="recentes" <?= $donnees['tri'] === 'recentes' ? 'selected' : '' ?>>
-                Plus récentes
-              </option>
-              <option value="note" <?= $donnees['tri'] === 'note' ? 'selected' : '' ?>>
-                Mieux notées
-              </option>
-              <option value="rapides" <?= $donnees['tri'] === 'rapides' ? 'selected' : '' ?>>
-                Plus rapides
-              </option>
-              <option value="nom" <?= $donnees['tri'] === 'nom' ? 'selected' : '' ?>>
-                Ordre alphabétique
-              </option>
             </select>
           </div>
 

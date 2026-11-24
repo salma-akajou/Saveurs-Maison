@@ -64,8 +64,8 @@ class Recette
     }
 
     // Recherche les recettes publiées selon le nom, la catégorie et la
-    // difficulté, triées et paginées pour le catalogue.
-    public static function rechercherPubliees($recherche, $idCategorie, $difficulte, $tri, $limite, $decalage)
+    // difficulté, paginées pour le catalogue (les plus récentes d'abord).
+    public static function rechercherPubliees($recherche, $idCategorie, $difficulte, $limite, $decalage)
     {
         global $pdo;
 
@@ -82,27 +82,9 @@ class Recette
                     (SELECT AVG(a.note) FROM AVIS a WHERE a.id_recette = r.id_recette) AS note_moyenne
                 FROM RECETTE r
                 JOIN CATEGORIE c ON c.id_categorie = r.id_categorie"
-                . $filtres;
-
-        switch ($tri) {
-            case 'note':
-                $sql .= " ORDER BY note_moyenne DESC";
-                break;
-
-            case 'rapides':
-                $sql .= " ORDER BY (r.temps_preparation + r.temps_cuisson) ASC";
-                break;
-
-            case 'nom':
-                $sql .= " ORDER BY r.titre ASC";
-                break;
-
-            default:
-                $sql .= " ORDER BY r.date_creation DESC";
-                break;
-        }
-
-        $sql .= " LIMIT ? OFFSET ?";
+                . $filtres . "
+                ORDER BY r.date_creation DESC
+                LIMIT ? OFFSET ?";
         $parametres[] = $limite;
         $parametres[] = $decalage;
 

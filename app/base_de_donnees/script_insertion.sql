@@ -40,8 +40,7 @@ INSERT INTO CATEGORIE (id_categorie, nom) VALUES
 -- --------------------------------------------------
 -- RECETTE
 -- Chaque ligne illustre un cas différent :
--- 1 et 4 publiées (par l'administrateur), 2 et 3 en attente,
--- 5 refusée (avec son motif_refus), 6 publiée (par un membre).
+-- 1, 2, 4 et 6 publiées, 3 en attente, 5 refusée (avec son motif_refus).
 -- --------------------------------------------------
 
 INSERT INTO RECETTE
@@ -56,8 +55,8 @@ VALUES
 
   (2, 'Samoussas aux légumes',
       'Des samoussas croustillants garnis de légumes, à partager en entrée.',
-      'samoussas-legumes.jpg', 4, 20, 10, 'facile', 'en_attente', NULL,
-      '2026-11-23 10:30:00', NULL, NULL, 1, 2, NULL),
+      'samoussas-legumes.jpg', 4, 20, 10, 'facile', 'publiee', NULL,
+      '2026-11-23 10:30:00', NULL, '2026-11-23 14:00:00', 1, 2, 1),
 
   (3, 'Gâteau au coco',
       'Un gâteau moelleux à la noix de coco et au lait de coco.',
