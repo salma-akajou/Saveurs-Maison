@@ -1,5 +1,9 @@
 <?php
 
+// Doit être tout en haut, avant le moindre affichage : nécessaire pour
+// savoir si un membre est connecté (utilisé par la navbar partagée).
+session_start();
+
 require_once __DIR__ . '/../../controleurs/AccueilControleur.php';
 
 $controleur = new AccueilControleur();
@@ -385,6 +389,9 @@ $pageActuelle = 'accueil';
   </main>
 
   <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+
+  <!-- Nécessaire pour le menu déroulant du compte (navbar membre). -->
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

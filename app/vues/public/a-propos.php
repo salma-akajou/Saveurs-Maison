@@ -1,4 +1,9 @@
-<?php $pageActuelle = 'a-propos'; ?>
+<?php
+// Doit être tout en haut, avant le moindre affichage.
+session_start();
+
+$pageActuelle = 'a-propos';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -192,6 +197,9 @@
   </main>
 
   <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+
+  <!-- Nécessaire pour le menu déroulant du compte (navbar membre). -->
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
