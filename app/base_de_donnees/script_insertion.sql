@@ -9,21 +9,22 @@ USE saveurs_maison;
 
 -- --------------------------------------------------
 -- UTILISATEUR
--- Mots de passe de test uniquement (hachage factice, à remplacer
--- par un vrai hachage password_hash() lors du développement PHP).
+-- Mot de passe de test pour TOUS les comptes ci-dessous : motdepasse123
+-- (haché avec password_hash(), le même hachage est réutilisé pour
+-- chaque compte mais correspond bien à "motdepasse123" pour tous).
 -- id_utilisateur 1 = l'administrateur, 2 à 7 = les membres.
 -- --------------------------------------------------
 
 INSERT INTO UTILISATEUR
   (id_utilisateur, nom, prenom, email, mot_de_passe, role, statut_compte, date_inscription)
 VALUES
-  (1, 'Admin',   'Administrateur', 'admin@saveurs-maison.fr',     '$2y$10$motdepassehachefactice000000000000000000000000000001', 'administrateur', 'actif',     '2026-10-01 09:00:00'),
-  (2, 'Laurent', 'Sophie',         'sophie.laurent@example.fr',   '$2y$10$motdepassehachefactice000000000000000000000000000002', 'membre',         'actif',     '2026-11-12 10:15:00'),
-  (3, 'Ali',     'Nadia',          'nadia.ali@example.fr',        '$2y$10$motdepassehachefactice000000000000000000000000000003', 'membre',         'actif',     '2026-11-13 11:20:00'),
-  (4, 'Martin',  'Karim',          'karim.martin@example.fr',     '$2y$10$motdepassehachefactice000000000000000000000000000004', 'membre',         'desactive', '2026-11-14 14:05:00'),
-  (5, 'Diallo',  'Yanis',          'yanis.diallo@example.fr',     '$2y$10$motdepassehachefactice000000000000000000000000000005', 'membre',         'actif',     '2026-11-15 16:40:00'),
-  (6, 'Petit',   'Claire',         'claire.petit@example.fr',     '$2y$10$motdepassehachefactice000000000000000000000000000006', 'membre',         'actif',     '2026-11-16 08:30:00'),
-  (7, 'Thomas',  'Hugo',           'hugo.thomas@example.fr',      '$2y$10$motdepassehachefactice000000000000000000000000000007', 'membre',         'desactive', '2026-11-17 19:10:00');
+  (1, 'Admin',   'Administrateur', 'admin@saveurs-maison.fr',     '$2y$10$hTowJntkhUjpXcCeFvF86.ahA0xiBtIB4Jky2oGHJXAkt/hfoOxgO', 'administrateur', 'actif',     '2026-10-01 09:00:00'),
+  (2, 'Laurent', 'Sophie',         'sophie.laurent@example.fr',   '$2y$10$hTowJntkhUjpXcCeFvF86.ahA0xiBtIB4Jky2oGHJXAkt/hfoOxgO', 'membre',         'actif',     '2026-11-12 10:15:00'),
+  (3, 'Ali',     'Nadia',          'nadia.ali@example.fr',        '$2y$10$hTowJntkhUjpXcCeFvF86.ahA0xiBtIB4Jky2oGHJXAkt/hfoOxgO', 'membre',         'actif',     '2026-11-13 11:20:00'),
+  (4, 'Martin',  'Karim',          'karim.martin@example.fr',     '$2y$10$hTowJntkhUjpXcCeFvF86.ahA0xiBtIB4Jky2oGHJXAkt/hfoOxgO', 'membre',         'desactive', '2026-11-14 14:05:00'),
+  (5, 'Diallo',  'Yanis',          'yanis.diallo@example.fr',     '$2y$10$hTowJntkhUjpXcCeFvF86.ahA0xiBtIB4Jky2oGHJXAkt/hfoOxgO', 'membre',         'actif',     '2026-11-15 16:40:00'),
+  (6, 'Petit',   'Claire',         'claire.petit@example.fr',     '$2y$10$hTowJntkhUjpXcCeFvF86.ahA0xiBtIB4Jky2oGHJXAkt/hfoOxgO', 'membre',         'actif',     '2026-11-16 08:30:00'),
+  (7, 'Thomas',  'Hugo',           'hugo.thomas@example.fr',      '$2y$10$hTowJntkhUjpXcCeFvF86.ahA0xiBtIB4Jky2oGHJXAkt/hfoOxgO', 'membre',         'desactive', '2026-11-17 19:10:00');
 
 -- --------------------------------------------------
 -- CATEGORIE
