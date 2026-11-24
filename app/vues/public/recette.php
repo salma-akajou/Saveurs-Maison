@@ -180,11 +180,27 @@ function formaterQuantite(?string $quantite)
 
             </dl>
 
-            <!-- Pas encore de connexion : le bouton renvoie vers la page de connexion. -->
-            <a href="connexion.php" class="btn-green rd-favorite-button">
-              <i class="bi bi-heart" aria-hidden="true"></i>
-              Ajouter aux favoris
-            </a>
+            <?php if (isset($_SESSION['utilisateur_id'])): ?>
+
+              <form method="post" action="../membre/basculer-favori.php" class="rd-favorite-form">
+                <input type="hidden" name="id_recette" value="<?= (int) $recette['id_recette'] ?>">
+                <input type="hidden" name="retour" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+
+                <button type="submit" class="btn-green rd-favorite-button">
+                  <i class="bi bi-heart<?= $donnees['estFavori'] ? '-fill' : '' ?>" aria-hidden="true"></i>
+                  <?= $donnees['estFavori'] ? 'Retirer des favoris' : 'Ajouter aux favoris' ?>
+                </button>
+              </form>
+
+            <?php else: ?>
+
+              <!-- Pas encore de connexion : le bouton renvoie vers la page de connexion. -->
+              <a href="connexion.php" class="btn-green rd-favorite-button">
+                <i class="bi bi-heart" aria-hidden="true"></i>
+                Ajouter aux favoris
+              </a>
+
+            <?php endif; ?>
 
           </div>
 

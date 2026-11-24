@@ -242,13 +242,34 @@ function construireLienPage(int $numeroPage, array $donnees)
                       <?= htmlspecialchars($recette['categorie']) ?>
                     </span>
 
-                    <a
-                      href="connexion.php"
-                      class="catalog-heart"
-                      aria-label="Se connecter pour ajouter <?= htmlspecialchars($recette['titre']) ?> aux favoris"
-                    >
-                      <i class="bi bi-heart" aria-hidden="true"></i>
-                    </a>
+                    <?php if (isset($_SESSION['utilisateur_id'])): ?>
+
+                      <?php $estFavori = in_array($recette['id_recette'], $donnees['idsFavoris']); ?>
+
+                      <form method="post" action="../membre/basculer-favori.php" class="catalog-heart-form">
+                        <input type="hidden" name="id_recette" value="<?= (int) $recette['id_recette'] ?>">
+                        <input type="hidden" name="retour" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+
+                        <button
+                          type="submit"
+                          class="catalog-heart"
+                          aria-label="<?= $estFavori ? 'Retirer' : 'Ajouter' ?> <?= htmlspecialchars($recette['titre']) ?> des favoris"
+                        >
+                          <i class="bi bi-heart<?= $estFavori ? '-fill' : '' ?>" aria-hidden="true"></i>
+                        </button>
+                      </form>
+
+                    <?php else: ?>
+
+                      <a
+                        href="connexion.php"
+                        class="catalog-heart"
+                        aria-label="Se connecter pour ajouter <?= htmlspecialchars($recette['titre']) ?> aux favoris"
+                      >
+                        <i class="bi bi-heart" aria-hidden="true"></i>
+                      </a>
+
+                    <?php endif; ?>
                   </div>
 
                   <h3>

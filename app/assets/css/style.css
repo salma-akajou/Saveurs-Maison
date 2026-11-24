@@ -2628,10 +2628,23 @@ button:focus-visible {
   width: 28px;
   height: 28px;
 
+  border: 0;
+  background: none;
+  padding: 0;
+
   color: var(--terracotta, #b83f1d);
 
   font-size: 23px;
   line-height: 1;
+}
+
+/* Les formulaires qui enveloppent un cœur cliquable (favoris) ne
+   doivent pas ajouter d'espace ni perturber la mise en page. */
+.favorite-form,
+.catalog-heart-form,
+.rd-favorite-form {
+  margin: 0;
+  display: contents;
 }
 
 .catalog-heart:hover {

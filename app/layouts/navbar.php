@@ -20,7 +20,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
   <header class="site-header">
     <div class="container header-inner">
 
-      <a href="accueil.php" class="brand" aria-label="Saveurs Maison — Accueil">
+      <a href="../public/accueil.php" class="brand" aria-label="Saveurs Maison — Accueil">
         <img
           src="../../assets/images/logo.png"
           alt="Saveurs Maison"
@@ -36,7 +36,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
 
       <nav class="main-nav" aria-label="Navigation principale">
         <a
-          href="accueil.php"
+          href="../public/accueil.php"
           class="<?= $pageActuelle === 'accueil' ? 'active' : '' ?>"
           <?= $pageActuelle === 'accueil' ? 'aria-current="page"' : '' ?>
         >
@@ -44,7 +44,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
         </a>
 
         <a
-          href="<?= $pageActuelle === 'accueil' ? '#a-propos' : 'a-propos.php' ?>"
+          href="<?= $pageActuelle === 'accueil' ? '#a-propos' : '../public/a-propos.php' ?>"
           class="<?= $pageActuelle === 'a-propos' ? 'active' : '' ?>"
           <?= $pageActuelle === 'a-propos' ? 'aria-current="page"' : '' ?>
         >
@@ -52,7 +52,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
         </a>
 
         <a
-          href="recettes.php"
+          href="../public/recettes.php"
           class="<?= $pageActuelle === 'recettes' ? 'active' : '' ?>"
           <?= $pageActuelle === 'recettes' ? 'aria-current="page"' : '' ?>
         >
@@ -61,8 +61,8 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
       </nav>
 
       <div class="header-actions">
-        <a href="connexion.php" class="login-link">Connexion</a>
-        <a href="inscription.php" class="btn-green">Créer un compte</a>
+        <a href="../public/connexion.php" class="login-link">Connexion</a>
+        <a href="../public/inscription.php" class="btn-green">Créer un compte</a>
       </div>
 
     </div>
@@ -75,7 +75,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
     <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
       <div class="container">
 
-        <a class="navbar-brand fv-brand" href="accueil.php">
+        <a class="navbar-brand fv-brand" href="../public/accueil.php">
           <img
             src="../../assets/images/logo.png"
             alt="Saveurs Maison — Accueil"
@@ -100,7 +100,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
             <li class="nav-item">
               <a
                 class="nav-link <?= $pageActuelle === 'accueil' ? 'active' : '' ?>"
-                href="accueil.php"
+                href="../public/accueil.php"
                 <?= $pageActuelle === 'accueil' ? 'aria-current="page"' : '' ?>
               >
                 Accueil
@@ -110,7 +110,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
             <li class="nav-item">
               <a
                 class="nav-link <?= $pageActuelle === 'a-propos' ? 'active' : '' ?>"
-                href="a-propos.php"
+                href="../public/a-propos.php"
                 <?= $pageActuelle === 'a-propos' ? 'aria-current="page"' : '' ?>
               >
                 À propos
@@ -120,7 +120,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
             <li class="nav-item">
               <a
                 class="nav-link <?= $pageActuelle === 'recettes' ? 'active' : '' ?>"
-                href="recettes.php"
+                href="../public/recettes.php"
                 <?= $pageActuelle === 'recettes' ? 'aria-current="page"' : '' ?>
               >
                 Les recettes
@@ -128,7 +128,13 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="favoris.php">Mes favoris</a>
+              <a
+                class="nav-link <?= $pageActuelle === 'favoris' ? 'active' : '' ?>"
+                href="../membre/favoris.php"
+                <?= $pageActuelle === 'favoris' ? 'aria-current="page"' : '' ?>
+              >
+                Mes favoris
+              </a>
             </li>
           </ul>
 
@@ -151,13 +157,13 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
 
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
-                <a class="dropdown-item" href="mes-recettes.php">
+                <a class="dropdown-item" href="../membre/mes-recettes.php">
                   Mes recettes
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="profil.php">
+                <a class="dropdown-item" href="../membre/profil.php">
                   Mon profil
                 </a>
               </li>
@@ -165,7 +171,7 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
               <li><hr class="dropdown-divider"></li>
 
               <li>
-                <a class="dropdown-item" href="deconnexion.php">
+                <a class="dropdown-item" href="../public/deconnexion.php">
                   <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
                   Déconnexion
                 </a>

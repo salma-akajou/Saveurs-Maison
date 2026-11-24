@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../modeles/Recette.php';
+require_once __DIR__ . '/../modeles/Favori.php';
 
 /*
  * Contrôleur du catalogue des recettes.
@@ -38,8 +39,15 @@ class RecettesControleur
         $total = Recette::compterPubliees($recherche, $idCategorie, $difficulte);
         $nombrePages = max(1, (int) ceil($total / $parPage));
 
+        $idsFavoris = [];
+
+        if (isset($_SESSION['utilisateur_id'])) {
+            $idsFavoris = Favori::listerIdsParUtilisateur((int) $_SESSION['utilisateur_id']);
+        }
+
         return [
             'recettes' => $recettes,
+            'idsFavoris' => $idsFavoris,
             'total' => $total,
             'page' => $page,
             'nombrePages' => $nombrePages,

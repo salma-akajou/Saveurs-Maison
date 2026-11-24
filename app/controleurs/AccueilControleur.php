@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../modeles/Recette.php';
+require_once __DIR__ . '/../modeles/Favori.php';
 
 /*
  * Contrôleur de la page d'accueil.
@@ -10,6 +11,15 @@ class AccueilControleur
 {
     public function afficher()
     {
-        return Recette::dernieresPubliees(3);
+        $idsFavoris = [];
+
+        if (isset($_SESSION['utilisateur_id'])) {
+            $idsFavoris = Favori::listerIdsParUtilisateur((int) $_SESSION['utilisateur_id']);
+        }
+
+        return [
+            'recettes' => Recette::dernieresPubliees(3),
+            'idsFavoris' => $idsFavoris,
+        ];
     }
 }

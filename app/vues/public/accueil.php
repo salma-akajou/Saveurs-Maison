@@ -7,7 +7,10 @@ session_start();
 require_once __DIR__ . '/../../controleurs/AccueilControleur.php';
 
 $controleur = new AccueilControleur();
-$recettes = $controleur->afficher();
+$donnees = $controleur->afficher();
+$recettes = $donnees['recettes'];
+$idsFavoris = $donnees['idsFavoris'];
+$estConnecte = isset($_SESSION['utilisateur_id']);
 
 $pageActuelle = 'accueil';
 
@@ -327,13 +330,34 @@ $bienvenue = isset($_GET['bienvenue']);
                     >
                   </a>
 
-                  <a
-                    href="connexion.php"
-                    class="favorite-button"
-                    aria-label="Se connecter pour enregistrer cette recette en favori"
-                  >
-                    <i class="bi bi-heart" aria-hidden="true"></i>
-                  </a>
+                  <?php if ($estConnecte): ?>
+
+                    <?php $estFavori = in_array($recette['id_recette'], $idsFavoris); ?>
+
+                    <form method="post" action="../membre/basculer-favori.php" class="favorite-form">
+                      <input type="hidden" name="id_recette" value="<?= (int) $recette['id_recette'] ?>">
+                      <input type="hidden" name="retour" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+
+                      <button
+                        type="submit"
+                        class="favorite-button"
+                        aria-label="<?= $estFavori ? 'Retirer' : 'Ajouter' ?> <?= htmlspecialchars($recette['titre']) ?> des favoris"
+                      >
+                        <i class="bi bi-heart<?= $estFavori ? '-fill' : '' ?>" aria-hidden="true"></i>
+                      </button>
+                    </form>
+
+                  <?php else: ?>
+
+                    <a
+                      href="connexion.php"
+                      class="favorite-button"
+                      aria-label="Se connecter pour enregistrer cette recette en favori"
+                    >
+                      <i class="bi bi-heart" aria-hidden="true"></i>
+                    </a>
+
+                  <?php endif; ?>
                 </div>
 
                 <div class="recipe-content">
