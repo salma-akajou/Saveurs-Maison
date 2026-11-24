@@ -106,7 +106,7 @@ function construireLienPage($numeroPage, $donnees)
     <section class="catalog-filters-section" aria-label="Rechercher et filtrer">
       <div class="container">
 
-        <form class="catalog-filters" method="get" action="recettes.php">
+        <form class="catalog-filters" method="get" action="recettes.php" id="formulaire-filtres">
 
           <div class="catalog-search">
             <label for="recherche" class="visually-hidden">
@@ -158,10 +158,6 @@ function construireLienPage($numeroPage, $donnees)
               <?php endforeach; ?>
             </select>
           </div>
-
-          <button type="submit" class="btn-green">
-            Rechercher
-          </button>
 
         </form>
 
@@ -258,6 +254,10 @@ function construireLienPage($numeroPage, $donnees)
                     </a>
                   </h3>
 
+                  <p class="catalog-card-description">
+                    <?= htmlspecialchars($recette['description']) ?>
+                  </p>
+
                   <div class="catalog-card-meta">
 
                     <span>
@@ -347,6 +347,45 @@ function construireLienPage($numeroPage, $donnees)
   </main>
 
   <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+
+  <script>
+    // Recherche et filtres appliqués directement, sans bouton.
+    var formulaire = document.getElementById("formulaire-filtres");
+    var champRecherche = document.getElementById("recherche");
+    var selectCategorie = document.getElementById("categorie");
+    var selectDifficulte = document.getElementById("difficulte");
+
+    // Les listes (catégorie, difficulté) soumettent le formulaire
+    // dès qu'on choisit une autre option.
+    selectCategorie.addEventListener("change", function () {
+      formulaire.submit();
+    });
+
+    selectDifficulte.addEventListener("change", function () {
+      formulaire.submit();
+    });
+
+    // Pour le texte, on attend un court instant après la dernière
+    // frappe avant d'envoyer le formulaire (sinon ça recharge la
+    // page à chaque lettre tapée).
+    var delaiRecherche;
+
+    champRecherche.addEventListener("input", function () {
+      clearTimeout(delaiRecherche);
+
+      delaiRecherche = setTimeout(function () {
+        formulaire.submit();
+      }, 500);
+    });
+
+    // Après rechargement de la page, on remet le curseur dans le champ
+    // de recherche (sinon il faut recliquer dedans pour continuer à taper).
+    if (champRecherche.value) {
+      var longueur = champRecherche.value.length;
+      champRecherche.focus();
+      champRecherche.setSelectionRange(longueur, longueur);
+    }
+  </script>
 
 </body>
 </html>

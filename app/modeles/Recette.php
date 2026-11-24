@@ -10,7 +10,7 @@ class Recette
 {
     // Retourne les dernières recettes publiées, avec leur catégorie
     // et leur note moyenne (calculée à partir de la table AVIS).
-    public static function dernieresPubliees($limite = 6)
+    public static function dernieresPubliees(int $limite = 6)
     {
         global $pdo;
 
@@ -40,7 +40,7 @@ class Recette
 
     // Construit la partie "WHERE ..." commune à la recherche et au comptage,
     // selon les filtres reçus. Retourne le SQL et les valeurs à lier.
-    private static function construireFiltres($recherche, $idCategorie, $difficulte)
+    private static function construireFiltres(string $recherche, ?int $idCategorie, string $difficulte)
     {
         $sql = " WHERE r.statut = 'publiee'";
         $parametres = [];
@@ -65,7 +65,7 @@ class Recette
 
     // Recherche les recettes publiées selon le nom, la catégorie et la
     // difficulté, paginées pour le catalogue (les plus récentes d'abord).
-    public static function rechercherPubliees($recherche, $idCategorie, $difficulte, $limite, $decalage)
+    public static function rechercherPubliees(string $recherche, ?int $idCategorie, string $difficulte, int $limite, int $decalage)
     {
         global $pdo;
 
@@ -74,6 +74,7 @@ class Recette
         $sql = "SELECT
                     r.id_recette,
                     r.titre,
+                    r.description,
                     r.photo,
                     r.temps_preparation,
                     r.temps_cuisson,
@@ -104,7 +105,7 @@ class Recette
 
     // Compte le nombre total de recettes publiées correspondant aux mêmes
     // filtres, pour afficher le total et calculer le nombre de pages.
-    public static function compterPubliees($recherche, $idCategorie, $difficulte)
+    public static function compterPubliees(string $recherche, ?int $idCategorie, string $difficulte)
     {
         global $pdo;
 

@@ -2660,6 +2660,19 @@ button:focus-visible {
   color: var(--terracotta, #b83f1d);
 }
 
+.catalog-card-description {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: -10px 0 14px;
+  color: var(--text-muted, #59564f);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
 .catalog-card-meta {
   display: flex;
   flex-wrap: wrap;
