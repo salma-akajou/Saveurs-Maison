@@ -213,7 +213,7 @@ $pourcentageRefusees = round($donnees['recettesParStatut']['refusee'] / $total *
 
                       <td class="text-end">
                         <a
-                          href="verifier-recette.php?id=<?= (int) $recette['id_recette'] ?>"
+                          href="detail-recette.php?id=<?= (int) $recette['id_recette'] ?>"
                           class="ad-button ad-button-outline ad-button-small"
                           aria-label="Vérifier <?= htmlspecialchars($recette['titre']) ?>"
                         >

@@ -311,4 +311,85 @@ class Recette
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Construit la partie "WHERE ..." pour la liste de l'administration :
+    // contrairement au catalogue public, tous les statuts sont visibles,
+    // et le statut lui-même peut être un filtre.
+    private static function construireFiltresAdmin(string $recherche, string $statut, ?int $idCategorie)
+    {
+        $sql = ' WHERE 1 = 1';
+        $parametres = [];
+
+        if ($recherche !== '') {
+            $sql .= ' AND r.titre LIKE ?';
+            $parametres[] = '%' . $recherche . '%';
+        }
+
+        if ($statut !== '') {
+            $sql .= ' AND r.statut = ?';
+            $parametres[] = $statut;
+        }
+
+        if ($idCategorie !== null) {
+            $sql .= ' AND r.id_categorie = ?';
+            $parametres[] = $idCategorie;
+        }
+
+        return [$sql, $parametres];
+    }
+
+    // Recherche les recettes pour la page "Recettes" de l'administration
+    // (tous statuts), avec leur auteur, paginées.
+    public static function rechercherPourAdmin(string $recherche, string $statut, ?int $idCategorie, int $limite, int $decalage)
+    {
+        global $pdo;
+
+        list($filtres, $parametres) = self::construireFiltresAdmin($recherche, $statut, $idCategorie);
+
+        $sql = "SELECT
+                    r.id_recette,
+                    r.titre,
+                    r.photo,
+                    r.statut,
+                    r.date_creation,
+                    r.id_utilisateur,
+                    c.nom AS categorie,
+                    u.nom AS auteur_nom,
+                    u.prenom AS auteur_prenom
+                FROM RECETTE r
+                JOIN CATEGORIE c ON c.id_categorie = r.id_categorie
+                JOIN UTILISATEUR u ON u.id_utilisateur = r.id_utilisateur"
+                . $filtres . "
+                ORDER BY r.date_creation DESC
+                LIMIT ? OFFSET ?";
+        $parametres[] = $limite;
+        $parametres[] = $decalage;
+
+        $stmt = $pdo->prepare($sql);
+
+        foreach ($parametres as $position => $valeur) {
+            $type = is_int($valeur) ? PDO::PARAM_INT : PDO::PARAM_STR;
+            $stmt->bindValue($position + 1, $valeur, $type);
+        }
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Compte le nombre total de recettes correspondant aux mêmes filtres,
+    // pour la pagination de la page "Recettes" de l'administration.
+    public static function compterPourAdmin(string $recherche, string $statut, ?int $idCategorie)
+    {
+        global $pdo;
+
+        list($filtres, $parametres) = self::construireFiltresAdmin($recherche, $statut, $idCategorie);
+
+        $sql = "SELECT COUNT(*) FROM RECETTE r" . $filtres;
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($parametres);
+
+        return (int) $stmt->fetchColumn();
+    }
 }

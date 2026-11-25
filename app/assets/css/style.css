@@ -8687,7 +8687,8 @@ button:focus-visible {
   color: #fff;
 }
 
-.admin-page .ar-page-button:disabled {
+.admin-page .ar-page-button:disabled,
+.admin-page .ar-page-button[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
 }
