@@ -93,6 +93,13 @@ $difficultes = [
 
       </section>
 
+      <?php if ($recette['statut'] === 'refusee' && $recette['motif_refus']): ?>
+        <div class="av-refusal-banner">
+          <span class="av-refusal-badge">Refusée</span>
+          <p><strong>Motif du refus :</strong> <?= htmlspecialchars($recette['motif_refus']) ?></p>
+        </div>
+      <?php endif; ?>
+
       <!-- PRÉSENTATION -->
       <section class="ad-panel av-hero" aria-labelledby="titre-recette">
 
@@ -255,14 +262,6 @@ $difficultes = [
 
           </form>
 
-        </section>
-
-      <?php elseif ($recette['statut'] === 'refusee' && $recette['motif_refus']): ?>
-
-        <!-- MOTIF DU REFUS (lecture seule) -->
-        <section class="ad-panel av-decision" aria-labelledby="titre-motif">
-          <h2 id="titre-motif">Motif du refus</h2>
-          <p><?= htmlspecialchars($recette['motif_refus']) ?></p>
         </section>
 
       <?php endif; ?>

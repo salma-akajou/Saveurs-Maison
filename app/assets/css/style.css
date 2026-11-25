@@ -8736,6 +8736,48 @@ button:focus-visible {
   color: var(--ad-orange);
 }
 
+/* DÉTAIL : MOTIF DE REFUS (bandeau en haut de page) */
+
+.admin-page .av-refusal-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin: 0 0 24px;
+  padding: 14px 20px;
+
+  border-radius: 10px;
+
+  background: #f7e3df;
+}
+
+.admin-page .av-refusal-badge {
+  flex-shrink: 0;
+
+  padding: 5px 14px;
+
+  border-radius: 25px;
+
+  background: #98351f;
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.admin-page .av-refusal-banner p {
+  margin: 0;
+  color: #624b45;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.admin-page .av-refusal-banner strong {
+  color: #98351f;
+  font-weight: 600;
+}
+
 /* DÉTAIL : PRÉSENTATION */
 
 .admin-page .av-hero {
