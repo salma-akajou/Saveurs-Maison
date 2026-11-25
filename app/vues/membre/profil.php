@@ -9,7 +9,7 @@ if (!isset($_SESSION['utilisateur_id'])) {
     exit;
 }
 
-require_once __DIR__ . '/../../controleurs/ProfilControleur.php';
+require_once __DIR__ . '/../../controleurs/public/ProfilControleur.php';
 
 $controleur = new ProfilControleur();
 $donnees = $controleur->afficher();
@@ -37,7 +37,7 @@ $pageActuelle = 'profil';
 
 <body class="profile-page">
 
-  <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/navbar.php'; ?>
 
   <main>
     <div class="container">
@@ -218,7 +218,7 @@ $pageActuelle = 'profil';
     </div>
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/footer.php'; ?>
 
   <!-- Nécessaire pour le menu déroulant du compte. -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../modeles/Utilisateur.php';
+require_once __DIR__ . '/../../modeles/Utilisateur.php';
 
 /*
  * Contrôleur de la connexion.

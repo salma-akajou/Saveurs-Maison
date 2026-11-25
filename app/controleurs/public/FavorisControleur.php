@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../modeles/Favori.php';
+require_once __DIR__ . '/../../modeles/Favori.php';
 
 /*
  * Contrôleur de la page "Mes favoris".

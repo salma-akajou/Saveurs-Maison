@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../modeles/Recette.php';
-require_once __DIR__ . '/../modeles/Favori.php';
+require_once __DIR__ . '/../../modeles/Recette.php';
+require_once __DIR__ . '/../../modeles/Favori.php';
 
 /*
  * Contrôleur du catalogue des recettes.

@@ -14,7 +14,7 @@ if ($_SESSION['utilisateur_role'] !== 'administrateur') {
     exit;
 }
 
-require_once __DIR__ . '/../../controleurs/TableauDeBordControleur.php';
+require_once __DIR__ . '/../../controleurs/admin/TableauDeBordControleur.php';
 
 $controleur = new TableauDeBordControleur();
 $donnees = $controleur->afficher();
@@ -48,7 +48,7 @@ $pourcentageRefusees = round($donnees['recettesParStatut']['refusee'] / $total *
 
 <body class="admin-page">
 
-  <?php require __DIR__ . '/../../layouts/admin-header.php'; ?>
+  <?php require __DIR__ . '/../../layouts/admin/header.php'; ?>
 
     <!-- TITRE -->
     <section class="ad-page-heading" aria-labelledby="titre-dashboard">
@@ -389,7 +389,7 @@ $pourcentageRefusees = round($donnees['recettesParStatut']['refusee'] / $total *
 
     </section>
 
-  <?php require __DIR__ . '/../../layouts/admin-footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/admin/footer.php'; ?>
 
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

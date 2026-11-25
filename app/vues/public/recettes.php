@@ -3,7 +3,7 @@
 // Doit être tout en haut, avant le moindre affichage.
 session_start();
 
-require_once __DIR__ . '/../../controleurs/RecettesControleur.php';
+require_once __DIR__ . '/../../controleurs/public/RecettesControleur.php';
 
 $controleur = new RecettesControleur();
 $donnees = $controleur->afficher();
@@ -64,7 +64,7 @@ function construireLienPage(int $numeroPage, array $donnees)
 
 <body class="catalog-page">
 
-  <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/navbar.php'; ?>
 
   <main>
 
@@ -370,7 +370,7 @@ function construireLienPage(int $numeroPage, array $donnees)
 
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/footer.php'; ?>
 
   <!-- Nécessaire pour le menu déroulant du compte (navbar membre). -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

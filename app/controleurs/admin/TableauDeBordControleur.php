@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../modeles/Recette.php';
-require_once __DIR__ . '/../modeles/Utilisateur.php';
-require_once __DIR__ . '/../modeles/Avis.php';
+require_once __DIR__ . '/../../modeles/Recette.php';
+require_once __DIR__ . '/../../modeles/Utilisateur.php';
+require_once __DIR__ . '/../../modeles/Avis.php';
 
 /*
  * Contrôleur du tableau de bord de l'administration.

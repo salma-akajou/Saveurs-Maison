@@ -4,7 +4,7 @@
 // de connexion utilise $_SESSION sans démarrer lui-même la session.
 session_start();
 
-require_once __DIR__ . '/../../controleurs/ConnexionControleur.php';
+require_once __DIR__ . '/../../controleurs/public/ConnexionControleur.php';
 
 $controleur = new ConnexionControleur();
 $donnees = $controleur->afficher();

@@ -10,7 +10,7 @@
  * déjà vérifié que la personne connectée est bien un administrateur.
  */
 
-require_once __DIR__ . '/../modeles/Recette.php';
+require_once __DIR__ . '/../../modeles/Recette.php';
 
 // Nombre de recettes en attente, affiché en badge sur le lien "Recettes".
 $nombreEnAttente = Recette::compterParStatut()['en_attente'];

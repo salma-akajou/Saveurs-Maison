@@ -4,7 +4,7 @@
 // savoir si un membre est connecté (utilisé par la navbar partagée).
 session_start();
 
-require_once __DIR__ . '/../../controleurs/AccueilControleur.php';
+require_once __DIR__ . '/../../controleurs/public/AccueilControleur.php';
 
 $controleur = new AccueilControleur();
 $donnees = $controleur->afficher();
@@ -38,7 +38,7 @@ $bienvenue = isset($_GET['bienvenue']);
 <body>
 
   <!-- NAVIGATION -->
-  <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/navbar.php'; ?>
 
   <main>
 
@@ -423,7 +423,7 @@ $bienvenue = isset($_GET['bienvenue']);
 
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/footer.php'; ?>
 
   <!-- Nécessaire pour le menu déroulant du compte (navbar membre). -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

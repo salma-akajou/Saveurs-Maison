@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../modeles/Recette.php';
-require_once __DIR__ . '/../modeles/Ingredient.php';
-require_once __DIR__ . '/../modeles/Etape.php';
-require_once __DIR__ . '/../modeles/Avis.php';
-require_once __DIR__ . '/../modeles/Favori.php';
+require_once __DIR__ . '/../../modeles/Recette.php';
+require_once __DIR__ . '/../../modeles/Ingredient.php';
+require_once __DIR__ . '/../../modeles/Etape.php';
+require_once __DIR__ . '/../../modeles/Avis.php';
+require_once __DIR__ . '/../../modeles/Favori.php';
 
 /*
  * Contrôleur de la page de détail d'une recette.

@@ -9,7 +9,7 @@ if (!isset($_SESSION['utilisateur_id'])) {
     exit;
 }
 
-require_once __DIR__ . '/../../controleurs/ProposerRecetteControleur.php';
+require_once __DIR__ . '/../../controleurs/public/ProposerRecetteControleur.php';
 
 $controleur = new ProposerRecetteControleur();
 $donnees = $controleur->afficher();
@@ -36,7 +36,7 @@ $pageActuelle = 'proposer-recette';
 
 <body class="recipe-form-page">
 
-  <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/navbar.php'; ?>
 
   <main>
     <div class="container">
@@ -331,7 +331,7 @@ $pageActuelle = 'proposer-recette';
     </div>
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/footer.php'; ?>
 
   <!-- MODÈLE D'UNE LIGNE INGRÉDIENT -->
   <template id="modele-ingredient">

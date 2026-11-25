@@ -25,7 +25,7 @@ $pageActuelle = 'a-propos';
 <body class="about-page">
 
   <!-- NAVBAR -->
-  <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/navbar.php'; ?>
 
   <main>
 
@@ -196,7 +196,7 @@ $pageActuelle = 'a-propos';
     </div>
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/footer.php'; ?>
 
   <!-- Nécessaire pour le menu déroulant du compte (navbar membre). -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

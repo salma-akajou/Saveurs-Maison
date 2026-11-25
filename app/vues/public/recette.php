@@ -3,7 +3,7 @@
 // Doit être tout en haut, avant le moindre affichage.
 session_start();
 
-require_once __DIR__ . '/../../controleurs/RecetteControleur.php';
+require_once __DIR__ . '/../../controleurs/public/RecetteControleur.php';
 
 $controleur = new RecetteControleur();
 $donnees = $controleur->afficher();
@@ -56,7 +56,7 @@ function formaterQuantite(?string $quantite)
 
 <body class="recipe-detail-page">
 
-  <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/navbar.php'; ?>
 
   <main>
     <div class="container">
@@ -520,7 +520,7 @@ function formaterQuantite(?string $quantite)
     </div>
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/footer.php'; ?>
 
   <!-- Nécessaire pour le menu déroulant du compte (navbar membre). -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

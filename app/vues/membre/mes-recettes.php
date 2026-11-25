@@ -9,7 +9,7 @@ if (!isset($_SESSION['utilisateur_id'])) {
     exit;
 }
 
-require_once __DIR__ . '/../../controleurs/MesRecettesControleur.php';
+require_once __DIR__ . '/../../controleurs/public/MesRecettesControleur.php';
 
 $controleur = new MesRecettesControleur();
 $recettes = $controleur->afficher();
@@ -51,7 +51,7 @@ $messageSucces = $messagesSucces[$_GET['action'] ?? ''] ?? null;
 
 <body class="my-recipes-page">
 
-  <?php require __DIR__ . '/../../layouts/navbar.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/navbar.php'; ?>
 
   <main>
     <div class="container">
@@ -234,7 +234,7 @@ $messageSucces = $messagesSucces[$_GET['action'] ?? ''] ?? null;
     </div>
   </main>
 
-  <?php require __DIR__ . '/../../layouts/footer.php'; ?>
+  <?php require __DIR__ . '/../../layouts/public/footer.php'; ?>
 
   <!-- Nécessaire pour le menu déroulant du compte. -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

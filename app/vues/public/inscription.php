@@ -3,7 +3,7 @@
 // Doit être tout en haut, avant le moindre affichage.
 session_start();
 
-require_once __DIR__ . '/../../controleurs/InscriptionControleur.php';
+require_once __DIR__ . '/../../controleurs/public/InscriptionControleur.php';
 
 $controleur = new InscriptionControleur();
 $donnees = $controleur->afficher();

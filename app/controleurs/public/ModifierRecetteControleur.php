@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../modeles/Recette.php';
-require_once __DIR__ . '/../modeles/Ingredient.php';
-require_once __DIR__ . '/../modeles/Etape.php';
+require_once __DIR__ . '/../../modeles/Recette.php';
+require_once __DIR__ . '/../../modeles/Ingredient.php';
+require_once __DIR__ . '/../../modeles/Etape.php';
 
 /*
  * Contrôleur du formulaire "Modifier ma recette".
