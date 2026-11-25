@@ -97,6 +97,26 @@ function formaterQuantite(?string $quantite)
           <span aria-current="page"><?= htmlspecialchars($recette['titre']) ?></span>
         </nav>
 
+        <?php if ($donnees['estApercu']): ?>
+          <div class="rd-apercu" role="alert">
+            <span class="rd-apercu-badge rd-apercu-badge-<?= $recette['statut'] ?>">
+              <?= $recette['statut'] === 'en_attente' ? 'En attente' : 'Refusée' ?>
+            </span>
+
+            <div>
+              <p class="rd-apercu-titre">
+                Aperçu de votre recette — elle n’est pas encore publiée.
+              </p>
+
+              <?php if ($recette['statut'] === 'refusee' && $recette['motif_refus']): ?>
+                <p class="rd-apercu-motif">
+                  <strong>Motif du refus :</strong> <?= htmlspecialchars($recette['motif_refus']) ?>
+                </p>
+              <?php endif; ?>
+            </div>
+          </div>
+        <?php endif; ?>
+
         <!-- PRÉSENTATION -->
         <section class="rd-hero" aria-labelledby="titre-recette">
 
@@ -183,7 +203,11 @@ function formaterQuantite(?string $quantite)
 
             </dl>
 
-            <?php if (isset($_SESSION['utilisateur_id'])): ?>
+            <?php if ($donnees['estApercu']): ?>
+
+              <!-- Pas encore publiée : pas de favoris possible pour l'instant. -->
+
+            <?php elseif (isset($_SESSION['utilisateur_id'])): ?>
 
               <form method="post" action="../membre/basculer-favori.php" class="rd-favorite-form">
                 <input type="hidden" name="id_recette" value="<?= (int) $recette['id_recette'] ?>">
@@ -280,6 +304,8 @@ function formaterQuantite(?string $quantite)
           </div>
 
         </section>
+
+        <?php if (!$donnees['estApercu']): ?>
 
         <!-- AVIS -->
         <section id="avis" class="rd-reviews-section" aria-labelledby="titre-avis">
@@ -493,6 +519,8 @@ function formaterQuantite(?string $quantite)
           </div>
 
         </section>
+
+        <?php endif; ?>
 
       <?php endif; ?>
 

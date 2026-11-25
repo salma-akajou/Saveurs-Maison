@@ -3350,6 +3350,60 @@ button:focus-visible {
   text-underline-offset: 3px;
 }
 
+/* ===== APERÇU (recette pas encore publiée, visible par son auteur) ===== */
+
+.rd-apercu {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  margin-bottom: 24px;
+  padding: 18px 20px;
+
+  border: 1px solid var(--rd-border);
+  border-radius: 13px;
+
+  background: #fffdfa;
+}
+
+.rd-apercu-badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 100px;
+  padding: 5px 14px;
+
+  border-radius: 25px;
+
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.rd-apercu-badge-en_attente {
+  background: #ffe4b4;
+  color: #79501b;
+}
+
+.rd-apercu-badge-refusee {
+  background: #f7dfd9;
+  color: #9b351e;
+}
+
+.rd-apercu-titre {
+  margin: 0;
+  color: var(--rd-heading);
+  font-weight: 600;
+}
+
+.rd-apercu-motif {
+  margin: 8px 0 0;
+  color: var(--rd-text);
+  font-size: 14px;
+}
+
 /* ===== PRÉSENTATION ===== */
 
 .rd-hero {

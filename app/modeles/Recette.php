@@ -38,11 +38,12 @@ class Recette
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Retourne une recette publiée à partir de son id, avec sa catégorie,
-    // son auteur, sa note moyenne et son nombre d'avis. Retourne null si
-    // la recette n'existe pas ou n'est pas publiée (on ne montre jamais
-    // une recette en attente ou refusée sur une page publique).
-    public static function trouverPublieeParId(int $id)
+    // Retourne une recette à partir de son id, avec sa catégorie, son
+    // auteur, sa note moyenne et son nombre d'avis. Visible dans deux cas
+    // seulement : la recette est publiée (tout le monde peut la voir), ou
+    // elle appartient au membre connecté (il peut voir l'aperçu de sa
+    // propre recette même en attente ou refusée). Retourne null sinon.
+    public static function trouverVisibleParId(int $id, ?int $idUtilisateur)
     {
         global $pdo;
 
@@ -55,6 +56,8 @@ class Recette
                     r.temps_preparation,
                     r.temps_cuisson,
                     r.difficulte,
+                    r.statut,
+                    r.motif_refus,
                     c.id_categorie,
                     c.nom AS categorie,
                     u.prenom AS auteur_prenom,
@@ -65,10 +68,13 @@ class Recette
                 JOIN CATEGORIE c ON c.id_categorie = r.id_categorie
                 JOIN UTILISATEUR u ON u.id_utilisateur = r.id_utilisateur
                 WHERE r.id_recette = ?
-                AND r.statut = 'publiee'";
+                AND (r.statut = 'publiee' OR r.id_utilisateur = ?)";
 
+        // Un visiteur non connecté n'a pas d'id : on met 0, qui ne
+        // correspond jamais à un vrai membre, pour ne garder que la
+        // condition "publiee" dans ce cas.
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt->execute([$id, $idUtilisateur ?? 0]);
 
         $recette = $stmt->fetch(PDO::FETCH_ASSOC);
 
