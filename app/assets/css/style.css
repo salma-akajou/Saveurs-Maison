@@ -2566,7 +2566,7 @@ button:focus-visible {
 .catalog-card-image {
   display: block;
   min-width: 0;
-  aspect-ratio: 1.95;
+  height: 190px;
   overflow: hidden;
 }
 
@@ -2575,7 +2575,6 @@ button:focus-visible {
 
   width: 100%;
   height: 100%;
-  min-height: 190px;
 
   object-fit: cover;
   object-position: center;
@@ -3055,14 +3054,7 @@ button:focus-visible {
   }
 
   .catalog-card-image {
-    /* Ici l'image est à côté du texte (pas au-dessus) : sa hauteur
-       doit suivre la ligne, pas un ratio fixe. */
-    aspect-ratio: auto;
-    min-height: 175px;
-  }
-
-  .catalog-card-image img {
-    min-height: 175px;
+    height: 175px;
   }
 
   .catalog-card-content {
@@ -5310,15 +5302,13 @@ button:focus-visible {
 
 .favorites-page .fv-card-image {
   display: block;
-  aspect-ratio: 1.95;
-  min-height: 205px;
+  height: 205px;
   overflow: hidden;
 }
 
 .favorites-page .fv-card-image img {
   width: 100%;
   height: 100%;
-  min-height: 205px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -5667,14 +5657,7 @@ button:focus-visible {
   }
 
   .favorites-page .fv-card-image {
-    /* Ici l'image est à côté du texte (pas au-dessus) : sa hauteur
-       doit suivre la ligne, pas un ratio fixe. */
-    aspect-ratio: auto;
-  }
-
-  .favorites-page .fv-card-image,
-  .favorites-page .fv-card-image img {
-    min-height: 230px;
+    height: 230px;
   }
 
   .favorites-page .fv-card-content {
