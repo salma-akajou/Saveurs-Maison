@@ -165,7 +165,7 @@ class ModifierRecetteControleur
         }
 
         $nomFichier = 'recette-' . uniqid() . '.' . $extensionsAutorisees[$type];
-        $destination = __DIR__ . '/../assets/images/' . $nomFichier;
+        $destination = __DIR__ . '/../../assets/images/' . $nomFichier;
 
         move_uploaded_file($_FILES['photo']['tmp_name'], $destination);
 
