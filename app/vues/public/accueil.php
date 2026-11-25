@@ -411,7 +411,7 @@ $bienvenue = isset($_GET['bienvenue']);
               Rejoignez notre communauté et inspirez les cuisiniers du quotidien.
             </p>
 
-            <a href="inscription.php" class="btn-green">
+            <a href="<?= $estConnecte ? '../membre/proposer-recette.php' : 'inscription.php' ?>" class="btn-green">
               Partager une recette
             </a>
           </div>

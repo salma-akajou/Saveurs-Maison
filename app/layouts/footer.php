@@ -1,3 +1,5 @@
+  <?php $estConnecteFooter = isset($_SESSION['utilisateur_id']); ?>
+
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
@@ -33,9 +35,14 @@
         <div class="col-12 col-sm-6 col-md-3 col-lg-3 footer-column">
           <h3>Participer</h3>
 
-          <a href="../public/inscription.php">Créer un compte</a>
-          <a href="../public/connexion.php">Connexion</a>
-          <a href="../public/inscription.php">Partager une recette</a>
+          <?php if ($estConnecteFooter): ?>
+            <a href="../membre/mes-recettes.php">Mes recettes</a>
+            <a href="../membre/proposer-recette.php">Partager une recette</a>
+          <?php else: ?>
+            <a href="../public/inscription.php">Créer un compte</a>
+            <a href="../public/connexion.php">Connexion</a>
+            <a href="../public/inscription.php">Partager une recette</a>
+          <?php endif; ?>
         </div>
 
         <div class="col-12 col-md-6 col-lg-3 footer-column">

@@ -22,4 +22,24 @@ class Etape
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function ajouter(int $idRecette, string $titre, string $description, int $numeroOrdre)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare(
+            'INSERT INTO ETAPE (titre, description, numero_ordre, id_recette) VALUES (?, ?, ?, ?)'
+        );
+        $stmt->execute([$titre, $description, $numeroOrdre, $idRecette]);
+    }
+
+    // Retire toutes les étapes actuellement enregistrées pour une recette
+    // (utilisé avant de les réenregistrer, lors d'une modification).
+    public static function supprimerPourRecette(int $idRecette)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare('DELETE FROM ETAPE WHERE id_recette = ?');
+        $stmt->execute([$idRecette]);
+    }
 }

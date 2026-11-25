@@ -190,4 +190,74 @@ class Recette
         $stmt = $pdo->prepare('DELETE FROM RECETTE WHERE id_recette = ? AND id_utilisateur = ?');
         $stmt->execute([$idRecette, $idUtilisateur]);
     }
+
+    // Retourne une recette appartenant à ce membre (pour la modifier).
+    // Retourne null si elle n'existe pas ou n'appartient pas à ce membre.
+    public static function trouverParIdEtUtilisateur(int $id, int $idUtilisateur)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare(
+            'SELECT * FROM RECETTE WHERE id_recette = ? AND id_utilisateur = ?'
+        );
+        $stmt->execute([$id, $idUtilisateur]);
+
+        $recette = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $recette !== false ? $recette : null;
+    }
+
+    // Crée une nouvelle recette, en attente de validation par défaut.
+    // Retourne l'id de la recette créée.
+    public static function creer(array $donnees)
+    {
+        global $pdo;
+
+        $sql = "INSERT INTO RECETTE
+                    (titre, description, photo, nb_personnes, temps_preparation,
+                     temps_cuisson, difficulte, id_categorie, id_utilisateur)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            $donnees['titre'],
+            $donnees['description'],
+            $donnees['photo'],
+            $donnees['nb_personnes'],
+            $donnees['temps_preparation'],
+            $donnees['temps_cuisson'],
+            $donnees['difficulte'],
+            $donnees['id_categorie'],
+            $donnees['id_utilisateur'],
+        ]);
+
+        return (int) $pdo->lastInsertId();
+    }
+
+    // Modifie une recette existante. Toute modification la repasse
+    // "en attente" : elle doit être vérifiée de nouveau par l'administrateur.
+    public static function modifier(int $idRecette, array $donnees)
+    {
+        global $pdo;
+
+        $sql = "UPDATE RECETTE SET
+                    titre = ?, description = ?, photo = ?, nb_personnes = ?,
+                    temps_preparation = ?, temps_cuisson = ?, difficulte = ?,
+                    id_categorie = ?, statut = 'en_attente', motif_refus = NULL,
+                    date_modification = NOW()
+                WHERE id_recette = ?";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            $donnees['titre'],
+            $donnees['description'],
+            $donnees['photo'],
+            $donnees['nb_personnes'],
+            $donnees['temps_preparation'],
+            $donnees['temps_cuisson'],
+            $donnees['difficulte'],
+            $donnees['id_categorie'],
+            $idRecette,
+        ]);
+    }
 }
