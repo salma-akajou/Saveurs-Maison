@@ -48,4 +48,39 @@ class Avis
         );
         $stmt->execute([$note, $commentaire, $idUtilisateur, $idRecette]);
     }
+
+    // Nombre total d'avis, pour le tableau de bord de l'administration.
+    public static function compterTous()
+    {
+        global $pdo;
+
+        $stmt = $pdo->query('SELECT COUNT(*) FROM AVIS');
+
+        return (int) $stmt->fetchColumn();
+    }
+
+    // Derniers avis publiés, avec le membre et la recette concernés,
+    // pour le tableau de bord de l'administration.
+    public static function listerRecents(int $limite)
+    {
+        global $pdo;
+
+        $sql = "SELECT
+                    a.note,
+                    a.commentaire,
+                    u.nom AS membre_nom,
+                    u.prenom AS membre_prenom,
+                    r.titre AS recette_titre
+                FROM AVIS a
+                JOIN UTILISATEUR u ON u.id_utilisateur = a.id_utilisateur
+                JOIN RECETTE r ON r.id_recette = a.id_recette
+                ORDER BY a.date_avis DESC
+                LIMIT ?";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $limite, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

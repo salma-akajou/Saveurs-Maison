@@ -103,4 +103,14 @@ class Utilisateur
 
         return (int) $pdo->lastInsertId();
     }
+
+    // Nombre de membres (hors administrateurs), pour le tableau de bord.
+    public static function compterMembres()
+    {
+        global $pdo;
+
+        $stmt = $pdo->query("SELECT COUNT(*) FROM UTILISATEUR WHERE role = 'membre'");
+
+        return (int) $stmt->fetchColumn();
+    }
 }

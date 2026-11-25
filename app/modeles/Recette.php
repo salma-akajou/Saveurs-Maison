@@ -266,4 +266,49 @@ class Recette
             $idRecette,
         ]);
     }
+
+    // Retourne le nombre de recettes pour chaque statut, pour le
+    // tableau de bord de l'administration.
+    public static function compterParStatut()
+    {
+        global $pdo;
+
+        $stmt = $pdo->query('SELECT statut, COUNT(*) AS total FROM RECETTE GROUP BY statut');
+
+        // On part de 0 pour les 3 statuts, au cas où l'un d'eux n'a
+        // encore aucune recette (la requête ne le renverrait pas).
+        $compteurs = ['publiee' => 0, 'en_attente' => 0, 'refusee' => 0];
+
+        foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $ligne) {
+            $compteurs[$ligne['statut']] = (int) $ligne['total'];
+        }
+
+        return $compteurs;
+    }
+
+    // Retourne les dernières recettes en attente, avec le nom de leur
+    // auteur, pour le tableau "Recettes à vérifier" du tableau de bord.
+    public static function listerEnAttenteRecentes(int $limite)
+    {
+        global $pdo;
+
+        $sql = "SELECT
+                    r.id_recette,
+                    r.titre,
+                    r.photo,
+                    r.date_creation,
+                    u.nom AS auteur_nom,
+                    u.prenom AS auteur_prenom
+                FROM RECETTE r
+                JOIN UTILISATEUR u ON u.id_utilisateur = r.id_utilisateur
+                WHERE r.statut = 'en_attente'
+                ORDER BY r.date_creation DESC
+                LIMIT ?";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $limite, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
