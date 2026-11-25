@@ -103,7 +103,10 @@ function construireLienPage(int $numeroPage, array $donnees)
     </section>
 
     <?php if ($messageSucces !== null): ?>
-      <p class="ad-feedback"><?= htmlspecialchars($messageSucces) ?></p>
+      <div class="ad-message-succes">
+        <i class="bi bi-check-circle" aria-hidden="true"></i>
+        <p><?= htmlspecialchars($messageSucces) ?></p>
+      </div>
     <?php endif; ?>
 
     <!-- FILTRES -->

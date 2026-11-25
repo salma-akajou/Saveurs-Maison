@@ -723,13 +723,15 @@ button:focus-visible {
 
 .recipe-image-wrap {
   position: relative;
+  height: 195px;
+  overflow: hidden;
 }
 
 .recipe-image-wrap > img {
   display: block;
 
   width: 100%;
-  aspect-ratio: 1.95;
+  height: 100%;
 
   object-fit: cover;
   object-position: center;
@@ -8363,6 +8365,31 @@ button:focus-visible {
   margin: 15px 0 0;
   color: var(--ad-green);
   font-size: 13px;
+}
+
+.admin-page .ad-message-succes {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  margin: 0 0 20px;
+  padding: 12px 17px;
+
+  border-radius: 10px;
+
+  background: #e8ebdf;
+  color: var(--ad-green);
+}
+
+.admin-page .ad-message-succes i {
+  flex-shrink: 0;
+  font-size: 22px;
+}
+
+.admin-page .ad-message-succes p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .admin-page .ad-feedback:empty {
