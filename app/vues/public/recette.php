@@ -408,6 +408,9 @@ function formaterQuantite(?string $quantite)
           <?php endif; ?>
 
           <!-- FORMULAIRE D'AVIS -->
+          <!-- Rien n'est affiché si le membre a déjà donné son avis
+               (en dehors du message temporaire juste après l'envoi). -->
+          <?php if ($avisEnvoye || !$donnees['dejaDonneAvis']): ?>
           <div class="rd-review-form-panel">
 
             <?php if ($avisEnvoye): ?>
@@ -415,14 +418,6 @@ function formaterQuantite(?string $quantite)
               <!-- Message temporaire, disparaît tout seul après l'envoi. -->
               <p class="rd-review-success" id="message-avis-succes">
                 Merci pour votre avis !
-              </p>
-
-            <?php elseif ($donnees['dejaDonneAvis']): ?>
-
-              <h3>Et vous, qu’en pensez-vous ?</h3>
-
-              <p class="rd-review-already">
-                Vous avez déjà donné votre avis sur cette recette. Merci !
               </p>
 
             <?php else: ?>
@@ -514,6 +509,7 @@ function formaterQuantite(?string $quantite)
             <?php endif; ?>
 
           </div>
+          <?php endif; ?>
 
         </section>
 
