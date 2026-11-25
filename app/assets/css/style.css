@@ -6167,13 +6167,29 @@ button:focus-visible {
 
 /* ÉTAT VIDE ET MESSAGE */
 
-.my-recipes-page #message-succes {
-  margin-bottom: 20px;
-  transition: opacity 0.6s ease;
+.my-recipes-page .mr-message-succes {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  margin: 20px 0 28px;
+  padding: 12px 17px;
+
+  border-radius: 10px;
+
+  background: #e8ebdf;
+  color: var(--mr-green);
 }
 
-.my-recipes-page #message-succes.fade-sortie {
-  opacity: 0;
+.my-recipes-page .mr-message-succes i {
+  flex-shrink: 0;
+  font-size: 22px;
+}
+
+.my-recipes-page .mr-message-succes p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .my-recipes-page .mr-empty {

@@ -66,8 +66,9 @@ $messageSucces = $messagesSucces[$_GET['action'] ?? ''] ?? null;
       </nav>
 
       <?php if ($messageSucces !== null): ?>
-        <div class="alert alert-success" role="alert" id="message-succes">
-          <?= htmlspecialchars($messageSucces) ?>
+        <div class="mr-message-succes" role="alert">
+          <i class="bi bi-check-circle" aria-hidden="true"></i>
+          <p><?= htmlspecialchars($messageSucces) ?></p>
         </div>
       <?php endif; ?>
 
@@ -237,21 +238,6 @@ $messageSucces = $messagesSucces[$_GET['action'] ?? ''] ?? null;
 
   <!-- Nécessaire pour le menu déroulant du compte. -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <?php if ($messageSucces !== null): ?>
-    <script>
-      // Le message de succès s'efface tout seul après quelques secondes.
-      var messageSucces = document.getElementById("message-succes");
-
-      setTimeout(function () {
-        messageSucces.classList.add("fade-sortie");
-      }, 2500);
-
-      messageSucces.addEventListener("transitionend", function () {
-        messageSucces.remove();
-      });
-    </script>
-  <?php endif; ?>
 
   <?php if (!empty($recettes)): ?>
     <script>
