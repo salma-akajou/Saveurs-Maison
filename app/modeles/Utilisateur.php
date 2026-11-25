@@ -35,6 +35,58 @@ class Utilisateur
         return $stmt->fetchColumn() > 0;
     }
 
+    // Même vérification, mais en ignorant le compte lui-même (pour
+    // modifier son profil sans se bloquer sur sa propre adresse).
+    public static function emailExistePourUnAutreCompte(string $email, int $idUtilisateur)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare(
+            "SELECT COUNT(*) FROM UTILISATEUR WHERE email = ? AND id_utilisateur != ?"
+        );
+        $stmt->execute([$email, $idUtilisateur]);
+
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public static function trouverParId(int $id)
+    {
+        global $pdo;
+
+        $sql = "SELECT id_utilisateur, nom, prenom, email, mot_de_passe
+                FROM UTILISATEUR
+                WHERE id_utilisateur = ?";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+
+        $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $utilisateur !== false ? $utilisateur : null;
+    }
+
+    public static function modifierInfos(int $id, string $nom, string $prenom, string $email)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare(
+            "UPDATE UTILISATEUR SET nom = ?, prenom = ?, email = ? WHERE id_utilisateur = ?"
+        );
+        $stmt->execute([$nom, $prenom, $email, $id]);
+    }
+
+    // Le nouveau mot de passe est haché avant d'être enregistré,
+    // comme à l'inscription.
+    public static function modifierMotDePasse(int $id, string $nouveauMotDePasse)
+    {
+        global $pdo;
+
+        $motDePasseHache = password_hash($nouveauMotDePasse, PASSWORD_DEFAULT);
+
+        $stmt = $pdo->prepare("UPDATE UTILISATEUR SET mot_de_passe = ? WHERE id_utilisateur = ?");
+        $stmt->execute([$motDePasseHache, $id]);
+    }
+
     // Crée un compte membre. Le mot de passe est haché avant d'être
     // enregistré : on ne stocke jamais un mot de passe en clair.
     public static function creerCompte(string $nom, string $prenom, string $email, string $motDePasse)

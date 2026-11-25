@@ -7601,6 +7601,10 @@ button:focus-visible {
   margin: 0;
 }
 
+.profile-page .pr-message-erreur {
+  color: #9b351e;
+}
+
 /* FOOTER */
 
 .profile-page .pr-footer {
