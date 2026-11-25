@@ -252,6 +252,14 @@ $difficultes = [
 
         </section>
 
+      <?php elseif ($recette['statut'] === 'refusee' && $recette['motif_refus']): ?>
+
+        <!-- MOTIF DU REFUS (lecture seule) -->
+        <section class="ad-panel av-decision" aria-labelledby="titre-motif">
+          <h2 id="titre-motif">Motif du refus</h2>
+          <p><?= htmlspecialchars($recette['motif_refus']) ?></p>
+        </section>
+
       <?php endif; ?>
 
     <?php endif; ?>

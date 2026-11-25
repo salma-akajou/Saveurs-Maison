@@ -40,6 +40,8 @@
 
           <?php if ($estAdminFooter): ?>
             <a href="../admin/dashboard.php">Tableau de bord</a>
+            <a href="../admin/recettes.php">Recettes</a>
+            <a href="../admin/avis.php">Avis</a>
           <?php elseif ($estConnecteFooter): ?>
             <a href="../membre/mes-recettes.php">Mes recettes</a>
             <a href="../membre/proposer-recette.php">Partager une recette</a>
