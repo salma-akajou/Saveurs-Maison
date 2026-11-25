@@ -301,7 +301,7 @@ $titrePage = 'Ajouter une recette';
       <!-- INFORMATION -->
       <div class="rf-information">
         <i class="bi bi-info-circle" aria-hidden="true"></i>
-        <p>Cette recette sera enregistrée en attente, comme pour un membre.</p>
+        <p>Cette recette sera publiée directement, en votre nom.</p>
       </div>
 
       <!-- ACTIONS -->

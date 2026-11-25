@@ -84,11 +84,17 @@ class ProposerRecetteControleur
         $this->enregistrerIngredients($idRecette, $ingredients);
         $this->enregistrerEtapes($idRecette, $etapes);
 
+        $estAdmin = $_SESSION['utilisateur_role'] === 'administrateur';
+
+        // Une recette ajoutée par l'administrateur est publiée directement :
+        // il n'y a personne d'autre pour la valider.
+        if ($estAdmin) {
+            Recette::valider($idRecette, (int) $_SESSION['utilisateur_id']);
+        }
+
         // Cette page est utilisée à la fois par l'espace membre et par
         // l'espace admin (même formulaire) : on revient vers la bonne liste.
-        $cible = $_SESSION['utilisateur_role'] === 'administrateur'
-            ? '../admin/recettes.php'
-            : 'mes-recettes.php';
+        $cible = $estAdmin ? '../admin/recettes.php' : 'mes-recettes.php';
 
         header('Location: ' . $cible . '?action=ajoutee');
         exit;

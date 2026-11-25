@@ -316,7 +316,7 @@ $titrePage = 'Modifier la recette';
         <!-- RAPPEL -->
         <div class="rf-information">
           <i class="bi bi-info-circle" aria-hidden="true"></i>
-          <p>Après modification, cette recette repassera en attente de validation.</p>
+          <p>Après modification, cette recette reste publiée directement.</p>
         </div>
 
         <!-- ACTIONS -->

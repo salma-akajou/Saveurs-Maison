@@ -24,8 +24,8 @@ $titrePage = 'Recettes';
 
 // Message de succès après une suppression ou une décision de validation.
 $messagesSucces = [
-    'ajoutee' => 'Votre recette a bien été envoyée ! Elle sera publiée après vérification.',
-    'modifiee' => 'Votre recette a bien été modifiée ! Elle repasse en attente de vérification.',
+    'ajoutee' => 'Votre recette a bien été ajoutée et publiée.',
+    'modifiee' => 'Votre recette a bien été modifiée et reste publiée.',
     'supprimee' => 'La recette a bien été supprimée.',
     'validee' => 'La recette a été validée et publiée.',
     'refusee' => 'La recette a été refusée.',
