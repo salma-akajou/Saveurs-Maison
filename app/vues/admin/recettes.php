@@ -22,10 +22,13 @@ $donnees = $controleur->afficher();
 $pageActuelle = 'recettes';
 $titrePage = 'Recettes';
 
-// Message de succès après une suppression.
-$messageSucces = isset($_GET['action']) && $_GET['action'] === 'supprimee'
-    ? 'La recette a bien été supprimée.'
-    : null;
+// Message de succès après une suppression ou une décision de validation.
+$messagesSucces = [
+    'supprimee' => 'La recette a bien été supprimée.',
+    'validee' => 'La recette a été validée et publiée.',
+    'refusee' => 'La recette a été refusée.',
+];
+$messageSucces = $messagesSucces[$_GET['action'] ?? ''] ?? null;
 
 // Traduction des statuts et catégories pour l'affichage et les filtres.
 $statuts = [

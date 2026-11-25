@@ -392,4 +392,71 @@ class Recette
 
         return (int) $stmt->fetchColumn();
     }
+
+    // Retourne une recette avec son auteur, quel que soit son statut
+    // (l'administration peut consulter n'importe quelle recette).
+    // Retourne null si elle n'existe pas.
+    public static function trouverParIdPourAdmin(int $id)
+    {
+        global $pdo;
+
+        $sql = "SELECT
+                    r.id_recette,
+                    r.titre,
+                    r.description,
+                    r.photo,
+                    r.nb_personnes,
+                    r.temps_preparation,
+                    r.temps_cuisson,
+                    r.difficulte,
+                    r.statut,
+                    r.motif_refus,
+                    r.date_creation,
+                    c.nom AS categorie,
+                    u.nom AS auteur_nom,
+                    u.prenom AS auteur_prenom
+                FROM RECETTE r
+                JOIN CATEGORIE c ON c.id_categorie = r.id_categorie
+                JOIN UTILISATEUR u ON u.id_utilisateur = r.id_utilisateur
+                WHERE r.id_recette = ?";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+
+        $recette = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $recette !== false ? $recette : null;
+    }
+
+    // Valide une recette en attente : elle devient publiée.
+    public static function valider(int $idRecette, int $idValidateur)
+    {
+        global $pdo;
+
+        $sql = "UPDATE RECETTE SET
+                    statut = 'publiee',
+                    motif_refus = NULL,
+                    date_validation = NOW(),
+                    id_validateur = ?
+                WHERE id_recette = ?";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$idValidateur, $idRecette]);
+    }
+
+    // Refuse une recette en attente, avec un motif obligatoire.
+    public static function refuser(int $idRecette, int $idValidateur, string $motifRefus)
+    {
+        global $pdo;
+
+        $sql = "UPDATE RECETTE SET
+                    statut = 'refusee',
+                    motif_refus = ?,
+                    date_validation = NOW(),
+                    id_validateur = ?
+                WHERE id_recette = ?";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$motifRefus, $idValidateur, $idRecette]);
+    }
 }
