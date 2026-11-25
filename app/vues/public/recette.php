@@ -107,6 +107,9 @@ function formaterQuantite(?string $quantite)
           <div class="rd-refusal">
             <p>
               <strong>Motif du refus :</strong> <?= htmlspecialchars($recette['motif_refus']) ?>
+              <a href="../membre/modifier-recette.php?id=<?= (int) $recette['id_recette'] ?>" class="rd-refusal-link">
+                Modifier
+              </a>
             </p>
           </div>
         <?php endif; ?>

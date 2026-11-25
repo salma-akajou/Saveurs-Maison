@@ -3373,6 +3373,18 @@ button:focus-visible {
   font-weight: 600;
 }
 
+.rd-refusal-link {
+  margin-left: 6px;
+  color: #98351f;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rd-refusal-link:hover {
+  color: #6e2416;
+}
+
 /* ===== PRÉSENTATION ===== */
 
 .rd-hero {
