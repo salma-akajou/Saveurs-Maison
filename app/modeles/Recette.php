@@ -155,4 +155,39 @@ class Recette
 
         return (int) $stmt->fetchColumn();
     }
+
+    // Retourne toutes les recettes d'un membre, quel que soit leur statut,
+    // les plus récentes d'abord (pour la page "Mes recettes").
+    public static function listerParUtilisateur(int $idUtilisateur)
+    {
+        global $pdo;
+
+        $sql = "SELECT
+                    r.id_recette,
+                    r.titre,
+                    r.description,
+                    r.photo,
+                    r.statut,
+                    r.motif_refus,
+                    r.date_creation,
+                    c.nom AS categorie
+                FROM RECETTE r
+                JOIN CATEGORIE c ON c.id_categorie = r.id_categorie
+                WHERE r.id_utilisateur = ?
+                ORDER BY r.date_creation DESC";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$idUtilisateur]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Supprime une recette, seulement si elle appartient bien à ce membre.
+    public static function supprimerSiProprietaire(int $idRecette, int $idUtilisateur)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare('DELETE FROM RECETTE WHERE id_recette = ? AND id_utilisateur = ?');
+        $stmt->execute([$idRecette, $idUtilisateur]);
+    }
 }
