@@ -92,7 +92,7 @@ class ModifierRecetteControleur
         Etape::supprimerPourRecette($idRecette);
         $this->enregistrerEtapes($idRecette, $etapes);
 
-        header('Location: mes-recettes.php');
+        header('Location: mes-recettes.php?action=modifiee');
         exit;
     }
 

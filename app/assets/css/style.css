@@ -2566,6 +2566,7 @@ button:focus-visible {
 .catalog-card-image {
   display: block;
   min-width: 0;
+  aspect-ratio: 1.95;
   overflow: hidden;
 }
 
@@ -3050,6 +3051,13 @@ button:focus-visible {
 
   .catalog-card {
     grid-template-columns: 38% minmax(0, 1fr);
+    min-height: 175px;
+  }
+
+  .catalog-card-image {
+    /* Ici l'image est à côté du texte (pas au-dessus) : sa hauteur
+       doit suivre la ligne, pas un ratio fixe. */
+    aspect-ratio: auto;
     min-height: 175px;
   }
 
@@ -5267,6 +5275,7 @@ button:focus-visible {
 
 .favorites-page .fv-card-image {
   display: block;
+  aspect-ratio: 1.95;
   min-height: 205px;
   overflow: hidden;
 }
@@ -5620,6 +5629,12 @@ button:focus-visible {
 
   .favorites-page .fv-card {
     grid-template-columns: 175px minmax(0, 1fr);
+  }
+
+  .favorites-page .fv-card-image {
+    /* Ici l'image est à côté du texte (pas au-dessus) : sa hauteur
+       doit suivre la ligne, pas un ratio fixe. */
+    aspect-ratio: auto;
   }
 
   .favorites-page .fv-card-image,
@@ -6129,6 +6144,15 @@ button:focus-visible {
 }
 
 /* ÉTAT VIDE ET MESSAGE */
+
+.my-recipes-page #message-succes {
+  margin-bottom: 20px;
+  transition: opacity 0.6s ease;
+}
+
+.my-recipes-page #message-succes.fade-sortie {
+  opacity: 0;
+}
 
 .my-recipes-page .mr-empty {
   padding: 45px 22px;

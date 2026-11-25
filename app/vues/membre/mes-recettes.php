@@ -22,6 +22,14 @@ $statuts = [
     'en_attente' => ['texte' => 'En attente', 'classe' => 'mr-status-pending'],
     'refusee' => ['texte' => 'Refusée', 'classe' => 'mr-status-rejected'],
 ];
+
+// Message de succès après ajout, modification ou suppression.
+$messagesSucces = [
+    'ajoutee' => 'Votre recette a bien été envoyée ! Elle sera publiée après vérification.',
+    'modifiee' => 'Votre recette a bien été modifiée ! Elle repasse en attente de vérification.',
+    'supprimee' => 'La recette a bien été supprimée.',
+];
+$messageSucces = $messagesSucces[$_GET['action'] ?? ''] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -56,6 +64,12 @@ $statuts = [
           <li aria-current="page">Mes recettes</li>
         </ol>
       </nav>
+
+      <?php if ($messageSucces !== null): ?>
+        <div class="alert alert-success" role="alert" id="message-succes">
+          <?= htmlspecialchars($messageSucces) ?>
+        </div>
+      <?php endif; ?>
 
       <!-- INTRODUCTION -->
       <section class="mr-intro" aria-labelledby="titre-mes-recettes">
@@ -223,6 +237,21 @@ $statuts = [
 
   <!-- Nécessaire pour le menu déroulant du compte. -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <?php if ($messageSucces !== null): ?>
+    <script>
+      // Le message de succès s'efface tout seul après quelques secondes.
+      var messageSucces = document.getElementById("message-succes");
+
+      setTimeout(function () {
+        messageSucces.classList.add("fade-sortie");
+      }, 2500);
+
+      messageSucces.addEventListener("transitionend", function () {
+        messageSucces.remove();
+      });
+    </script>
+  <?php endif; ?>
 
   <?php if (!empty($recettes)): ?>
     <script>

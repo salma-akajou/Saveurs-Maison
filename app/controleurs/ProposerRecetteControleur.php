@@ -84,7 +84,7 @@ class ProposerRecetteControleur
         $this->enregistrerIngredients($idRecette, $ingredients);
         $this->enregistrerEtapes($idRecette, $etapes);
 
-        header('Location: mes-recettes.php');
+        header('Location: mes-recettes.php?action=ajoutee');
         exit;
     }
 

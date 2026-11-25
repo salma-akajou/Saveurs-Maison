@@ -20,7 +20,7 @@ class MesRecettesControleur
 
             // Redirige vers la même page pour éviter de supprimer deux
             // fois la même recette si la page est rechargée.
-            header('Location: mes-recettes.php');
+            header('Location: mes-recettes.php?action=supprimee');
             exit;
         }
 
