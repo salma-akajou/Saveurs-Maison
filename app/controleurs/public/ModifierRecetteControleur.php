@@ -92,7 +92,13 @@ class ModifierRecetteControleur
         Etape::supprimerPourRecette($idRecette);
         $this->enregistrerEtapes($idRecette, $etapes);
 
-        header('Location: mes-recettes.php?action=modifiee');
+        // Cette page est utilisée à la fois par l'espace membre et par
+        // l'espace admin (même formulaire) : on revient vers la bonne liste.
+        $cible = $_SESSION['utilisateur_role'] === 'administrateur'
+            ? '../admin/recettes.php'
+            : 'mes-recettes.php';
+
+        header('Location: ' . $cible . '?action=modifiee');
         exit;
     }
 
