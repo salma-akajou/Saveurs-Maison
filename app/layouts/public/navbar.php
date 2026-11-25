@@ -12,6 +12,10 @@
  */
 
 $estConnecte = isset($_SESSION['utilisateur_id']);
+
+// Un administrateur n'est pas un membre : pas de favoris, pas de
+// recettes personnelles ni de profil à modifier depuis le site public.
+$estAdmin = $estConnecte && $_SESSION['utilisateur_role'] === 'administrateur';
 ?>
 
 <?php if (!$estConnecte): ?>
@@ -127,15 +131,17 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
               </a>
             </li>
 
-            <li class="nav-item">
-              <a
-                class="nav-link <?= $pageActuelle === 'favoris' ? 'active' : '' ?>"
-                href="../membre/favoris.php"
-                <?= $pageActuelle === 'favoris' ? 'aria-current="page"' : '' ?>
-              >
-                Mes favoris
-              </a>
-            </li>
+            <?php if (!$estAdmin): ?>
+              <li class="nav-item">
+                <a
+                  class="nav-link <?= $pageActuelle === 'favoris' ? 'active' : '' ?>"
+                  href="../membre/favoris.php"
+                  <?= $pageActuelle === 'favoris' ? 'aria-current="page"' : '' ?>
+                >
+                  Mes favoris
+                </a>
+              </li>
+            <?php endif; ?>
           </ul>
 
           <div class="dropdown fv-account">
@@ -156,19 +162,33 @@ $estConnecte = isset($_SESSION['utilisateur_id']);
             </button>
 
             <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="../membre/mes-recettes.php">
-                  Mes recettes
-                </a>
-              </li>
+              <?php if ($estAdmin): ?>
 
-              <li>
-                <a class="dropdown-item" href="../membre/profil.php">
-                  Mon profil
-                </a>
-              </li>
+                <li>
+                  <a class="dropdown-item" href="../admin/dashboard.php">
+                    Tableau de bord
+                  </a>
+                </li>
 
-              <li><hr class="dropdown-divider"></li>
+                <li><hr class="dropdown-divider"></li>
+
+              <?php else: ?>
+
+                <li>
+                  <a class="dropdown-item" href="../membre/mes-recettes.php">
+                    Mes recettes
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="../membre/profil.php">
+                    Mon profil
+                  </a>
+                </li>
+
+                <li><hr class="dropdown-divider"></li>
+
+              <?php endif; ?>
 
               <li>
                 <a class="dropdown-item" href="../public/deconnexion.php">

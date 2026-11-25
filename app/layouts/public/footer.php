@@ -1,4 +1,7 @@
-  <?php $estConnecteFooter = isset($_SESSION['utilisateur_id']); ?>
+  <?php
+    $estConnecteFooter = isset($_SESSION['utilisateur_id']);
+    $estAdminFooter = $estConnecteFooter && $_SESSION['utilisateur_role'] === 'administrateur';
+  ?>
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -35,7 +38,9 @@
         <div class="col-12 col-sm-6 col-md-3 col-lg-3 footer-column">
           <h3>Participer</h3>
 
-          <?php if ($estConnecteFooter): ?>
+          <?php if ($estAdminFooter): ?>
+            <a href="../admin/dashboard.php">Tableau de bord</a>
+          <?php elseif ($estConnecteFooter): ?>
             <a href="../membre/mes-recettes.php">Mes recettes</a>
             <a href="../membre/proposer-recette.php">Partager une recette</a>
           <?php else: ?>
