@@ -240,16 +240,8 @@ function construireLienPage(int $numeroPage, array $donnees)
                   <td>
                     <div class="ar-actions">
 
-                      <?php
-                        // Sa propre recette : la même page que les membres.
-                        // La recette d'un autre membre : la page de
-                        // consultation/validation réservée à l'administration.
-                        $lienConsulter = $estProprietaire
-                            ? '../public/recette.php?id=' . (int) $recette['id_recette']
-                            : 'detail-recette.php?id=' . (int) $recette['id_recette'];
-                      ?>
                       <a
-                        href="<?= $lienConsulter ?>"
+                        href="detail-recette.php?id=<?= (int) $recette['id_recette'] ?>"
                         class="ar-icon-button"
                         title="Consulter la recette"
                         aria-label="Consulter <?= htmlspecialchars($recette['titre']) ?>"

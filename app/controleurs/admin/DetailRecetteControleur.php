@@ -43,6 +43,12 @@ class DetailRecetteControleur
         $action = $_POST['action'] ?? '';
 
         if ($action === 'valider') {
+            // Si un motif de refus a été saisi, on ne valide pas : ça
+            // voudrait dire qu'on a changé d'avis sans vider le champ.
+            if (trim($_POST['motif_refus'] ?? '') !== '') {
+                return 'Videz le champ "Motif du refus" pour valider, ou cliquez sur "Refuser la recette".';
+            }
+
             Recette::valider($idRecette, $idAdmin);
             header('Location: recettes.php?action=validee');
             exit;

@@ -412,6 +412,7 @@ class Recette
                     r.statut,
                     r.motif_refus,
                     r.date_creation,
+                    r.id_utilisateur,
                     c.nom AS categorie,
                     u.nom AS auteur_nom,
                     u.prenom AS auteur_prenom

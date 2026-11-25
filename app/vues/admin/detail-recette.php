@@ -68,7 +68,12 @@ $difficultes = [
 
     <?php else: ?>
 
-      <?php $recette = $donnees['recette']; ?>
+      <?php
+        $recette = $donnees['recette'];
+
+        // Sa propre recette : pas de décision à prendre sur soi-même.
+        $estProprietaire = $recette['id_utilisateur'] === (int) $_SESSION['utilisateur_id'];
+      ?>
 
       <!-- TITRE -->
       <section class="ad-page-heading" aria-labelledby="titre-page">
@@ -207,7 +212,7 @@ $difficultes = [
 
       </div>
 
-      <?php if ($recette['statut'] === 'en_attente'): ?>
+      <?php if ($recette['statut'] === 'en_attente' && !$estProprietaire): ?>
 
         <!-- DÉCISION -->
         <section class="ad-panel av-decision" aria-labelledby="titre-decision">
@@ -242,7 +247,7 @@ $difficultes = [
                 Refuser la recette
               </button>
 
-              <button type="submit" name="action" value="valider" class="ad-button ad-button-primary">
+              <button type="submit" name="action" value="valider" class="ad-button ad-button-primary" id="bouton-valider">
                 Valider et publier
               </button>
 
@@ -268,11 +273,25 @@ $difficultes = [
 
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <?php if ($donnees !== null && $recette['statut'] === 'en_attente'): ?>
+  <?php if ($donnees !== null && $recette['statut'] === 'en_attente' && !$estProprietaire): ?>
     <script>
       // Le motif n'est obligatoire que pour le bouton "Refuser".
       var formulaire = document.getElementById("formulaire-decision");
       var motifRefus = document.getElementById("motif-refus");
+      var boutonValider = document.getElementById("bouton-valider");
+
+      // Si un motif est saisi, impossible de valider par erreur :
+      // le bouton "Valider" se désactive tant que le champ n'est pas vide.
+      function actualiserBoutonValider() {
+        boutonValider.disabled = motifRefus.value.trim() !== "";
+      }
+
+      motifRefus.addEventListener("input", function () {
+        motifRefus.setCustomValidity("");
+        actualiserBoutonValider();
+      });
+
+      actualiserBoutonValider();
 
       formulaire.addEventListener("submit", function (event) {
         var bouton = event.submitter;
@@ -285,10 +304,6 @@ $difficultes = [
         } else {
           motifRefus.setCustomValidity("");
         }
-      });
-
-      motifRefus.addEventListener("input", function () {
-        motifRefus.setCustomValidity("");
       });
     </script>
   <?php endif; ?>
