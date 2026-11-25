@@ -3350,58 +3350,27 @@ button:focus-visible {
   text-underline-offset: 3px;
 }
 
-/* ===== APERÇU (recette pas encore publiée, visible par son auteur) ===== */
+/* ===== MOTIF DE REFUS (aperçu d'une recette refusée, pour son auteur) ===== */
 
-.rd-apercu {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-
+.rd-refusal {
   margin-bottom: 24px;
-  padding: 18px 20px;
+  padding: 12px 16px;
 
-  border: 1px solid var(--rd-border);
-  border-radius: 13px;
+  border-radius: 9px;
 
-  background: #fffdfa;
+  background: #f7e3df;
 }
 
-.rd-apercu-badge {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 100px;
-  padding: 5px 14px;
-
-  border-radius: 25px;
-
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.rd-apercu-badge-en_attente {
-  background: #ffe4b4;
-  color: #79501b;
-}
-
-.rd-apercu-badge-refusee {
-  background: #f7dfd9;
-  color: #9b351e;
-}
-
-.rd-apercu-titre {
+.rd-refusal p {
   margin: 0;
-  color: var(--rd-heading);
-  font-weight: 600;
+  color: #624b45;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-.rd-apercu-motif {
-  margin: 8px 0 0;
-  color: var(--rd-text);
-  font-size: 14px;
+.rd-refusal strong {
+  color: #98351f;
+  font-weight: 600;
 }
 
 /* ===== PRÉSENTATION ===== */
@@ -5998,7 +5967,7 @@ button:focus-visible {
 
 .my-recipes-page .mr-recipe-image {
   display: block;
-  min-height: 155px;
+  height: 155px;
   overflow: hidden;
   border-radius: 10px;
 }
@@ -6006,7 +5975,6 @@ button:focus-visible {
 .my-recipes-page .mr-recipe-image img {
   width: 100%;
   height: 100%;
-  min-height: 155px;
   object-fit: cover;
 }
 

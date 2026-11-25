@@ -8,7 +8,9 @@ require_once __DIR__ . '/../../controleurs/RecetteControleur.php';
 $controleur = new RecetteControleur();
 $donnees = $controleur->afficher();
 
-$pageActuelle = 'recettes';
+// Pas publiée : on est venu depuis "Mes recettes", pas depuis le
+// catalogue public. "Les recettes" ne doit donc pas être actif.
+$pageActuelle = ($donnees !== null && $donnees['estApercu']) ? 'mes-recettes' : 'recettes';
 
 // Vient de RecetteControleur juste après l'envoi réussi d'un avis.
 $avisEnvoye = isset($_GET['avis']) && $_GET['avis'] === 'succes';
@@ -91,29 +93,21 @@ function formaterQuantite(?string $quantite)
           <a href="accueil.php">Accueil</a>
           <span aria-hidden="true">/</span>
 
-          <a href="recettes.php">Les recettes</a>
+          <?php if ($donnees['estApercu']): ?>
+            <a href="../membre/mes-recettes.php">Mes recettes</a>
+          <?php else: ?>
+            <a href="recettes.php">Les recettes</a>
+          <?php endif; ?>
           <span aria-hidden="true">/</span>
 
           <span aria-current="page"><?= htmlspecialchars($recette['titre']) ?></span>
         </nav>
 
-        <?php if ($donnees['estApercu']): ?>
-          <div class="rd-apercu" role="alert">
-            <span class="rd-apercu-badge rd-apercu-badge-<?= $recette['statut'] ?>">
-              <?= $recette['statut'] === 'en_attente' ? 'En attente' : 'Refusée' ?>
-            </span>
-
-            <div>
-              <p class="rd-apercu-titre">
-                Aperçu de votre recette — elle n’est pas encore publiée.
-              </p>
-
-              <?php if ($recette['statut'] === 'refusee' && $recette['motif_refus']): ?>
-                <p class="rd-apercu-motif">
-                  <strong>Motif du refus :</strong> <?= htmlspecialchars($recette['motif_refus']) ?>
-                </p>
-              <?php endif; ?>
-            </div>
+        <?php if ($donnees['estApercu'] && $recette['statut'] === 'refusee' && $recette['motif_refus']): ?>
+          <div class="rd-refusal">
+            <p>
+              <strong>Motif du refus :</strong> <?= htmlspecialchars($recette['motif_refus']) ?>
+            </p>
           </div>
         <?php endif; ?>
 
