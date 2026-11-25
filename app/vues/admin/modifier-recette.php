@@ -313,12 +313,6 @@ $titrePage = 'Modifier la recette';
 
         </section>
 
-        <!-- RAPPEL -->
-        <div class="rf-information">
-          <i class="bi bi-info-circle" aria-hidden="true"></i>
-          <p>Après modification, cette recette reste publiée directement.</p>
-        </div>
-
         <!-- ACTIONS -->
         <div class="rf-form-actions">
           <a href="recettes.php" class="rf-button rf-button-outline">

@@ -298,12 +298,6 @@ $titrePage = 'Ajouter une recette';
 
       </section>
 
-      <!-- INFORMATION -->
-      <div class="rf-information">
-        <i class="bi bi-info-circle" aria-hidden="true"></i>
-        <p>Cette recette sera publiée directement, en votre nom.</p>
-      </div>
-
       <!-- ACTIONS -->
       <div class="rf-form-actions">
         <a href="recettes.php" class="rf-button rf-button-outline">
