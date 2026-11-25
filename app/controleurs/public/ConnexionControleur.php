@@ -35,7 +35,14 @@ class ConnexionControleur
                 // (empêche la réutilisation d'un ancien identifiant).
                 session_regenerate_id(true);
 
-                header('Location: accueil.php');
+                // Un administrateur arrive directement sur son tableau
+                // de bord, un membre arrive sur l'accueil du site.
+                if ($utilisateur['role'] === 'administrateur') {
+                    header('Location: ../admin/dashboard.php');
+                } else {
+                    header('Location: accueil.php');
+                }
+
                 exit;
             }
         }
