@@ -154,6 +154,7 @@ $pageActuelle = 'proposer-recette';
                   placeholder="Ex. Tarte aux pommes maison"
                   required
                 >
+                <p class="rf-error"></p>
               </div>
 
               <div>
@@ -169,6 +170,7 @@ $pageActuelle = 'proposer-recette';
                   placeholder="Présentez votre recette en quelques mots."
                   required
                 ></textarea>
+                <p class="rf-error"></p>
               </div>
             </div>
 
@@ -189,6 +191,7 @@ $pageActuelle = 'proposer-recette';
                 <option value="3">Dessert</option>
                 <option value="4">Boisson</option>
               </select>
+              <p class="rf-error"></p>
             </div>
 
             <div>
@@ -202,6 +205,7 @@ $pageActuelle = 'proposer-recette';
                 <option value="moyenne">Moyenne</option>
                 <option value="difficile">Difficile</option>
               </select>
+              <p class="rf-error"></p>
             </div>
 
             <div>
@@ -219,6 +223,7 @@ $pageActuelle = 'proposer-recette';
                 value="4"
                 required
               >
+              <p class="rf-error"></p>
             </div>
 
             <div>
@@ -236,6 +241,7 @@ $pageActuelle = 'proposer-recette';
                 value="20"
                 required
               >
+              <p class="rf-error"></p>
             </div>
 
             <div>
@@ -253,6 +259,7 @@ $pageActuelle = 'proposer-recette';
                 value="30"
                 required
               >
+              <p class="rf-error"></p>
             </div>
 
           </div>
@@ -347,6 +354,7 @@ $pageActuelle = 'proposer-recette';
           placeholder="Ex. Farine"
           required
         >
+        <p class="rf-error"></p>
       </div>
 
       <div>
@@ -402,6 +410,7 @@ $pageActuelle = 'proposer-recette';
           maxlength="100"
           required
         >
+        <p class="rf-error"></p>
 
         <label class="visually-hidden rf-step-label"></label>
 
@@ -411,6 +420,7 @@ $pageActuelle = 'proposer-recette';
           placeholder="Décrivez cette étape…"
           required
         ></textarea>
+        <p class="rf-error"></p>
       </div>
 
       <button class="rf-remove-button" type="button" aria-label="Supprimer cette étape">
@@ -593,13 +603,49 @@ $pageActuelle = 'proposer-recette';
 
     /* ENVOI */
 
+    // Affiche ou efface le message rouge sous un champ (le <p class="rf-error">
+    // juste après lui dans le code HTML).
+    function afficherErreurChamp(champ, message) {
+      var erreur = champ.nextElementSibling;
+
+      if (erreur && erreur.classList.contains("rf-error")) {
+        erreur.textContent = message;
+      }
+    }
+
+    // Vérifie tous les champs obligatoires du formulaire (sauf la photo,
+    // qui a déjà sa propre vérification) et affiche un message sous
+    // ceux restés vides.
+    function verifierChampsObligatoires() {
+      var tousRemplis = true;
+
+      formulaire.querySelectorAll(
+        'input[required]:not([type="file"]), select[required], textarea[required]'
+      ).forEach(function (champ) {
+        var vide = champ.value.trim() === "";
+        afficherErreurChamp(champ, vide ? "Ce champ est obligatoire." : "");
+
+        if (vide) tousRemplis = false;
+      });
+
+      return tousRemplis;
+    }
+
     formulaire.addEventListener("input", function (event) {
       if (event.target.matches('input[type="text"], textarea')) {
         event.target.setCustomValidity("");
       }
+
+      afficherErreurChamp(event.target, "");
+    });
+
+    formulaire.addEventListener("change", function (event) {
+      afficherErreurChamp(event.target, "");
     });
 
     formulaire.addEventListener("submit", function (event) {
+      var champsRemplis = verifierChampsObligatoires();
+
       // Empêcher les champs obligatoires composés uniquement d'espaces.
       formulaire.querySelectorAll('input[type="text"][required], textarea[required]').forEach(function (champ) {
         champ.setCustomValidity(champ.value.trim() ? "" : "Veuillez renseigner ce champ.");
@@ -618,7 +664,7 @@ $pageActuelle = 'proposer-recette';
         nomsDejaUtilises[nom] = true;
       });
 
-      if (!formulaire.reportValidity()) {
+      if (!champsRemplis || !formulaire.reportValidity()) {
         event.preventDefault();
       }
     });
