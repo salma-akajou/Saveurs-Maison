@@ -202,7 +202,7 @@ $pourcentageRefusees = round($donnees['recettesParStatut']['refusee'] / $total *
                       </td>
 
                       <td>
-                        <?= htmlspecialchars($recette['auteur_prenom'] . ' ' . $recette['auteur_nom']) ?>
+                        <?= htmlspecialchars($recette['auteur_prenom']) ?>
                       </td>
 
                       <td>

@@ -122,7 +122,7 @@ $difficultes = [
           <h2 id="titre-recette"><?= htmlspecialchars($recette['titre']) ?></h2>
 
           <p class="av-author">
-            Par <strong><?= htmlspecialchars($recette['auteur_prenom'] . ' ' . $recette['auteur_nom']) ?></strong>
+            Par <strong><?= htmlspecialchars($recette['auteur_prenom']) ?></strong>
             · Proposée le
             <time datetime="<?= $recette['date_creation'] ?>">
               <?= date('d/m/Y', strtotime($recette['date_creation'])) ?>

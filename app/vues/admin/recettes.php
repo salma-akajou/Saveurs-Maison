@@ -222,7 +222,7 @@ function construireLienPage(int $numeroPage, array $donnees)
                   <td>
                     <?= $estProprietaire
                         ? 'Administrateur (vous)'
-                        : htmlspecialchars($recette['auteur_prenom'] . ' ' . $recette['auteur_nom']) ?>
+                        : htmlspecialchars($recette['auteur_prenom']) ?>
                   </td>
 
                   <td><?= htmlspecialchars($recette['categorie']) ?></td>
