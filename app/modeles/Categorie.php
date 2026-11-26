@@ -28,6 +28,30 @@ class Categorie
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Retourne toutes les catégories sous la forme id_categorie => nom,
+    // triées par nom. Sert à remplir les listes déroulantes et les
+    // filtres (catalogue public, formulaires de recette, filtre admin).
+    public static function listerPourListeDeroulante()
+    {
+        global $pdo;
+
+        $stmt = $pdo->query('SELECT id_categorie, nom FROM CATEGORIE ORDER BY nom');
+
+        return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+    }
+
+    // Indique si cet id correspond bien à une catégorie existante
+    // (utilisé pour valider le formulaire d'une recette).
+    public static function idExiste(int $id)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare('SELECT COUNT(*) FROM CATEGORIE WHERE id_categorie = ?');
+        $stmt->execute([$id]);
+
+        return (int) $stmt->fetchColumn() > 0;
+    }
+
     // Retourne une catégorie à partir de son id, ou null si elle n'existe pas.
     public static function trouverParId(int $id)
     {

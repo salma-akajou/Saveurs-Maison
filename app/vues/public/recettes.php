@@ -4,6 +4,7 @@
 session_start();
 
 require_once __DIR__ . '/../../controleurs/public/RecettesControleur.php';
+require_once __DIR__ . '/../../modeles/Categorie.php';
 
 $controleur = new RecettesControleur();
 $donnees = $controleur->afficher();
@@ -11,12 +12,7 @@ $donnees = $controleur->afficher();
 $pageActuelle = 'recettes';
 
 // Noms des catégories, pour l'affichage (les id correspondent à CATEGORIE).
-$nomsCategories = [
-    1 => 'Entrée',
-    2 => 'Plat',
-    3 => 'Dessert',
-    4 => 'Boisson',
-];
+$nomsCategories = Categorie::listerPourListeDeroulante();
 
 // Traduction de la difficulté pour l'affichage des étiquettes et du filtre.
 $nomsDifficultes = [
@@ -139,7 +135,7 @@ function construireLienPage(int $numeroPage, array $donnees)
                   value="<?= $id ?>"
                   <?= $donnees['idCategorie'] === $id ? 'selected' : '' ?>
                 >
-                  <?= htmlspecialchars($nom) ?>s
+                  <?= htmlspecialchars($nom) ?>
                 </option>
               <?php endforeach; ?>
             </select>

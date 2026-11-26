@@ -206,10 +206,11 @@ $pageActuelle = 'mes-recettes';
                 </label>
 
                 <select class="form-select" id="categorie" name="id_categorie" required>
-                  <option value="1" <?= $recette['id_categorie'] == 1 ? 'selected' : '' ?>>Entrée</option>
-                  <option value="2" <?= $recette['id_categorie'] == 2 ? 'selected' : '' ?>>Plat</option>
-                  <option value="3" <?= $recette['id_categorie'] == 3 ? 'selected' : '' ?>>Dessert</option>
-                  <option value="4" <?= $recette['id_categorie'] == 4 ? 'selected' : '' ?>>Boisson</option>
+                  <?php foreach ($donnees['categories'] as $id => $nom): ?>
+                    <option value="<?= $id ?>" <?= $recette['id_categorie'] == $id ? 'selected' : '' ?>>
+                      <?= htmlspecialchars($nom) ?>
+                    </option>
+                  <?php endforeach; ?>
                 </select>
                 <p class="rf-error"></p>
               </div>

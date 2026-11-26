@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../../modeles/Recette.php';
 require_once __DIR__ . '/../../modeles/Ingredient.php';
 require_once __DIR__ . '/../../modeles/Etape.php';
+require_once __DIR__ . '/../../modeles/Categorie.php';
 
 /*
  * Contrôleur du formulaire "Modifier ma recette".
@@ -34,6 +35,7 @@ class ModifierRecetteControleur
             'ingredients' => Ingredient::listerPourRecette($id),
             'etapes' => Etape::listerParRecette($id),
             'erreurs' => $erreurs,
+            'categories' => Categorie::listerPourListeDeroulante(),
         ];
     }
 
@@ -130,7 +132,7 @@ class ModifierRecetteControleur
             $erreurs[] = 'La description est obligatoire.';
         }
 
-        if (!in_array($idCategorie, [1, 2, 3, 4], true)) {
+        if (!Categorie::idExiste($idCategorie)) {
             $erreurs[] = 'Choisissez une catégorie.';
         }
 

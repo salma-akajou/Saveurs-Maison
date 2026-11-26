@@ -184,10 +184,9 @@ $titrePage = 'Ajouter une recette';
 
             <select class="form-select" id="categorie" name="id_categorie" required>
               <option value="" selected disabled>Choisir une catégorie</option>
-              <option value="1">Entrée</option>
-              <option value="2">Plat</option>
-              <option value="3">Dessert</option>
-              <option value="4">Boisson</option>
+              <?php foreach ($donnees['categories'] as $id => $nom): ?>
+                <option value="<?= $id ?>"><?= htmlspecialchars($nom) ?></option>
+              <?php endforeach; ?>
             </select>
             <p class="rf-error"></p>
           </div>

@@ -15,6 +15,7 @@ if ($_SESSION['utilisateur_role'] !== 'administrateur') {
 }
 
 require_once __DIR__ . '/../../controleurs/admin/GestionRecettesControleur.php';
+require_once __DIR__ . '/../../modeles/Categorie.php';
 
 $controleur = new GestionRecettesControleur();
 $donnees = $controleur->afficher();
@@ -39,12 +40,7 @@ $statuts = [
     'refusee' => ['texte' => 'Refusée', 'classe' => 'ar-status-rejected'],
 ];
 
-$categories = [
-    1 => 'Entrée',
-    2 => 'Plat',
-    3 => 'Dessert',
-    4 => 'Boisson',
-];
+$categories = Categorie::listerPourListeDeroulante();
 
 // Construit un lien vers une autre page de résultats, en conservant
 // les filtres actuellement choisis.

@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../../modeles/Recette.php';
 require_once __DIR__ . '/../../modeles/Ingredient.php';
 require_once __DIR__ . '/../../modeles/Etape.php';
+require_once __DIR__ . '/../../modeles/Categorie.php';
 
 /*
  * Contrôleur du formulaire "Proposer une recette".
@@ -18,7 +19,10 @@ class ProposerRecetteControleur
             $erreurs = $this->traiterEnvoi();
         }
 
-        return ['erreurs' => $erreurs];
+        return [
+            'erreurs' => $erreurs,
+            'categories' => Categorie::listerPourListeDeroulante(),
+        ];
     }
 
     // Valide le formulaire, enregistre la recette si tout est correct,
@@ -121,7 +125,7 @@ class ProposerRecetteControleur
             $erreurs[] = 'La description est obligatoire.';
         }
 
-        if (!in_array($idCategorie, [1, 2, 3, 4], true)) {
+        if (!Categorie::idExiste($idCategorie)) {
             $erreurs[] = 'Choisissez une catégorie.';
         }
 
