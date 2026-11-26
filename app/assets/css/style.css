@@ -6555,6 +6555,23 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
+/* BOUTON RETOUR */
+
+.recipe-form-page .rf-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  color: var(--rf-green);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.recipe-form-page .rf-back-link:hover {
+  text-decoration: underline;
+}
+
 /* FIL D'ARIANE */
 
 .recipe-form-page .rf-breadcrumb {

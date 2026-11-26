@@ -53,6 +53,12 @@ $pageActuelle = 'mes-recettes';
 
         <?php $recette = $donnees['recette']; ?>
 
+        <!-- RETOUR -->
+        <a href="mes-recettes.php" class="rf-back-link">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          Retour à mes recettes
+        </a>
+
         <!-- FIL D'ARIANE -->
         <nav class="rf-breadcrumb" aria-label="Fil d’Ariane">
           <ol>
@@ -101,6 +107,7 @@ $pageActuelle = 'mes-recettes';
           method="post"
           action="modifier-recette.php?id=<?= (int) $recette['id_recette'] ?>"
           enctype="multipart/form-data"
+          novalidate
         >
 
           <!-- 01 INFORMATIONS -->
@@ -633,6 +640,7 @@ $pageActuelle = 'mes-recettes';
       // facultative ici) et affiche un message sous ceux restés vides.
       function verifierChampsObligatoires() {
         var tousRemplis = true;
+        var premierChampVide = null;
 
         formulaire.querySelectorAll(
           'input[required]:not([type="file"]), select[required], textarea[required]'
@@ -640,8 +648,17 @@ $pageActuelle = 'mes-recettes';
           var vide = champ.value.trim() === "";
           afficherErreurChamp(champ, vide ? "Ce champ est obligatoire." : "");
 
-          if (vide) tousRemplis = false;
+          if (vide) {
+            tousRemplis = false;
+            if (!premierChampVide) premierChampVide = champ;
+          }
         });
+
+        // Ramène la personne vers le premier champ vide pour qu'elle voie le message.
+        if (premierChampVide) {
+          premierChampVide.scrollIntoView({ behavior: "smooth", block: "center" });
+          premierChampVide.focus();
+        }
 
         return tousRemplis;
       }

@@ -52,6 +52,12 @@ $titrePage = 'Ajouter une recette';
           Cette recette sera ajoutée directement à votre nom.
         </p>
       </div>
+
+      <a href="recettes.php" class="ad-button ar-return-button">
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+        Retour aux recettes
+      </a>
+
     </section>
 
     <?php if (!empty($donnees['erreurs'])): ?>
@@ -75,6 +81,7 @@ $titrePage = 'Ajouter une recette';
       method="post"
       action="ajouter-recette.php"
       enctype="multipart/form-data"
+      novalidate
     >
 
       <!-- 01 INFORMATIONS -->
@@ -598,6 +605,7 @@ $titrePage = 'Ajouter une recette';
     // ceux restés vides.
     function verifierChampsObligatoires() {
       var tousRemplis = true;
+      var premierChampVide = null;
 
       formulaire.querySelectorAll(
         'input[required]:not([type="file"]), select[required], textarea[required]'
@@ -605,8 +613,23 @@ $titrePage = 'Ajouter une recette';
         var vide = champ.value.trim() === "";
         afficherErreurChamp(champ, vide ? "Ce champ est obligatoire." : "");
 
-        if (vide) tousRemplis = false;
+        if (vide) {
+          tousRemplis = false;
+          if (!premierChampVide) premierChampVide = champ;
+        }
       });
+
+      if (photo.required && photo.files.length === 0) {
+        erreurPhoto.textContent = "Veuillez ajouter une photo.";
+        tousRemplis = false;
+        if (!premierChampVide) premierChampVide = photo;
+      }
+
+      // Ramène la personne vers le premier champ vide pour qu'elle voie le message.
+      if (premierChampVide) {
+        premierChampVide.scrollIntoView({ behavior: "smooth", block: "center" });
+        premierChampVide.focus();
+      }
 
       return tousRemplis;
     }

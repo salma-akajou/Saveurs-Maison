@@ -61,6 +61,12 @@ $titrePage = 'Modifier la recette';
           <h1 id="titre-page">Modifier la <em>recette</em></h1>
           <p class="ad-page-description">Ajustez votre création avant de la partager à nouveau.</p>
         </div>
+
+        <a href="recettes.php" class="ad-button ar-return-button">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          Retour aux recettes
+        </a>
+
       </section>
 
       <?php if ($recette['statut'] === 'refusee'): ?>
@@ -95,6 +101,7 @@ $titrePage = 'Modifier la recette';
         method="post"
         action="modifier-recette.php?id=<?= (int) $recette['id_recette'] ?>"
         enctype="multipart/form-data"
+        novalidate
       >
 
         <!-- 01 INFORMATIONS -->
@@ -618,6 +625,7 @@ $titrePage = 'Modifier la recette';
       // facultative ici) et affiche un message sous ceux restés vides.
       function verifierChampsObligatoires() {
         var tousRemplis = true;
+        var premierChampVide = null;
 
         formulaire.querySelectorAll(
           'input[required]:not([type="file"]), select[required], textarea[required]'
@@ -625,8 +633,17 @@ $titrePage = 'Modifier la recette';
           var vide = champ.value.trim() === "";
           afficherErreurChamp(champ, vide ? "Ce champ est obligatoire." : "");
 
-          if (vide) tousRemplis = false;
+          if (vide) {
+            tousRemplis = false;
+            if (!premierChampVide) premierChampVide = champ;
+          }
         });
+
+        // Ramène la personne vers le premier champ vide pour qu'elle voie le message.
+        if (premierChampVide) {
+          premierChampVide.scrollIntoView({ behavior: "smooth", block: "center" });
+          premierChampVide.focus();
+        }
 
         return tousRemplis;
       }
