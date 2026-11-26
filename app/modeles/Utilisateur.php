@@ -113,4 +113,46 @@ class Utilisateur
 
         return (int) $stmt->fetchColumn();
     }
+
+    // Recherche les membres (jamais les administrateurs) selon leur nom,
+    // prénom, e-mail et statut, pour la page "Membres" de l'administration.
+    public static function rechercherMembres(string $recherche, string $statut)
+    {
+        global $pdo;
+
+        $sql = "SELECT id_utilisateur, nom, prenom, email, statut_compte, date_inscription
+                FROM UTILISATEUR
+                WHERE role = 'membre'";
+        $parametres = [];
+
+        if ($recherche !== '') {
+            $sql .= " AND (CONCAT(prenom, ' ', nom) LIKE ? OR email LIKE ?)";
+            $parametres[] = '%' . $recherche . '%';
+            $parametres[] = '%' . $recherche . '%';
+        }
+
+        if ($statut !== '') {
+            $sql .= ' AND statut_compte = ?';
+            $parametres[] = $statut;
+        }
+
+        $sql .= ' ORDER BY date_inscription DESC';
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($parametres);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Active ou désactive un compte membre. "AND role = 'membre'" protège
+    // les comptes administrateurs, même si l'id était falsifié.
+    public static function definirStatutMembre(int $id, string $statut)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare(
+            "UPDATE UTILISATEUR SET statut_compte = ? WHERE id_utilisateur = ? AND role = 'membre'"
+        );
+        $stmt->execute([$statut, $id]);
+    }
 }

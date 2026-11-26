@@ -83,4 +83,52 @@ class Avis
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Recherche les avis selon le membre, la recette et la note, pour la
+    // page "Avis" de l'administration (les plus récents en premier).
+    public static function rechercherPourAdmin(string $recherche, ?int $note)
+    {
+        global $pdo;
+
+        $sql = "SELECT
+                    a.id_avis,
+                    a.note,
+                    a.commentaire,
+                    a.date_avis,
+                    u.nom AS membre_nom,
+                    u.prenom AS membre_prenom,
+                    r.id_recette,
+                    r.titre AS recette_titre
+                FROM AVIS a
+                JOIN UTILISATEUR u ON u.id_utilisateur = a.id_utilisateur
+                JOIN RECETTE r ON r.id_recette = a.id_recette
+                WHERE 1 = 1";
+        $parametres = [];
+
+        if ($recherche !== '') {
+            $sql .= " AND (CONCAT(u.prenom, ' ', u.nom) LIKE ? OR r.titre LIKE ?)";
+            $parametres[] = '%' . $recherche . '%';
+            $parametres[] = '%' . $recherche . '%';
+        }
+
+        if ($note !== null) {
+            $sql .= ' AND a.note = ?';
+            $parametres[] = $note;
+        }
+
+        $sql .= ' ORDER BY a.date_avis DESC';
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($parametres);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function supprimer(int $id)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare('DELETE FROM AVIS WHERE id_avis = ?');
+        $stmt->execute([$id]);
+    }
 }
