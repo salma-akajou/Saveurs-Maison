@@ -7,8 +7,9 @@ require_once __DIR__ . '/../config/connexion.php';
  */
 class Categorie
 {
-    // Retourne toutes les catégories, triées par nom, avec le nombre de
-    // recettes qui les utilisent (pour la page "Catégories" de l'admin).
+    // Retourne toutes les catégories (la plus récemment ajoutée en premier),
+    // avec le nombre de recettes qui les utilisent (pour la page
+    // "Catégories" de l'admin).
     public static function listerAvecNombreRecettes()
     {
         global $pdo;
@@ -20,7 +21,7 @@ class Categorie
                 FROM CATEGORIE c
                 LEFT JOIN RECETTE r ON r.id_categorie = c.id_categorie
                 GROUP BY c.id_categorie, c.nom
-                ORDER BY c.nom";
+                ORDER BY c.id_categorie DESC";
 
         $stmt = $pdo->query($sql);
 
