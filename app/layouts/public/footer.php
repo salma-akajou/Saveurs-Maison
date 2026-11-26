@@ -1,6 +1,9 @@
   <?php
+    require_once __DIR__ . '/../../modeles/Categorie.php';
+
     $estConnecteFooter = isset($_SESSION['utilisateur_id']);
     $estAdminFooter = $estConnecteFooter && $_SESSION['utilisateur_role'] === 'administrateur';
+    $categoriesFooter = Categorie::listerPourListeDeroulante();
   ?>
 
   <!-- FOOTER -->
@@ -29,10 +32,9 @@
           <h3>Explorer</h3>
 
           <a href="../public/recettes.php">Toutes les recettes</a>
-          <a href="../public/recettes.php?categorie=1">Entrées</a>
-          <a href="../public/recettes.php?categorie=2">Plats</a>
-          <a href="../public/recettes.php?categorie=3">Desserts</a>
-          <a href="../public/recettes.php?categorie=4">Boissons</a>
+          <?php foreach ($categoriesFooter as $idFooter => $nomFooter): ?>
+            <a href="../public/recettes.php?categorie=<?= $idFooter ?>"><?= htmlspecialchars($nomFooter) ?></a>
+          <?php endforeach; ?>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3 col-lg-3 footer-column">
