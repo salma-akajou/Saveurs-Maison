@@ -217,7 +217,7 @@ Le projet est développé en suivant les phases ci-dessous, dans l'ordre. Chaque
 | 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | Fait |
 | 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | Fait |
 | 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | Fait |
-| 8. Documentation et soutenance | Support de présentation finale | `Documentation/` | À venir |
+| 8. Documentation et soutenance | Support de présentation finale | `Documentation/` | Fait |
 
 Chaque phase s'appuie sur la précédente : le MLD (phase 2) sert directement de base aux scripts SQL (phase 4) ; le dictionnaire de données (phase 2) encadre la validation des formulaires (phase 5) ; les règles de gestion définies en phase 1 et 2 sont ce qui est vérifié en phase 6.
 
@@ -264,7 +264,7 @@ Saveurs-Maison/
 │   └── plan_rollback.md                 Plan de retour arrière en cas de problème
 │
 ├── Documentation/
-│   └── presentation_soutenance.pptx     Support de présentation pour la soutenance (à venir)
+│   └── presentation_soutenance.pptx     Support de présentation pour la soutenance
 │
 └── README.md                            Présentation générale du projet
 ```
@@ -275,4 +275,4 @@ Cette structure reste la même pour les sept projets de la promotion 2027 : seul
 
 Les fonctionnalités présentées dans ce document constituent le périmètre prévu de l’application.
 
-Phases 1 à 7 terminées. Il reste la phase 8 (documentation et support de soutenance).
+Les 8 phases sont terminées.
