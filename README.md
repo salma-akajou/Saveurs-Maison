@@ -214,9 +214,9 @@ Le projet est développé en suivant les phases ci-dessous, dans l'ordre. Chaque
 | 2. Conception des données | Dictionnaire de données, MCD, MLD (notation Merise) | `Conception/` | Fait |
 | 3. Maquettage | Maquettes statiques HTML/CSS/Bootstrap des pages principales | `Conception/maquettes/` | Fait |
 | 4. Création de la base de données | Scripts SQL de création des tables et d'insertion des données de test (à partir du MLD) | `app/base_de_donnees/` | Fait |
-| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | En cours |
-| 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | À venir |
-| 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | À venir |
+| 5. Développement | Code PHP (architecture MVC, PDO), vues HTML/CSS/Bootstrap/JavaScript | `app/` | Fait |
+| 6. Tests | Scénarios de test manuels, vérification des règles de gestion | `Tests/` | Fait |
+| 7. Déploiement | Procédure de mise en ligne et plan de retour arrière (rollback) | `Deploiement/` | Fait |
 | 8. Documentation et soutenance | Support de présentation finale | `Documentation/` | À venir |
 
 Chaque phase s'appuie sur la précédente : le MLD (phase 2) sert directement de base aux scripts SQL (phase 4) ; le dictionnaire de données (phase 2) encadre la validation des formulaires (phase 5) ; les règles de gestion définies en phase 1 et 2 sont ce qui est vérifié en phase 6.
@@ -257,11 +257,11 @@ Saveurs-Maison/
 │       └── admin/                       Pages de l'espace administrateur
 │
 ├── Tests/
-│   └── scenarios_de_test.md             Jeux de test manuels par fonctionnalité (à venir)
+│   └── scenarios_de_test.md             Jeux de test manuels par fonctionnalité
 │
 ├── Deploiement/
-│   ├── procedure_deploiement.md         Étapes de mise en ligne (à venir)
-│   └── plan_rollback.md                 Plan de retour arrière en cas de problème (à venir)
+│   ├── procedure_deploiement.md         Étapes de mise en ligne
+│   └── plan_rollback.md                 Plan de retour arrière en cas de problème
 │
 ├── Documentation/
 │   └── presentation_soutenance.pptx     Support de présentation pour la soutenance (à venir)
@@ -274,3 +274,5 @@ Cette structure reste la même pour les sept projets de la promotion 2027 : seul
 ## État du projet
 
 Les fonctionnalités présentées dans ce document constituent le périmètre prévu de l’application.
+
+Phases 1 à 7 terminées. Il reste la phase 8 (documentation et support de soutenance).
